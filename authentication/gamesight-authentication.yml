@@ -1,0 +1,18 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/gamesight-measurement-openapi.json, openapi/gamesight-reporting-openapi.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: A valid Gamesight API key passed in the Authorization header. Reporting API keys
+    carry Reporting, Aggregate Reporting, or GDPR scope.
+  sources:
+  - openapi/gamesight-measurement-openapi.json
+  - openapi/gamesight-reporting-openapi.json
