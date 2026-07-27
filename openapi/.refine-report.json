@@ -1,0 +1,16 @@
+{
+  "provider": "gamesight",
+  "sources": [
+    "gamesight-measurement-api-openapi.yml",
+    "gamesight-reporting-api-openapi.yml"
+  ],
+  "outputs": [
+    "gamesight-measurement-api-openapi.yml",
+    "gamesight-reporting-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

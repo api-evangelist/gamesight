@@ -1,0 +1,28 @@
+generated: '2026-07-19'
+method: searched
+note: >-
+  Probed /.well-known/ and common discovery paths on the marketing site, console,
+  and docs hosts. No genuine well-known document was served. console.gamesight.io
+  returns HTTP 200 for /.well-known/security.txt but the body is the SPA HTML
+  shell (soft-404), not an RFC 9116 document, so it is not captured.
+hosts:
+  - host: https://gamesight.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: https://console.gamesight.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        captured: false
+        reason: SPA HTML shell, not a security.txt document
+  - host: https://docs.gamesight.io
+    documents:
+      - path: /llms.txt
+        status: 200
+        captured: true
+        file: ../llms/gamesight-llms.txt

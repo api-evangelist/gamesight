@@ -1,0 +1,29 @@
+generated: '2026-07-19'
+method: searched
+source: https://gamesight.io/products/measurement, https://console.gamesight.io/trust, https://gamesight.io/gdpr
+standards:
+  - id: soc2
+    conforms: true
+    evidence: SOC 2 stated on gamesight.io product/measurement page and trust center.
+  - id: gdpr
+    conforms: true
+    evidence: GDPR compliance documented at gamesight.io/gdpr; GDPR-scoped API keys support data-access/right-to-forget/opt-out.
+  - id: ccpa
+    conforms: true
+    evidence: CCPA compliance documented at gamesight.io/gdpr.
+  - id: oauth2
+    conforms: false
+    evidence: Auth is API-key (Authorization header), not OAuth2.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a custom JSON envelope, not application/problem+json.
+  - id: semver-versioning
+    conforms: true
+    evidence: API versioning follows semver via the X-Api-Version header.
+  - id: ietf-ratelimit-headers
+    conforms: true
+    evidence: x-ratelimit-limit/remaining/reset headers follow the IETF RateLimit-Headers draft.
+compliance_programs:
+  - name: SOC 2
+  - name: GDPR
+  - name: CCPA

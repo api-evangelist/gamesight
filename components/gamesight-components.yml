@@ -1,0 +1,27 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.gamesight.io/reference/web-sdk-overview, https://docs.gamesight.io/docs/web-sdk-quick-start
+components:
+  - family: Web Measurement SDK
+    type: javascript-snippet
+    loader: https://cdn.gsght.com/sdk.js
+    global: gsght
+    description: >-
+      Client-side JavaScript SDK loaded via a script snippet, used to measure
+      web conversions, campaign attribution, and impressions for browser-based
+      games and marketing sites.
+    methods:
+      - name: init
+        ref: https://docs.gamesight.io/reference/web-sdk-init
+      - name: set
+        ref: https://docs.gamesight.io/reference/web-sdk-set
+      - name: send
+        ref: https://docs.gamesight.io/reference/web-sdk-send
+      - name: onload
+        ref: https://docs.gamesight.io/reference/onload
+      - name: get
+        ref: https://docs.gamesight.io/reference/get
+      - name: update
+        ref: https://docs.gamesight.io/reference/web-sdk-update
+      - name: impression
+        ref: https://docs.gamesight.io/reference/impression

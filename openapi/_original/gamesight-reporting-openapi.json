@@ -1,0 +1,1932 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Gamesight Reporting API",
+    "version": "2.0.0",
+    "description": "The Gamesight Reporting API lets you programmatically pull Marketing Analytics data \u2014 campaign stats, goals, games, trackers, user-level events and touchpoints, and audit logs \u2014 into your data warehouse or BI systems. Authorize with a Reporting, Aggregate Reporting, or GDPR scoped API key via the Authorization header.",
+    "contact": {
+      "name": "Gamesight Support",
+      "email": "support@gamesight.io",
+      "url": "https://docs.gamesight.io/"
+    },
+    "x-apisjson-source": "https://docs.gamesight.io/reference (ReadMe embedded OpenAPI blocks)"
+  },
+  "servers": [
+    {
+      "url": "https://api.marketing.gamesight.io"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/stats": {
+      "post": {
+        "summary": "/stats",
+        "description": "",
+        "operationId": "stats-v3",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "This should be an API Key with the Advertiser scope",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Api-Version",
+            "in": "header",
+            "description": "Note that you must pass a version 3 header to get this API",
+            "schema": {
+              "type": "string",
+              "default": "3.0.0"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "game_id",
+                  "fields",
+                  "groups",
+                  "filters"
+                ],
+                "properties": {
+                  "game_id": {
+                    "type": "integer",
+                    "description": "The ID of the Game to pull reporting for",
+                    "format": "int32"
+                  },
+                  "fields": {
+                    "type": "array",
+                    "description": "Fields set the list of metrics returned. See the full list of supported fields [here](#fields).",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "groups": {
+                    "type": "array",
+                    "description": "Groups set the dimensions returned from the report. See the full list of supported groups [here](#groups).",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "filters": {
+                    "type": "object",
+                    "description": "List of filters to restrict the results",
+                    "properties": {
+                      "start_triggered_at_date": {
+                        "type": "string",
+                        "description": "Start of the date range to run the report over",
+                        "format": "date"
+                      },
+                      "end_triggered_at_date": {
+                        "type": "string",
+                        "description": "End of the date range to run the report over",
+                        "format": "date"
+                      },
+                      "team_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "format": "int32"
+                        }
+                      },
+                      "networks": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "campaigns": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "ad_groups": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "ads": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "sub1": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "sub2": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "sub3": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "sub4": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "sub5": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "countries": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "user_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "platforms": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "touchpoint_types": {
+                        "type": "array",
+                        "description": "Allowed values: `['click', 'impression']`",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "goal_type_ids": {
+                        "type": "array",
+                        "description": "List of goal types to restrict results to include",
+                        "items": {
+                          "type": "integer",
+                          "format": "int32"
+                        }
+                      },
+                      "include_unattributed": {
+                        "type": "boolean",
+                        "description": "Set to True to include a row in the response for unattributed goals.",
+                        "default": false
+                      }
+                    }
+                  },
+                  "timezone": {
+                    "type": "string",
+                    "description": "Timezone to adjust all reported dates/times into. Reference for supported formats [here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).",
+                    "default": "UTC"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"results\": [\n        {\n            \"campaign\": \"google-ads-game-launch-campaign\",\n            \"campaign_name\": \"Google Ads Game Launch Campaign\",\n            \"click_through_rate\": 41.93876939668085,\n            \"clicks\": 7000,\n            \"clicks_unique\": 5678,\n            \"cost_amount\": 238.14,\n            \"cost_currency\": \"USD\",\n            \"display_click_through_rate\": 41.93876939668085,\n            \"display_clicks\": 7000,\n            \"display_cost_amount\": 238.14,\n            \"display_cost_currency\": \"USD\",\n            \"display_impressions\": 16691,\n            \"game_id\": 1,\n            \"goal_revenue_amount\": 2900.22,\n            \"goal_revenue_currency\": \"USD\",\n            \"goals\": {\n                \"1\": {\n                    \"assist\": {\n                        \"count\": 825,\n                        \"goal_rate\": 11.785714285714285,\n                        \"goal_revenue_amount\": 0.0,\n                        \"goal_revenue_currency\": \"USD\",\n                        \"name\": \"Purchase Assist\",\n                        \"per_user\": 2.759197324414716,\n                        \"unique_users\": 299\n                    },\n                    \"standard\": {\n                        \"count\": 110,\n                        \"goal_rate\": 1.5714285714285716,\n                        \"goal_revenue_amount\": 220.0,\n                        \"goal_revenue_currency\": \"USD\",\n                        \"name\": \"Purchase\",\n                        \"per_user\": 1.0,\n                        \"unique_users\": 110\n                    }\n                },\n                \"2\": {\n                    \"assist\": {\n                        \"count\": 126,\n                        \"goal_rate\": 1.7999999999999998,\n                        \"goal_revenue_amount\": 0.0,\n                        \"goal_revenue_currency\": \"USD\",\n                        \"name\": \"Reactivation Assist\",\n                        \"per_user\": 2.3333333333333335,\n                        \"unique_users\": 54\n                    },\n                    \"standard\": {\n                        \"count\": 31,\n                        \"goal_rate\": 0.44285714285714284,\n                        \"goal_revenue_amount\": 62.0,\n                        \"goal_revenue_currency\": \"USD\",\n                        \"name\": \"Reactivation\",\n                        \"per_user\": 1.0,\n                        \"unique_users\": 31\n                    }\n                },\n                \"3\": {\n                    \"assist\": {\n                        \"count\": 1575,\n                        \"goal_rate\": 22.5,\n                        \"goal_revenue_amount\": 0.0,\n                        \"goal_revenue_currency\": \"USD\",\n                        \"name\": \"DLC Purchase Assist\",\n                        \"per_user\": 4.578488372093023,\n                        \"unique_users\": 344\n                    },\n                    \"standard\": {\n                        \"count\": 178,\n                        \"goal_rate\": 2.5428571428571427,\n                        \"goal_revenue_amount\": 1778.22,\n                        \"goal_revenue_currency\": \"USD\",\n                        \"name\": \"DLC Purchase\",\n                        \"per_user\": 1.3088235294117647,\n                        \"unique_users\": 136\n                    }\n                },\n                \"4\": {\n                    \"assist\": {\n                        \"count\": 1788,\n                        \"goal_rate\": 25.542857142857144,\n                        \"goal_revenue_amount\": 0.0,\n                        \"goal_revenue_currency\": \"USD\",\n                        \"name\": \"3D Retention Assist\",\n                        \"per_user\": 2.4594222833562585,\n                        \"unique_users\": 727\n                    },\n                    \"contribution\": {\n                        \"count\": 729,\n                        \"goal_rate\": 10.414285714285715,\n                        \"goal_revenue_amount\": 0.0,\n                        \"goal_revenue_currency\": \"USD\",\n                        \"name\": \"3D Retention Contribution\",\n                        \"per_user\": 2.5759717314487633,\n                        \"unique_users\": 283\n                    },\n                    \"standard\": {\n                        \"count\": 451,\n                        \"goal_rate\": 6.442857142857143,\n                        \"goal_revenue_amount\": 840.0,\n                        \"goal_revenue_currency\": \"USD\",\n                        \"name\": \"3D Retention\",\n                        \"per_user\": 1.0134831460674156,\n                        \"unique_users\": 445\n                    }\n                }\n            },\n            \"impressions\": 16691,\n            \"impressions_unique\": 8740,\n            \"network\": \"adwords\",\n            \"network_click_through_rate\": null,\n            \"network_clicks\": null,\n            \"network_cost_amount\": null,\n            \"network_cost_currency\": null,\n            \"network_impressions\": null,\n            \"network_name\": \"Google Ads\",\n            \"team_id\": 1,\n            \"team_name\": \"Team Defaults\"\n        }\n    ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "campaign": {
+                            "type": "string",
+                            "example": "google-ads-game-launch-campaign"
+                          },
+                          "campaign_name": {
+                            "type": "string",
+                            "example": "Google Ads Game Launch Campaign"
+                          },
+                          "click_through_rate": {
+                            "type": "number",
+                            "example": 41.93876939668085,
+                            "default": 0
+                          },
+                          "clicks": {
+                            "type": "integer",
+                            "example": 7000,
+                            "default": 0
+                          },
+                          "clicks_unique": {
+                            "type": "integer",
+                            "example": 5678,
+                            "default": 0
+                          },
+                          "cost_amount": {
+                            "type": "number",
+                            "example": 238.14,
+                            "default": 0
+                          },
+                          "cost_currency": {
+                            "type": "string",
+                            "example": "USD"
+                          },
+                          "display_click_through_rate": {
+                            "type": "number",
+                            "example": 41.93876939668085,
+                            "default": 0
+                          },
+                          "display_clicks": {
+                            "type": "integer",
+                            "example": 7000,
+                            "default": 0
+                          },
+                          "display_cost_amount": {
+                            "type": "number",
+                            "example": 238.14,
+                            "default": 0
+                          },
+                          "display_cost_currency": {
+                            "type": "string",
+                            "example": "USD"
+                          },
+                          "display_impressions": {
+                            "type": "integer",
+                            "example": 16691,
+                            "default": 0
+                          },
+                          "game_id": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "goal_revenue_amount": {
+                            "type": "number",
+                            "example": 2900.22,
+                            "default": 0
+                          },
+                          "goal_revenue_currency": {
+                            "type": "string",
+                            "example": "USD"
+                          },
+                          "goals": {
+                            "type": "object",
+                            "properties": {
+                              "1": {
+                                "type": "object",
+                                "properties": {
+                                  "assist": {
+                                    "type": "object",
+                                    "properties": {
+                                      "count": {
+                                        "type": "integer",
+                                        "example": 825,
+                                        "default": 0
+                                      },
+                                      "goal_rate": {
+                                        "type": "number",
+                                        "example": 11.785714285714285,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_amount": {
+                                        "type": "integer",
+                                        "example": 0,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_currency": {
+                                        "type": "string",
+                                        "example": "USD"
+                                      },
+                                      "name": {
+                                        "type": "string",
+                                        "example": "Purchase Assist"
+                                      },
+                                      "per_user": {
+                                        "type": "number",
+                                        "example": 2.759197324414716,
+                                        "default": 0
+                                      },
+                                      "unique_users": {
+                                        "type": "integer",
+                                        "example": 299,
+                                        "default": 0
+                                      }
+                                    }
+                                  },
+                                  "standard": {
+                                    "type": "object",
+                                    "properties": {
+                                      "count": {
+                                        "type": "integer",
+                                        "example": 110,
+                                        "default": 0
+                                      },
+                                      "goal_rate": {
+                                        "type": "number",
+                                        "example": 1.5714285714285716,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_amount": {
+                                        "type": "integer",
+                                        "example": 220,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_currency": {
+                                        "type": "string",
+                                        "example": "USD"
+                                      },
+                                      "name": {
+                                        "type": "string",
+                                        "example": "Purchase"
+                                      },
+                                      "per_user": {
+                                        "type": "integer",
+                                        "example": 1,
+                                        "default": 0
+                                      },
+                                      "unique_users": {
+                                        "type": "integer",
+                                        "example": 110,
+                                        "default": 0
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "2": {
+                                "type": "object",
+                                "properties": {
+                                  "assist": {
+                                    "type": "object",
+                                    "properties": {
+                                      "count": {
+                                        "type": "integer",
+                                        "example": 126,
+                                        "default": 0
+                                      },
+                                      "goal_rate": {
+                                        "type": "number",
+                                        "example": 1.7999999999999998,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_amount": {
+                                        "type": "integer",
+                                        "example": 0,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_currency": {
+                                        "type": "string",
+                                        "example": "USD"
+                                      },
+                                      "name": {
+                                        "type": "string",
+                                        "example": "Reactivation Assist"
+                                      },
+                                      "per_user": {
+                                        "type": "number",
+                                        "example": 2.3333333333333335,
+                                        "default": 0
+                                      },
+                                      "unique_users": {
+                                        "type": "integer",
+                                        "example": 54,
+                                        "default": 0
+                                      }
+                                    }
+                                  },
+                                  "standard": {
+                                    "type": "object",
+                                    "properties": {
+                                      "count": {
+                                        "type": "integer",
+                                        "example": 31,
+                                        "default": 0
+                                      },
+                                      "goal_rate": {
+                                        "type": "number",
+                                        "example": 0.44285714285714284,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_amount": {
+                                        "type": "integer",
+                                        "example": 62,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_currency": {
+                                        "type": "string",
+                                        "example": "USD"
+                                      },
+                                      "name": {
+                                        "type": "string",
+                                        "example": "Reactivation"
+                                      },
+                                      "per_user": {
+                                        "type": "integer",
+                                        "example": 1,
+                                        "default": 0
+                                      },
+                                      "unique_users": {
+                                        "type": "integer",
+                                        "example": 31,
+                                        "default": 0
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "3": {
+                                "type": "object",
+                                "properties": {
+                                  "assist": {
+                                    "type": "object",
+                                    "properties": {
+                                      "count": {
+                                        "type": "integer",
+                                        "example": 1575,
+                                        "default": 0
+                                      },
+                                      "goal_rate": {
+                                        "type": "number",
+                                        "example": 22.5,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_amount": {
+                                        "type": "integer",
+                                        "example": 0,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_currency": {
+                                        "type": "string",
+                                        "example": "USD"
+                                      },
+                                      "name": {
+                                        "type": "string",
+                                        "example": "DLC Purchase Assist"
+                                      },
+                                      "per_user": {
+                                        "type": "number",
+                                        "example": 4.578488372093023,
+                                        "default": 0
+                                      },
+                                      "unique_users": {
+                                        "type": "integer",
+                                        "example": 344,
+                                        "default": 0
+                                      }
+                                    }
+                                  },
+                                  "standard": {
+                                    "type": "object",
+                                    "properties": {
+                                      "count": {
+                                        "type": "integer",
+                                        "example": 178,
+                                        "default": 0
+                                      },
+                                      "goal_rate": {
+                                        "type": "number",
+                                        "example": 2.5428571428571427,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_amount": {
+                                        "type": "number",
+                                        "example": 1778.22,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_currency": {
+                                        "type": "string",
+                                        "example": "USD"
+                                      },
+                                      "name": {
+                                        "type": "string",
+                                        "example": "DLC Purchase"
+                                      },
+                                      "per_user": {
+                                        "type": "number",
+                                        "example": 1.3088235294117647,
+                                        "default": 0
+                                      },
+                                      "unique_users": {
+                                        "type": "integer",
+                                        "example": 136,
+                                        "default": 0
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "4": {
+                                "type": "object",
+                                "properties": {
+                                  "assist": {
+                                    "type": "object",
+                                    "properties": {
+                                      "count": {
+                                        "type": "integer",
+                                        "example": 1788,
+                                        "default": 0
+                                      },
+                                      "goal_rate": {
+                                        "type": "number",
+                                        "example": 25.542857142857144,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_amount": {
+                                        "type": "integer",
+                                        "example": 0,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_currency": {
+                                        "type": "string",
+                                        "example": "USD"
+                                      },
+                                      "name": {
+                                        "type": "string",
+                                        "example": "3D Retention Assist"
+                                      },
+                                      "per_user": {
+                                        "type": "number",
+                                        "example": 2.4594222833562585,
+                                        "default": 0
+                                      },
+                                      "unique_users": {
+                                        "type": "integer",
+                                        "example": 727,
+                                        "default": 0
+                                      }
+                                    }
+                                  },
+                                  "contribution": {
+                                    "type": "object",
+                                    "properties": {
+                                      "count": {
+                                        "type": "integer",
+                                        "example": 729,
+                                        "default": 0
+                                      },
+                                      "goal_rate": {
+                                        "type": "number",
+                                        "example": 10.414285714285715,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_amount": {
+                                        "type": "integer",
+                                        "example": 0,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_currency": {
+                                        "type": "string",
+                                        "example": "USD"
+                                      },
+                                      "name": {
+                                        "type": "string",
+                                        "example": "3D Retention Contribution"
+                                      },
+                                      "per_user": {
+                                        "type": "number",
+                                        "example": 2.5759717314487633,
+                                        "default": 0
+                                      },
+                                      "unique_users": {
+                                        "type": "integer",
+                                        "example": 283,
+                                        "default": 0
+                                      }
+                                    }
+                                  },
+                                  "standard": {
+                                    "type": "object",
+                                    "properties": {
+                                      "count": {
+                                        "type": "integer",
+                                        "example": 451,
+                                        "default": 0
+                                      },
+                                      "goal_rate": {
+                                        "type": "number",
+                                        "example": 6.442857142857143,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_amount": {
+                                        "type": "integer",
+                                        "example": 840,
+                                        "default": 0
+                                      },
+                                      "goal_revenue_currency": {
+                                        "type": "string",
+                                        "example": "USD"
+                                      },
+                                      "name": {
+                                        "type": "string",
+                                        "example": "3D Retention"
+                                      },
+                                      "per_user": {
+                                        "type": "number",
+                                        "example": 1.0134831460674156,
+                                        "default": 0
+                                      },
+                                      "unique_users": {
+                                        "type": "integer",
+                                        "example": 445,
+                                        "default": 0
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "impressions": {
+                            "type": "integer",
+                            "example": 16691,
+                            "default": 0
+                          },
+                          "impressions_unique": {
+                            "type": "integer",
+                            "example": 8740,
+                            "default": 0
+                          },
+                          "network": {
+                            "type": "string",
+                            "example": "adwords"
+                          },
+                          "network_click_through_rate": {},
+                          "network_clicks": {},
+                          "network_cost_amount": {},
+                          "network_cost_currency": {},
+                          "network_impressions": {},
+                          "network_name": {
+                            "type": "string",
+                            "example": "Google Ads"
+                          },
+                          "team_id": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "team_name": {
+                            "type": "string",
+                            "example": "Team Defaults"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Reporting"
+        ]
+      }
+    },
+    "/reporting/goals": {
+      "post": {
+        "summary": "/reporting/goals",
+        "description": "",
+        "operationId": "reportinggoals",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "This should be an API Key with the Advertiser scope",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Api-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "game_id",
+                  "start_datetime",
+                  "end_datetime"
+                ],
+                "properties": {
+                  "game_id": {
+                    "type": "integer",
+                    "description": "Game to pull goals for",
+                    "format": "int32"
+                  },
+                  "start_datetime": {
+                    "type": "string",
+                    "description": "Pull goals triggered after this time (inclusive)",
+                    "format": "date"
+                  },
+                  "end_datetime": {
+                    "type": "string",
+                    "description": "Pull goals triggered before this time (exclusive)",
+                    "format": "date"
+                  },
+                  "goal_type_ids": {
+                    "type": "array",
+                    "description": "Restrict the results to the provided goal types",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  },
+                  "trigger_types": {
+                    "type": "array",
+                    "description": "Restrict the results to the provided trigger types (standard, assist, contribution)",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "unattributed": {
+                    "type": "boolean",
+                    "description": "Restrict the results to only include unattributed (True), attributed (False), or all (Null)"
+                  },
+                  "limit": {
+                    "type": "integer",
+                    "description": "Limit the number of results per page. Max 1,000,000 results per page",
+                    "default": 100000,
+                    "format": "int32"
+                  },
+                  "after": {
+                    "type": "string",
+                    "description": "Pull the page starting with this page token"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"goals\": [\n    {\n      \"event_city\": 0,\n      \"event_country\": \"US\",\n      \"event_device_type\": null,\n      \"event_id\": \"1ec20fd8-28ba-664e-8ecf-9801a795bcd3\",\n      \"event_os\": \"Windows 7 Service Pack 1\",\n      \"event_platform\": \"xbox\",\n      \"event_region\": \"ZZZ\",\n      \"event_sku\": \"\",\n      \"event_type\": \"game_launch\",\n      \"game_id\": 1,\n      \"goal_type_id\": 1,\n      \"id\": \"1ec20fd8-28ba-6450-8ecf-9801a795bcd3\",\n      \"record_updated_at\": \"2021-09-29T08:16:14\",\n      \"revenue_amount\": 0.0,\n      \"revenue_currency\": \"USD\",\n      \"revenue_type\": \"cumulative\",\n      \"touchpoint_ad\": \"\",\n      \"touchpoint_ad_group\": \"myadgroup\",\n      \"touchpoint_ad_type\": \"\",\n      \"touchpoint_browser_family\": \"Chrome\",\n      \"touchpoint_campaign\": \"1\",\n      \"touchpoint_city\": 0,\n      \"touchpoint_cost_amount\": 1.0,\n      \"touchpoint_cost_currency\": \"USD\",\n      \"touchpoint_cost_model\": \"cpc\",\n      \"touchpoint_country\": \"US\",\n      \"touchpoint_creative\": \"\",\n      \"touchpoint_destination_url\": \"https://store.steampowered.com\",\n      \"touchpoint_device_brand\": \"Apple\",\n      \"touchpoint_device_family\": \"Mac\",\n      \"touchpoint_device_model\": \"Mac\",\n      \"touchpoint_id\": \"1ec20fd8-288c-6078-8ecf-9801a795bcd3\",\n      \"touchpoint_influencer\": \"\",\n      \"touchpoint_keyword\": \"\",\n      \"touchpoint_network\": \"\",\n      \"touchpoint_os_family\": \"Mac OS X\",\n      \"touchpoint_os_major\": \"10\",\n      \"touchpoint_placement\": \"\",\n      \"touchpoint_region\": \"ZZZ\",\n      \"touchpoint_request_url\": \"http://gsght.com/c/xxxxx?ad_group=myadgroup\",\n      \"touchpoint_requested_at\": \"2021-09-26T08:16:12\",\n      \"touchpoint_session_id\": \"1ec20fd8-288c-61cc-8ecf-9801a795bcd3\",\n      \"touchpoint_site_id\": \"\",\n      \"touchpoint_sub1\": \"\",\n      \"touchpoint_sub10\": \"\",\n      \"touchpoint_sub2\": \"\",\n      \"touchpoint_sub3\": \"\",\n      \"touchpoint_sub4\": \"\",\n      \"touchpoint_sub5\": \"\",\n      \"touchpoint_sub6\": \"\",\n      \"touchpoint_sub7\": \"\",\n      \"touchpoint_sub8\": \"\",\n      \"touchpoint_sub9\": \"\",\n      \"touchpoint_sub_site_id\": \"\",\n      \"touchpoint_team_id\": 4,\n      \"touchpoint_type\": \"click\",\n      \"touchpoint_unique\": 1,\n      \"touchpoint_useragent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36\",\n      \"touchpoint_utm_campaign\": \"\",\n      \"touchpoint_utm_content\": \"\",\n      \"touchpoint_utm_medium\": \"\",\n      \"touchpoint_utm_source\": \"\",\n      \"touchpoint_utm_term\": \"\",\n      \"trigger_id\": \"5.standard\",\n      \"trigger_type\": \"standard\",\n      \"triggered_at\": \"2021-09-29T08:16:12\",\n      \"unattributed\": 0,\n      \"user_id\": \"12345-abcdef-6789\",\n      \"value\": 100\n    }\n  ],\n  \"paging\": {\n    \"after\": \"xxxxxxxxxxx\" \n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "goals": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "event_city": {
+                            "type": "integer",
+                            "example": 0,
+                            "default": 0
+                          },
+                          "event_country": {
+                            "type": "string",
+                            "example": "US"
+                          },
+                          "event_device_type": {},
+                          "event_id": {
+                            "type": "string",
+                            "example": "1ec20fd8-28ba-664e-8ecf-9801a795bcd3"
+                          },
+                          "event_os": {
+                            "type": "string",
+                            "example": "Windows 7 Service Pack 1"
+                          },
+                          "event_platform": {
+                            "type": "string",
+                            "example": "xbox"
+                          },
+                          "event_region": {
+                            "type": "string",
+                            "example": "ZZZ"
+                          },
+                          "event_sku": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "event_type": {
+                            "type": "string",
+                            "example": "game_launch"
+                          },
+                          "game_id": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "goal_type_id": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "1ec20fd8-28ba-6450-8ecf-9801a795bcd3"
+                          },
+                          "record_updated_at": {
+                            "type": "string",
+                            "example": "2021-09-29T08:16:14"
+                          },
+                          "revenue_amount": {
+                            "type": "integer",
+                            "example": 0,
+                            "default": 0
+                          },
+                          "revenue_currency": {
+                            "type": "string",
+                            "example": "USD"
+                          },
+                          "revenue_type": {
+                            "type": "string",
+                            "example": "cumulative"
+                          },
+                          "touchpoint_ad": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_ad_group": {
+                            "type": "string",
+                            "example": "myadgroup"
+                          },
+                          "touchpoint_ad_type": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_browser_family": {
+                            "type": "string",
+                            "example": "Chrome"
+                          },
+                          "touchpoint_campaign": {
+                            "type": "string",
+                            "example": "1"
+                          },
+                          "touchpoint_city": {
+                            "type": "integer",
+                            "example": 0,
+                            "default": 0
+                          },
+                          "touchpoint_cost_amount": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "touchpoint_cost_currency": {
+                            "type": "string",
+                            "example": "USD"
+                          },
+                          "touchpoint_cost_model": {
+                            "type": "string",
+                            "example": "cpc"
+                          },
+                          "touchpoint_country": {
+                            "type": "string",
+                            "example": "US"
+                          },
+                          "touchpoint_creative": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_destination_url": {
+                            "type": "string",
+                            "example": "https://store.steampowered.com"
+                          },
+                          "touchpoint_device_brand": {
+                            "type": "string",
+                            "example": "Apple"
+                          },
+                          "touchpoint_device_family": {
+                            "type": "string",
+                            "example": "Mac"
+                          },
+                          "touchpoint_device_model": {
+                            "type": "string",
+                            "example": "Mac"
+                          },
+                          "touchpoint_id": {
+                            "type": "string",
+                            "example": "1ec20fd8-288c-6078-8ecf-9801a795bcd3"
+                          },
+                          "touchpoint_influencer": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_keyword": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_network": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_os_family": {
+                            "type": "string",
+                            "example": "Mac OS X"
+                          },
+                          "touchpoint_os_major": {
+                            "type": "string",
+                            "example": "10"
+                          },
+                          "touchpoint_placement": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_region": {
+                            "type": "string",
+                            "example": "ZZZ"
+                          },
+                          "touchpoint_request_url": {
+                            "type": "string",
+                            "example": "http://gsght.com/c/xxxxx?ad_group=myadgroup"
+                          },
+                          "touchpoint_requested_at": {
+                            "type": "string",
+                            "example": "2021-09-26T08:16:12"
+                          },
+                          "touchpoint_session_id": {
+                            "type": "string",
+                            "example": "1ec20fd8-288c-61cc-8ecf-9801a795bcd3"
+                          },
+                          "touchpoint_site_id": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_sub1": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_sub10": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_sub2": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_sub3": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_sub4": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_sub5": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_sub6": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_sub7": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_sub8": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_sub9": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_sub_site_id": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_team_id": {
+                            "type": "integer",
+                            "example": 4,
+                            "default": 0
+                          },
+                          "touchpoint_type": {
+                            "type": "string",
+                            "example": "click"
+                          },
+                          "touchpoint_unique": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "touchpoint_useragent": {
+                            "type": "string",
+                            "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"
+                          },
+                          "touchpoint_utm_campaign": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_utm_content": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_utm_medium": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_utm_source": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "touchpoint_utm_term": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "trigger_id": {
+                            "type": "string",
+                            "example": "5.standard"
+                          },
+                          "trigger_type": {
+                            "type": "string",
+                            "example": "standard"
+                          },
+                          "triggered_at": {
+                            "type": "string",
+                            "example": "2021-09-29T08:16:12"
+                          },
+                          "unattributed": {
+                            "type": "integer",
+                            "example": 0,
+                            "default": 0
+                          },
+                          "user_id": {
+                            "type": "string",
+                            "example": "12345-abcdef-6789"
+                          },
+                          "value": {
+                            "type": "integer",
+                            "example": 100,
+                            "default": 0
+                          }
+                        }
+                      }
+                    },
+                    "paging": {
+                      "type": "object",
+                      "properties": {
+                        "after": {
+                          "type": "string",
+                          "example": "xxxxxxxxxxx"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Reporting"
+        ]
+      }
+    },
+    "/games": {
+      "get": {
+        "summary": "/games",
+        "description": "",
+        "operationId": "games",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "This should be an API Key with the Advertiser scope",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Api-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"games\": [\n    {\n      \"id\": 1,\n      \"name\": \"My Game\",\n      \"teams\": [Team Objects],\n      \"attribution_model\": \"last_touch\",\n      \"created_at\": \"2018-01-01 00:00:00\"\n    },{\n      \"id\": 10,\n      \"name\": \"My Second Game\",\n      \"teams\": [Team Objects],\n      \"attribution_model\": \"last_touch\",\n      \"created_at\": \"2018-01-01 00:00:00\"\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Reporting"
+        ]
+      }
+    },
+    "/trackers": {
+      "get": {
+        "summary": "/trackers",
+        "description": "",
+        "operationId": "trackers",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "This should be an API Key with the Advertiser scope",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Api-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0"
+            }
+          },
+          {
+            "name": "with_names",
+            "in": "query",
+            "description": "Pass `true` to include Tracker names in the response, defaults to `false`",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Pass a limit to restrict the number of results in the API response. Returns all trackers by default",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "after_shortcode",
+            "in": "query",
+            "description": "Pass a tracker shortcode to page through Trackers, results are ordered by shortcode. Use in combination with limit for pagination.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "updated_after",
+            "in": "query",
+            "description": "Pass to filter results to only include Trackers that were updated after the specified timestamp",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"trackers\":[{\n    \"shortcode\":\"xxxxxx\",\n    \"game_id\":1,\n    \"team_id\":1\n    \"network\":\"\",\n    \"campaign\":\"\",\n    \"influencer\":\"\",\n    \"ad_group\":\"\",\n    \"ad\":\"\",\n    \"name\":\"My Tracker\",\n    \"destination_url\":\"https://gamesight.io\",\n    \"click_url\":\"https://gsght.com/c/xxxxxx\",\n    \"impression_img_url\":\"https://gsght.com/imgp/xxxxxx\",\n    \"impression_url\":\"https://gsght.com/i/xxxxxx\",\n    \"attribution_window\":1209600,\n    \"impression_attribution_window\":86400,\n    \"cost_amount\":null,\n    \"cost_currency\":null,\n    \"cost_model\":null,\n    \"created_at\":\"2018-10-01T20:21:47\",\n    \"archived_at\":null\n  }]\n}\n"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Reporting"
+        ]
+      },
+      "post": {
+        "summary": "/trackers",
+        "description": "",
+        "operationId": "trackers-1",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "This should be an API Key with the Advertiser scope",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Api-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "game_id",
+                  "team_id"
+                ],
+                "properties": {
+                  "game_id": {
+                    "type": "integer",
+                    "description": "Game ID for the Tracker",
+                    "format": "int32"
+                  },
+                  "team_id": {
+                    "type": "integer",
+                    "description": "Team ID to place the tracker in",
+                    "format": "int32"
+                  },
+                  "network": {
+                    "type": "string",
+                    "description": "Network identifier"
+                  },
+                  "campaign": {
+                    "type": "string",
+                    "description": "Campaign identifier - arbitrary string"
+                  },
+                  "influencer": {
+                    "type": "string"
+                  },
+                  "ad_group": {
+                    "type": "string",
+                    "description": "Ad group identifier - arbitrary string"
+                  },
+                  "ad": {
+                    "type": "string",
+                    "description": "Ad identifier - arbitrary string"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Display name for the tracker"
+                  },
+                  "cost_model": {
+                    "type": "string",
+                    "description": "cpc will add cost_amount spend for every click recorded, cpm for every 1000 impressions",
+                    "enum": [
+                      "cpc",
+                      "cpm"
+                    ]
+                  },
+                  "cost_currency": {
+                    "type": "string",
+                    "default": "usd"
+                  },
+                  "cost_amount": {
+                    "type": "string",
+                    "description": "Decimal number passed as a string"
+                  },
+                  "attribution_window": {
+                    "type": "integer",
+                    "description": "Click attribution window in sections",
+                    "format": "int32"
+                  },
+                  "impression_attribution_window": {
+                    "type": "integer",
+                    "description": "Impression attribution window in seconds",
+                    "format": "int32"
+                  },
+                  "destination_url": {
+                    "type": "string",
+                    "description": "Destination to redirect the user to when they click on this Tracker"
+                  },
+                  "referral_code": {
+                    "type": "string",
+                    "description": "Referral code to be attached to this Tracker"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"tracker\":{\n    \"shortcode\":\"xxxxxx\",\n    \"game_id\":1,\n    \"team_id\":1\n    \"network\":\"\",\n    \"campaign\":\"\",\n    \"influencer\":\"\",\n    \"ad_group\":\"\",\n    \"ad\":\"\",\n    \"name\":\"My Tracker\",\n    \"destination_url\":\"https://gamesight.io\",\n    \"click_url\":\"https://gsght.com/c/xxxxxx\",\n    \"impression_img_url\":\"https://gsght.com/imgp/xxxxxx\",\n    \"impression_url\":\"https://gsght.com/i/xxxxxx\",\n    \"attribution_window\":1209600,\n    \"impression_attribution_window\":86400,\n    \"cost_amount\":null,\n    \"cost_currency\":null,\n    \"cost_model\":null,\n    \"created_at\":\"2018-10-01T20:21:47\",\n    \"archived_at\":null\n  }\n}\n"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Reporting"
+        ]
+      }
+    },
+    "/goal_types": {
+      "get": {
+        "summary": "/goal_types",
+        "description": "",
+        "operationId": "goal_types",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "This should be an API Key with the Advertiser scope",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Api-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"goal_types\": [\n    {\n      \"archived_at\": null,\n      \"created_at\": \"2021-09-25T17:08:32\",\n      \"description\": null,\n      \"game_id\": 123456789,\n      \"id\": 123456789,\n      \"name\": \"Install\",\n      \"once_per_user\": true,\n      \"revenue_regions\": {\n        \"CA::steam\": {\n          \"amount\": \"60.00\",\n          \"code\": \"CA\",\n          \"currency\": \"usd\",\n          \"platform\": \"steam\"\n        }\n      },\n      \"triggers\": [\n        {\n          \"archived_at\": null,\n          \"created_at\": \"2021-09-25T17:08:32\",\n          \"event_match_type\": \"strict\",\n          \"event_type\": \"game_launch\",\n          \"first_event_only\": true,\n          \"goal_type_id\": 123456789,\n          \"id\": 987654321,\n          \"min_retention_trigger\": 0,\n          \"min_retrigger_time\": 0\n        }\n      ],\n      \"updated_at\": \"2021-09-25T17:08:32\"\n    },\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Reporting"
+        ]
+      }
+    },
+    "/audit_logs": {
+      "get": {
+        "summary": "/audit_logs",
+        "description": "",
+        "operationId": "audit_logs",
+        "parameters": [
+          {
+            "name": "org_id",
+            "in": "query",
+            "description": "Org ID for the Organization to pull audit logs from",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "API Key with the `org_audit` scope to be used for pulling logs",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "start_datetime",
+            "in": "query",
+            "description": "Start of the time range to pull logs from, inclusive. ISO 8601 format, UTC.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_datetime",
+            "in": "query",
+            "description": "End of the time range to pull audit logs from, inclusive. ISO 8601 format, UTC.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of results per page. Min: 1, Max: 500",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "description": "Pagination cursor",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"audit_logs\": [\n    {\n      \"id\": 12345,\n      \"actor_type\": \"user\",\n      \"actor_id\": 1,\n      \"actor_name\": \"Jane Doe\",\n      \"actor_email\": \"user@company.com\",\n      \"actor_ip\": null,\n      \"verb\": \"create\",\n      \"target_type\": \"advertiser_api_key\",\n      \"target_id\": \"123\",\n      \"target_meta\": null,\n      \"attribute\": null,\n      \"new_value\": null,\n      \"old_value\": null,\n      \"context_id\": 1,\n      \"context_type\": \"org\",\n      \"created_at\": \"2023-01-01T12:00:00\"\n    },\n    {\n      \"id\": 12346,\n      \"actor_type\": \"user\",\n      \"actor_id\": 1,\n      \"actor_name\": \"Jane Doe\",\n      \"actor_email\": \"user@company.com\",\n      \"actor_ip\": null,\n      \"verb\": \"create\",\n      \"target_type\": \"actor_role\",\n      \"target_id\": \"1788\",\n      \"target_meta\": {\n        \"actor_email\": null,\n        \"actor_id\": 123,\n        \"actor_name\": \"Audit Key\",\n        \"actor_type\": \"advertiser_api_key\",\n        \"context_id\": 1,\n        \"context_type\": \"org\",\n        \"role_name\": \"org_audit\"\n      },\n      \"attribute\": null,\n      \"new_value\": null,\n      \"old_value\": null,\n      \"context_id\": 1,\n      \"context_type\": \"org\",\n      \"created_at\": \"2023-01-01T12:00:00\",\n    }\n  ],\n  \"cursors\": {\n    \"next\": \"eyJpZCI6IDM2MjE3fQ==\"\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Reporting"
+        ]
+      }
+    },
+    "/reporting/users/events": {
+      "get": {
+        "summary": "/reporting/users/events",
+        "description": "",
+        "operationId": "reportingusersevents",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "game_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "This should be an API Key with the GDPR scope",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Api-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"events\": [{\n    \"created_at\": \"2020-09-02T21:01:41\",\n    \"game_id\": 1,\n    \"id\": \"1eaed5f7-fcfb-6896-97ce-822f63a10bc4\",\n    \"identifiers\": \"ec7c36b363ca428ddcdf1f7e8fa8f2dd9f5049edd5e4aa46975c389258f7d9b88c1f027caaec6829ffb59d78ee92cc0b2aa18353a41fc420010a34ae4fe69451\",\n    \"ip\": \"fe8412b9eedc4807a96c044d2c3768a6115bf8ad89ca3e1617792a007772fb90\",\n    \"revenue_amount\": 1.5,\n    \"revenue_currency\": \"USD\",\n    \"type\": \"dlc_purchase\",\n    \"user_id\": \"1eaed5f7-fcf0-6626-a973-f69bd3ef1021\",\n    \"version\": \"1.1.0\"\n  }]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "events": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "created_at": {
+                            "type": "string",
+                            "example": "2020-09-02T21:01:41"
+                          },
+                          "game_id": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "id": {
+                            "type": "string",
+                            "example": "1eaed5f7-fcfb-6896-97ce-822f63a10bc4"
+                          },
+                          "identifiers": {
+                            "type": "string",
+                            "example": "ec7c36b363ca428ddcdf1f7e8fa8f2dd9f5049edd5e4aa46975c389258f7d9b88c1f027caaec6829ffb59d78ee92cc0b2aa18353a41fc420010a34ae4fe69451"
+                          },
+                          "ip": {
+                            "type": "string",
+                            "example": "fe8412b9eedc4807a96c044d2c3768a6115bf8ad89ca3e1617792a007772fb90"
+                          },
+                          "revenue_amount": {
+                            "type": "number",
+                            "example": 1.5,
+                            "default": 0
+                          },
+                          "revenue_currency": {
+                            "type": "string",
+                            "example": "USD"
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "dlc_purchase"
+                          },
+                          "user_id": {
+                            "type": "string",
+                            "example": "1eaed5f7-fcf0-6626-a973-f69bd3ef1021"
+                          },
+                          "version": {
+                            "type": "string",
+                            "example": "1.1.0"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Reporting"
+        ]
+      }
+    },
+    "/reporting/users/touchpoints": {
+      "get": {
+        "summary": "/reporting/users/touchpoints",
+        "description": "",
+        "operationId": "reportinguserstouchpoints",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "game_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "This should be an API Key with the GDPR scope",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Api-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"clicks\": [{\n    \"id\": \"1eaee192381a6aeea093784f4352ffcc\",\n    \"game_id\": 1,\n    \"team_id\": 1,\n    \"network\": \"network\",\n    \"campaign\": \"campaign\",\n    \"influencer\": \"\",\n    \"ad_group\": \"\",\n    \"ad\": \"\",\n    \"cost_model\": null,\n    \"cost_currency\": null,\n    \"cost_amount\": null,\n    \"attribution_window\": 604800,\n    \"click_url\": \"http://localhost/c/campai\",\n    \"destination_url\": \"http://campaign.com\",\n    \"network_click_id\": null,\n    \"ip\": \"46b4ef5d35dfb9729bbb89663741488b436225e7e8c058304d6b469dccae6ff1\",\n    \"session_id\": \"1eaee192381d6136b6c7784f4352ffcc\",\n    \"unique\": true,\n    \"useragent\": \"werkzeug/0.15.6\",\n    \"clicked_at\": \"2020-09-03T19:10:32\",\n    \"country\": \"ZZ\",\n    \"region\": \"ZZZ\",\n    \"city\": 0,\n    \"created_at\": \"2020-09-03T19:10:32\"\n  }],\n  \"impressions\": [{\n    \"id\": \"1eaee1972e946c189865784f4352ffcc\",\n    \"game_id\": 1,\n    \"team_id\": 1,\n    \"network\": \"network\",\n    \"campaign\": \"campaign\",\n    \"influencer\": \"\",\n    \"ad_group\": \"\",\n    \"ad\": \"\",\n    \"cost_model\": null,\n    \"cost_currency\": null,\n    \"cost_amount\": null,\n    \"attribution_window\": 86400,\n    \"impression_url\": \"http://localhost/i/campai\",\n    \"network_impression_id\": null,\n    \"ip\": \"46b4ef5d35dfb9729bbb89663741488b436225e7e8c058304d6b469dccae6ff1\",\n    \"session_id\": \"1eaee196dc476f8c884c784f4352ffcc\",\n    \"unique\": true,\n    \"useragent\": \"werkzeug/0.15.6\",\n    \"requested_at\": \"2020-09-03T19:12:45\",\n    \"country\": \"ZZ\",\n    \"region\": \"ZZZ\",\n    \"city\": 0,\n    \"created_at\": \"2020-09-03T19:12:46\"\n  }]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "clicks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "1eaee192381a6aeea093784f4352ffcc"
+                          },
+                          "game_id": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "team_id": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "network": {
+                            "type": "string",
+                            "example": "network"
+                          },
+                          "campaign": {
+                            "type": "string",
+                            "example": "campaign"
+                          },
+                          "influencer": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "ad_group": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "ad": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "cost_model": {},
+                          "cost_currency": {},
+                          "cost_amount": {},
+                          "attribution_window": {
+                            "type": "integer",
+                            "example": 604800,
+                            "default": 0
+                          },
+                          "click_url": {
+                            "type": "string",
+                            "example": "http://localhost/c/campai"
+                          },
+                          "destination_url": {
+                            "type": "string",
+                            "example": "http://campaign.com"
+                          },
+                          "network_click_id": {},
+                          "ip": {
+                            "type": "string",
+                            "example": "46b4ef5d35dfb9729bbb89663741488b436225e7e8c058304d6b469dccae6ff1"
+                          },
+                          "session_id": {
+                            "type": "string",
+                            "example": "1eaee192381d6136b6c7784f4352ffcc"
+                          },
+                          "unique": {
+                            "type": "boolean",
+                            "example": true,
+                            "default": true
+                          },
+                          "useragent": {
+                            "type": "string",
+                            "example": "werkzeug/0.15.6"
+                          },
+                          "clicked_at": {
+                            "type": "string",
+                            "example": "2020-09-03T19:10:32"
+                          },
+                          "country": {
+                            "type": "string",
+                            "example": "ZZ"
+                          },
+                          "region": {
+                            "type": "string",
+                            "example": "ZZZ"
+                          },
+                          "city": {
+                            "type": "integer",
+                            "example": 0,
+                            "default": 0
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "example": "2020-09-03T19:10:32"
+                          }
+                        }
+                      }
+                    },
+                    "impressions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "1eaee1972e946c189865784f4352ffcc"
+                          },
+                          "game_id": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "team_id": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "network": {
+                            "type": "string",
+                            "example": "network"
+                          },
+                          "campaign": {
+                            "type": "string",
+                            "example": "campaign"
+                          },
+                          "influencer": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "ad_group": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "ad": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "cost_model": {},
+                          "cost_currency": {},
+                          "cost_amount": {},
+                          "attribution_window": {
+                            "type": "integer",
+                            "example": 86400,
+                            "default": 0
+                          },
+                          "impression_url": {
+                            "type": "string",
+                            "example": "http://localhost/i/campai"
+                          },
+                          "network_impression_id": {},
+                          "ip": {
+                            "type": "string",
+                            "example": "46b4ef5d35dfb9729bbb89663741488b436225e7e8c058304d6b469dccae6ff1"
+                          },
+                          "session_id": {
+                            "type": "string",
+                            "example": "1eaee196dc476f8c884c784f4352ffcc"
+                          },
+                          "unique": {
+                            "type": "boolean",
+                            "example": true,
+                            "default": true
+                          },
+                          "useragent": {
+                            "type": "string",
+                            "example": "werkzeug/0.15.6"
+                          },
+                          "requested_at": {
+                            "type": "string",
+                            "example": "2020-09-03T19:12:45"
+                          },
+                          "country": {
+                            "type": "string",
+                            "example": "ZZ"
+                          },
+                          "region": {
+                            "type": "string",
+                            "example": "ZZZ"
+                          },
+                          "city": {
+                            "type": "integer",
+                            "example": 0,
+                            "default": 0
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "example": "2020-09-03T19:12:46"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Reporting"
+        ]
+      }
+    },
+    "/reporting/users/remove": {
+      "delete": {
+        "summary": "/reporting/users/remove",
+        "description": "",
+        "operationId": "reportingusersremove",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "game_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "This should be an API Key with the GDPR scope",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Api-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Reporting"
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "A valid Gamesight API key passed in the Authorization header. Reporting API keys carry Reporting, Aggregate Reporting, or GDPR scope."
+      }
+    }
+  }
+}

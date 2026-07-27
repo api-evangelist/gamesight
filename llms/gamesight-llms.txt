@@ -1,0 +1,169 @@
+# Gamesight Documentation
+
+> The marketing platform for PC & console games. Gamesight helps game companies build their influencer relationships, understand their marketing, and grow their community.
+
+## Guides
+- [Marketing Measurement](https://docs.gamesight.io/docs/marketing-measurement.md): Gamesight's Marketing Measurement suite provides a variety of solutions for marketing your games effectively. This includes Marketing Attribution for PC and Console games, Cost Aggregation (data-syncing from ad networks into Gamesight reporting), and Incrementality Testing.
+- [Creator Activations](https://docs.gamesight.io/docs/creator-activations.md): Gamesight provides a variety of Creator Activation services including fully managed, end-to-end, Creator Programs, Creator Campaigns, and Creator-Led Playtests.
+- [Attribution](https://docs.gamesight.io/docs/attribution.md): Gamesight Attribution for PC, Console, and Web games.
+- [PC Game Attribution](https://docs.gamesight.io/docs/pc-game-attribution.md)
+- [Console Game Attribution](https://docs.gamesight.io/docs/console-game-attribution.md)
+- [Self-Distributed Attribution](https://docs.gamesight.io/docs/self-distribution.md)
+- [Install Measurement](https://docs.gamesight.io/docs/install-measurement.md)
+- [Reactivation Measurement](https://docs.gamesight.io/docs/reactivation-measurement.md)
+- [DLC Purchase Measurement](https://docs.gamesight.io/docs/dlc-purchase-measurement.md)
+- [In-Game Purchase Measurement](https://docs.gamesight.io/docs/in-game-purchase-measurement.md)
+- [Player Retention Target Measurement](https://docs.gamesight.io/docs/player-retention-measurement.md)
+- [Account Creation (Web) Measurement](https://docs.gamesight.io/docs/account-creation-web-measurement.md)
+- [Pre-Launch Campaigns](https://docs.gamesight.io/docs/pre-launch-campaigns.md)
+- [Referral Codes](https://docs.gamesight.io/docs/referral-code.md)
+- [Identity-Based Attribution](https://docs.gamesight.io/docs/identity-based-attribution.md)
+- [Tracking Creator Campaigns](https://docs.gamesight.io/docs/tracking-creator-campaigns.md)
+- [Integration Checklist](https://docs.gamesight.io/docs/integration-checklist.md)
+- [Measurement API](https://docs.gamesight.io/docs/rest-api-quick-start.md)
+- [S3 Event Imports](https://docs.gamesight.io/docs/s3-event-import.md)
+- [Console Measurement](https://docs.gamesight.io/docs/console-quick-start.md)
+- [Web Measurement SDK](https://docs.gamesight.io/docs/web-sdk-quick-start.md)
+- [Web Measurement SDK (Self-Distribution)](https://docs.gamesight.io/docs/web-sdk-self-distribution.md)
+- [Additional Events](https://docs.gamesight.io/docs/additional-events.md)
+- [User Profile Metrics](https://docs.gamesight.io/docs/user-profile-metrics.md)
+- [Live Dashboard](https://docs.gamesight.io/docs/live-dashboard.md)
+- [Goal Configuration](https://docs.gamesight.io/docs/goal-configuration.md)
+- [Creating Goals](https://docs.gamesight.io/docs/creating-goals.md)
+- [Trigger Management](https://docs.gamesight.io/docs/trigger-management.md)
+- [Revenue Management](https://docs.gamesight.io/docs/revenue-management.md)
+- [Goal Monitoring](https://docs.gamesight.io/docs/goal-monitoring.md)
+- [Tracker Basics](https://docs.gamesight.io/docs/track-your-first-campaign.md)
+- [Dynamic Trackers](https://docs.gamesight.io/docs/dynamic-trackers.md)
+- [Bulk Tracker Creation](https://docs.gamesight.io/docs/bulk-tracker-creation.md)
+- [UTM Parameters](https://docs.gamesight.io/docs/utm-parameters.md)
+- [Tracker Settings](https://docs.gamesight.io/docs/tracker-settings.md)
+- [Tracker Organization](https://docs.gamesight.io/docs/tracker-organization-best-practices.md)
+- [Archiving Trackers](https://docs.gamesight.io/docs/archiving-trackers.md)
+- [Attribution Windows](https://docs.gamesight.io/docs/managing-attribution-windows.md)
+- [Link Inspector](https://docs.gamesight.io/docs/link-inspector.md)
+- [Automatic Click Measurement](https://docs.gamesight.io/docs/automatic-click-measurement.md)
+- [Testing Your Game Integration](https://docs.gamesight.io/docs/testing-your-game-integration.md)
+- [Testing Attribution](https://docs.gamesight.io/docs/attribution-testing.md)
+- [Alerts](https://docs.gamesight.io/docs/alerts.md)
+- [Available Attribution Methods](https://docs.gamesight.io/docs/available-attribution-methods.md)
+- [Cost Aggregation](https://docs.gamesight.io/docs/cost-aggregation.md): Unify your spend with Gamesight for insights on critical KPIs like ROAS and CPA.
+- [Cost Aggregation Tools](https://docs.gamesight.io/docs/cost-aggregation-tools.md): Unify your spend with Gamesight for insights on critical KPIs like ROAS and CPA.
+- [Incrementality](https://docs.gamesight.io/docs/incrementality.md): Measure your campaign's true value with Gamesight
+- [Experiment Configuration](https://docs.gamesight.io/docs/experiment-configuration.md): Create a new Incrementality experiment in Gamesight
+- [Market Selection](https://docs.gamesight.io/docs/market-selection.md): Choosing a market with the highest likelihood for success
+- [Campaign Configuration](https://docs.gamesight.io/docs/campaign-configuration.md): Begin your incrementality experiment
+- [Analyze Results](https://docs.gamesight.io/docs/analyze-results.md): Lift Overview, Baseline Quality, and Lift Delta Analysis
+- [Designing Successful Experiments](https://docs.gamesight.io/docs/designing-successful-experiments.md)
+- [Integrations](https://docs.gamesight.io/docs/network-integrations.md)
+- [New Network Integration](https://docs.gamesight.io/docs/network-integration-guide.md)
+- [Meta Ads](https://docs.gamesight.io/docs/meta-ads.md): This guide helps you connect Gamesight with Meta (Facebook) Ads. This integration supports both Cost Aggregation and Attribution customers.
+- [Google Ads](https://docs.gamesight.io/docs/google-adwords.md): This guide helps you connect Gamesight with Google Ads. This integration supports both Cost Aggregation and Attribution customers.
+- [Reddit Ads](https://docs.gamesight.io/docs/reddit-ads.md): This guide helps you connect Gamesight with Reddit Ads. This integration supports both Cost Aggregation and Attribution customers.
+- [TikTok Ads](https://docs.gamesight.io/docs/tiktok-ads.md): This guide helps you connect Gamesight with TikTok Ads. This integration supports both Cost Aggregation and Attribution customers.
+- [X (Twitter) Ads](https://docs.gamesight.io/docs/twitter-ads.md)
+- [Discord](https://docs.gamesight.io/docs/discord.md): This guide helps you connect Gamesight with Discord to measure quests and postback conversion data.
+- [Google Campaign Manager](https://docs.gamesight.io/docs/google-campaign-manager.md)
+- [Google DV360](https://docs.gamesight.io/docs/dv360.md)
+- [Amazon Ads](https://docs.gamesight.io/docs/amazon-ads.md)
+- [Snapchat Ads](https://docs.gamesight.io/docs/snapchat-ads.md)
+- [Microsoft Ads](https://docs.gamesight.io/docs/microsoft-ads.md)
+- [Google Analytics](https://docs.gamesight.io/docs/google-analytics.md)
+- [Steam UTM Analytics](https://docs.gamesight.io/docs/steam-utm-analytics.md)
+- [Vungle](https://docs.gamesight.io/docs/vungle.md)
+- [AppsFlyer MMP](https://docs.gamesight.io/docs/appsflyer-mmp.md)
+- [Solana](https://docs.gamesight.io/docs/solana.md)
+- [Adjust MMP](https://docs.gamesight.io/docs/adjust-mmp.md)
+- [Quantcast](https://docs.gamesight.io/docs/quantcast.md)
+- [Reporting Overview](https://docs.gamesight.io/docs/reporting-overview.md)
+- [Reports Dashboard](https://docs.gamesight.io/docs/reporting-dashboard.md)
+- [Custom Dashboards](https://docs.gamesight.io/docs/custom-dashboards.md)
+- [Reporting Use Cases](https://docs.gamesight.io/docs/reporting-use-cases.md)
+- [Reporting Metrics](https://docs.gamesight.io/docs/reporting-metrics.md)
+- [Scheduled Reporting](https://docs.gamesight.io/docs/scheduled-reporting.md)
+- [CSV Export](https://docs.gamesight.io/docs/csv-export.md)
+- [S3 Data Export Reports](https://docs.gamesight.io/docs/raw-s3-data-export-reporting.md)
+- [Postbacks](https://docs.gamesight.io/docs/postbacks.md)
+- [Multi-Touch Attribution](https://docs.gamesight.io/docs/understanding-multitouch-attribution.md)
+- [Currency Handling](https://docs.gamesight.io/docs/currency-handling.md)
+- [Creator Campaigns](https://docs.gamesight.io/docs/campaigns-dashboard.md): Gamesight's fully managed, end-to-end Creator Campaign service.
+- [Creator Discoveries](https://docs.gamesight.io/docs/creator-discoveries.md)
+- [Campaign Activations](https://docs.gamesight.io/docs/campaign-activations.md)
+- [Creator Campaign Reporting](https://docs.gamesight.io/docs/end-of-campaign-reporting.md)
+- [Dashboard Exports](https://docs.gamesight.io/docs/dashboard-exports.md)
+- [Creator Campaign Checklist](https://docs.gamesight.io/docs/creator-campaign-checklist.md)
+- [Creator Programs](https://docs.gamesight.io/docs/creator-programs.md): Gamesight's fully managed Creator Programs.
+- [Creator Program Dashboard](https://docs.gamesight.io/docs/creator-program-dashboard.md)
+- [Creator Applications](https://docs.gamesight.io/docs/creator-applications.md)
+- [Creator Quests](https://docs.gamesight.io/docs/creator-quests.md): Reward creators for hitting content creation and engagement goals with automated quest tracking.
+- [Creator Discord Integration](https://docs.gamesight.io/docs/creator-discord-integration.md)
+- [Creator Program Checklist](https://docs.gamesight.io/docs/creator-program-checklist.md)
+- [Creator-Led Playtests](https://docs.gamesight.io/docs/playtesting.md): Gamesight's Creator-Led Playtesting councils.
+- [Brand Safety](https://docs.gamesight.io/docs/brand-safety.md): Gamesight's Brand Safety tooling allows you to comfortably align your campaigns with your brand's values.
+- [Custom Creator Tags](https://docs.gamesight.io/docs/custom-creator-tags.md)
+- [Content Association](https://docs.gamesight.io/docs/content-association.md)
+- [Key Distribution](https://docs.gamesight.io/docs/key-distribution.md)
+- [Creator Bingo](https://docs.gamesight.io/docs/creator-bingo.md): Creator Bingo is an interactive tool for running engaging bingo challenges with creators during campaigns and programs.
+- [Payments](https://docs.gamesight.io/docs/payments.md): Gamesight's global payment infrastructure handles creator payments, tax compliance, and payouts at scale - so you can focus on your campaigns.
+- [Creator CRM](https://docs.gamesight.io/docs/creator-notes-and-crm.md)
+- [Managing Statuses](https://docs.gamesight.io/docs/managing-statuses.md)
+- [Populating Lists with Discovery](https://docs.gamesight.io/docs/populating-lists-with-discovery.md)
+- [Creating a New List](https://docs.gamesight.io/docs/creating-a-new-list.md)
+- [Managing Custom Fields](https://docs.gamesight.io/docs/managing-custom-fields.md)
+- [Creator Profiles](https://docs.gamesight.io/docs/creator-profiles.md): A comprehensive guide to creator profiles dashboard and platform-specific analytics
+- [Creator Bulk Actions](https://docs.gamesight.io/docs/creator-bulk-actions.md)
+- [Account Management](https://docs.gamesight.io/docs/teams.md)
+- [API Key Management](https://docs.gamesight.io/docs/api-key-management.md)
+- [Okta SAML Configuration](https://docs.gamesight.io/docs/okta-saml-config.md): You can use Security Assertion Markup Language (SAML) single sign-on (SSO) and System for Cross-domain Identity Management (SCIM) with Okta to automatically manage access to your organization on Gamesight.
+- [Okta SCIM Configuration](https://docs.gamesight.io/docs/okta-scim-config.md): You can use Security Assertion Markup Language (SAML) single sign-on (SSO) and System for Cross-domain Identity Management (SCIM) with Okta to automatically manage access to your organization on Gamesight.
+- [GSuite SAML Configuration](https://docs.gamesight.io/docs/gsuite.md)
+- [Setting Competitor Games](https://docs.gamesight.io/docs/setting-competitor-games.md)
+- [Add a New Game](https://docs.gamesight.io/docs/add-a-new-game.md)
+- [Data Retention & Opt-Outs](https://docs.gamesight.io/docs/data-security.md)
+- [Data Handling Details](https://docs.gamesight.io/docs/data-handling-details.md)
+- [Data Plane Management](https://docs.gamesight.io/docs/data-plane-management.md): This document will cover Data Plane Management (and corresponding API management) for customers who have Gamesight's Hybrid SaaS solution.
+
+## API Reference
+- [Overview](https://docs.gamesight.io/reference/measurement-api-overview.md): This page will help you get started with Measurement API.
+- [Authorization](https://docs.gamesight.io/reference/measurement-api-authorization.md)
+- [Errors](https://docs.gamesight.io/reference/measurement-api-errors.md)
+- [Versioning](https://docs.gamesight.io/reference/measurement-api-versioning.md)
+- [Rate Limits](https://docs.gamesight.io/reference/rate-limits.md)
+- [/events](https://docs.gamesight.io/reference/measurement-api-events.md)
+- [Identifiers](https://docs.gamesight.io/reference/measurement-api-identifiers.md)
+- [Revenue](https://docs.gamesight.io/reference/measurement-api-revenue.md)
+- [External IDs](https://docs.gamesight.io/reference/measurement-api-console-identifiers.md)
+- [Referral Codes](https://docs.gamesight.io/reference/referral-codes.md)
+- [/events/batch](https://docs.gamesight.io/reference/eventsbatch.md)
+- [Overview](https://docs.gamesight.io/reference/web-sdk-overview.md)
+- [Method Reference](https://docs.gamesight.io/reference/web-sdk-reference.md)
+- [init](https://docs.gamesight.io/reference/web-sdk-init.md)
+- [set](https://docs.gamesight.io/reference/web-sdk-set.md)
+- [send](https://docs.gamesight.io/reference/web-sdk-send.md)
+- [onload](https://docs.gamesight.io/reference/onload.md)
+- [get](https://docs.gamesight.io/reference/get.md)
+- [update](https://docs.gamesight.io/reference/web-sdk-update.md)
+- [impression](https://docs.gamesight.io/reference/impression.md)
+- [Overview](https://docs.gamesight.io/reference/reporting-api-overview.md): This page will help you get started with Reporting API.
+- [Authorization](https://docs.gamesight.io/reference/authorization.md)
+- [Errors](https://docs.gamesight.io/reference/errors.md)
+- [Versioning](https://docs.gamesight.io/reference/versioning.md)
+- [/stats](https://docs.gamesight.io/reference/stats-v3.md)
+- [/reporting/goals](https://docs.gamesight.io/reference/reportinggoals.md)
+- [/games](https://docs.gamesight.io/reference/games.md)
+- [/trackers](https://docs.gamesight.io/reference/trackers.md)
+- [/trackers](https://docs.gamesight.io/reference/trackers-1.md)
+- [/goal_types](https://docs.gamesight.io/reference/goal_types.md)
+- [/audit_logs](https://docs.gamesight.io/reference/audit_logs.md)
+- [/reporting/users/events](https://docs.gamesight.io/reference/reportingusersevents.md)
+- [/reporting/users/touchpoints](https://docs.gamesight.io/reference/reportinguserstouchpoints.md)
+- [/reporting/users/remove](https://docs.gamesight.io/reference/reportingusersremove.md)
+- [/games/{game_id}/do_not_track](https://docs.gamesight.io/reference/do_not_track.md)
+- [/games/{game_id}/do_not_track](https://docs.gamesight.io/reference/get_do_not_track.md)
+
+## Changelog
+- [April 2026](https://docs.gamesight.io/changelog/april-2026.md)
+- [March 2026](https://docs.gamesight.io/changelog/march-2026.md)
+- [February 2026](https://docs.gamesight.io/changelog/february-2026.md)
+- [January 2026](https://docs.gamesight.io/changelog/january-2026.md)
+- [December 2026](https://docs.gamesight.io/changelog/december-2026.md)

@@ -1,0 +1,50 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/gamesight-reporting-openapi.json, openapi/gamesight-measurement-openapi.json
+entities:
+  - name: game
+    description: A title tracked in Gamesight; the top-level tenant object.
+    id_field: id
+  - name: team
+    description: A group with access to a game's data (drives Aggregate Reporting scope).
+  - name: tracker
+    description: A marketing tracker/link that attributes clicks to campaigns.
+    id_field: id
+  - name: goal_type
+    description: A configured conversion goal (e.g. Install) with triggers and revenue regions.
+    id_field: id
+  - name: trigger
+    description: An event-match rule that fires a goal (belongs to a goal_type).
+    id_field: id
+  - name: event
+    description: An in-game measurement event with a type, user_id, and device identifiers.
+  - name: touchpoint
+    description: A user-level marketing interaction along the attribution path.
+  - name: audit_log
+    description: A record of account/reporting activity.
+relationships:
+  - from: goal_type
+    to: game
+    kind: belongs_to
+    via: game_id
+  - from: trigger
+    to: goal_type
+    kind: belongs_to
+    via: goal_type_id
+  - from: game
+    to: goal_type
+    kind: has_many
+    via: game_id
+  - from: game
+    to: team
+    kind: has_many
+    via: teams
+  - from: game
+    to: tracker
+    kind: has_many
+  - from: event
+    to: game
+    kind: belongs_to
+  - from: touchpoint
+    to: event
+    kind: has_many

@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.gamesight.io/docs/testing-your-game-integration, https://docs.gamesight.io/docs/attribution-testing
+note: >-
+  Gamesight does not publish a separate test-vs-live key mode or magic test
+  values (no test cards / test tokens). Integration testing is done against the
+  live account using real-time inspection tools. No test values are invented here.
+tools:
+  - name: Event Monitor
+    where: Console > Settings > In-Game Integration > Launch Event Monitor
+    url: https://console.gamesight.io/app/management/
+    purpose: Inspect events hitting the ingest server in real time to confirm integration.
+  - name: Live Dashboard
+    where: Console > Measurement > Live
+    purpose: Watch the incoming event stream in real time.
+    ref: https://docs.gamesight.io/docs/live-dashboard
+  - name: Attribution Testing
+    ref: https://docs.gamesight.io/docs/attribution-testing
+    purpose: Run an end-to-end conversion/attribution test.
+conventions:
+  test_event_type: >-
+    Docs use an event `type` of "test" in examples for smoke-testing the ingest
+    pipeline without polluting production goals.

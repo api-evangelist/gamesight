@@ -1,0 +1,911 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Gamesight Measurement API",
+    "version": "1.1.0",
+    "description": "The Gamesight Measurement API ingests a stream of in-game event data with device-level identifiers to power marketing attribution and measurement for PC, console, and web games. Send single events to /events or batches to /events/batch, and manage per-game do-not-track (GDPR/CCPA opt-out) state.",
+    "contact": {
+      "name": "Gamesight Support",
+      "email": "support@gamesight.io",
+      "url": "https://docs.gamesight.io/"
+    },
+    "x-apisjson-source": "https://docs.gamesight.io/reference (ReadMe embedded OpenAPI blocks)"
+  },
+  "servers": [
+    {
+      "url": "https://api.ingest.marketing.gamesight.io"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/events": {
+      "post": {
+        "summary": "/events",
+        "description": "",
+        "operationId": "measurement-api-events",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "type",
+                  "user_id",
+                  "identifiers"
+                ],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "description": "A name for this type of event. More details [here](https://docs.gamesight.io/docs/additional-events)",
+                    "default": "game_launch"
+                  },
+                  "user_id": {
+                    "type": "string",
+                    "description": "A unique identifier for this user. More details [here](https://docs.gamesight.io/docs/rest-api-quick-start#step-2-determine-user-id-value)",
+                    "default": "user123"
+                  },
+                  "identifiers": {
+                    "type": "object",
+                    "description": "Details about the device the user is using",
+                    "required": [
+                      "ip"
+                    ],
+                    "properties": {
+                      "ip": {
+                        "type": "string",
+                        "description": "User's public IP address",
+                        "default": "172.123.245.14"
+                      },
+                      "os": {
+                        "type": "string",
+                        "description": "User's operating system version. More details [here](#section-os)",
+                        "default": "Windows 7"
+                      },
+                      "resolution": {
+                        "type": "string",
+                        "description": "User's screen resolution. More details [here](#section-screen-resolution)",
+                        "default": "1920x1080"
+                      },
+                      "language": {
+                        "type": "string",
+                        "description": "User's ISO 639-1 language string optionally including region. More details [here](#section-language).",
+                        "default": "en"
+                      },
+                      "timezone": {
+                        "type": "integer",
+                        "description": "User's timezone as an offset from UTC in minutes. More details [here](#section-timezone).",
+                        "format": "int32"
+                      },
+                      "sku": {
+                        "type": "string",
+                        "description": "A custom identifier used to differentiate different distributions of the game"
+                      },
+                      "platform": {
+                        "type": "string",
+                        "description": "The platform that the game is running on. More details [here](#section-platform)"
+                      },
+                      "platform_device_id": {
+                        "type": "string",
+                        "description": "Device ID for the platform this event was measured on"
+                      },
+                      "gsid": {
+                        "type": "string",
+                        "description": "Gamesight GSID value pulled from the Web SDK"
+                      },
+                      "useragent": {
+                        "type": "string",
+                        "description": "Browser useragent for events that were sourced from a web browser (not expected for desktop/console events)"
+                      },
+                      "country": {
+                        "type": "string",
+                        "description": "Country location for the user (used if you are not providing the IP value)"
+                      }
+                    }
+                  },
+                  "revenue_currency": {
+                    "type": "string",
+                    "description": "Currency revenue is being reported in",
+                    "default": "USD"
+                  },
+                  "revenue_amount": {
+                    "type": "number",
+                    "description": "Amount of revenue being reported. You must pass a revenue_currency together with this field. Can be provided as an Integer, Float or String.",
+                    "default": 0,
+                    "format": "float"
+                  },
+                  "external_ids": {
+                    "type": "array",
+                    "description": "List of external account ids",
+                    "items": {
+                      "properties": {
+                        "external_id_type": {
+                          "type": "string",
+                          "description": "Type of external id. Full listing here: https://docs.gamesight.io/reference/measurement-api-events#user-account-ids"
+                        },
+                        "external_id": {
+                          "type": "string",
+                          "description": "The ID from the external platform"
+                        },
+                        "scope_type": {
+                          "type": "string",
+                          "description": "Allowed values: ['game', 'org']. Default value of 'game' restricts this ID to only be used for attribution within this game."
+                        },
+                        "scope_id": {
+                          "type": "string",
+                          "description": "Scope id property (when using \"org\" scope type). If you would like to share IDs between multiple games published by your company, provide your Organization ID here."
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "description": "Allowed values: ['server', 'client', null]. Control to hashing of external ID prior to storage. null: The ID is stored in plain text. server: The ID is hashed on the server-side before being saved. client: The ID is already hashed in this payload."
+                        }
+                      },
+                      "required": [
+                        "external_id_type",
+                        "external_id"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "description": "Explicitly set the timestamp for the event (optional - 2020-01-01T00:00:00)",
+                    "format": "date-time"
+                  },
+                  "transaction_id": {
+                    "type": "string",
+                    "description": "Unique transaction ID that is used for deduplicating events, commonly used to ensure idempotency with purchase events. Gamesight enforces that only 1 event will be processed per transaction_id."
+                  },
+                  "gameplay_session_id": {
+                    "type": "string",
+                    "description": "A unique session ID for the user's current game session. Passing this field enables Gamesight to report on session counts, playtime, and actions within a session."
+                  },
+                  "metadata": {
+                    "type": "string",
+                    "description": "Arbitrary metadata to attach to the event. Must be less than 1KB when JSON encoded.",
+                    "format": "json"
+                  },
+                  "attribution": {
+                    "type": "array",
+                    "description": "Attribution override to force this event to be attributed to a particular Tracker. Used when working with referral codes",
+                    "items": {
+                      "properties": {
+                        "referral_code": {
+                          "type": "string",
+                          "description": "Referral code used to look up tracker details for attribution"
+                        },
+                        "touchpoint_type": {
+                          "type": "string",
+                          "description": "Whether to count this touchpoint as a click or impression",
+                          "default": "click",
+                          "enum": [
+                            "click",
+                            "impression"
+                          ]
+                        },
+                        "team_id": {
+                          "type": "integer",
+                          "description": "Team hierarchy parameter to associate with this event (required if not providing referral_code)",
+                          "format": "int32"
+                        },
+                        "network": {
+                          "type": "string",
+                          "description": "Network hierarchy parameter to associate with this event (required if not providing referral_code)"
+                        },
+                        "campaign": {
+                          "type": "string",
+                          "description": "Campaign hierarchy parameter to associate with this event"
+                        },
+                        "ad_group": {
+                          "type": "string",
+                          "description": "Ad Group hierarchy parameter to associate with this event"
+                        },
+                        "ad": {
+                          "type": "string",
+                          "description": "Ad hierarchy parameter to associate with this event"
+                        },
+                        "ad_type": {
+                          "type": "string",
+                          "description": "Ad type reporting parameter to associate with this event"
+                        },
+                        "placement": {
+                          "type": "string",
+                          "description": "Placement reporting parameter to associate with this event"
+                        },
+                        "keyword": {
+                          "type": "string",
+                          "description": "Keyword reporting parameter to associate with this event"
+                        },
+                        "creative": {
+                          "type": "string",
+                          "description": "Creative reporting parameter to associate with this event"
+                        },
+                        "site_id": {
+                          "type": "string",
+                          "description": "Site ID reporting parameter to associate with this event"
+                        },
+                        "sub_site_id": {
+                          "type": "string",
+                          "description": "Sub Site ID reporting parameter to associate with this event"
+                        },
+                        "requested_at": {
+                          "type": "string",
+                          "description": "Time to count the touchpoint at (defaults to 1 second before event time)",
+                          "format": "date"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "consent_scopes": {
+                    "type": "object",
+                    "description": "Granular consent settings for these users. Will be merged with consent settings on the Do Not Track endpoint to determine consent settings for this user.",
+                    "properties": {
+                      "processing": {
+                        "type": "boolean",
+                        "description": "Represents that this user has consented to data processing. If this is set to `false` then all event payloads for this user will be rejected to prevent any data collection."
+                      },
+                      "attribution": {
+                        "type": "boolean",
+                        "description": "Represents that this user has consented to attribution. If this is set to `false` then events for this user will still be recorded but they won't be attributed to any touchpoints."
+                      },
+                      "postbacks": {
+                        "type": "boolean",
+                        "description": "Represents that this user has consented to their data being posted back to your partner Ad Networks. If this is set to `false` then events for this user will never be used to trigger postbacks."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "201",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"event\": {\n    \"created_at\": \"2120-01-02T13:34:56\", \n    \"identifiers\": \"7efa773c803a0..2fbf9a22\", \n    \"type\": \"game_launch\", \n    \"user_id\": \"b91f8k5r\"\n  }\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "event": {
+                      "type": "object",
+                      "properties": {
+                        "created_at": {
+                          "type": "string",
+                          "example": "2120-01-02T13:34:56"
+                        },
+                        "identifiers": {
+                          "type": "string",
+                          "example": "7efa773c803a0..2fbf9a22"
+                        },
+                        "type": {
+                          "type": "string",
+                          "example": "game_launch"
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "example": "b91f8k5r"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "403",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"extra\": null, \n  \"message\": \"The provided API Key is invalid\", \n  \"status_code\": 403, \n  \"type\": \"InvalidApiKeyException\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "extra": {},
+                    "message": {
+                      "type": "string",
+                      "example": "The provided API Key is invalid"
+                    },
+                    "status_code": {
+                      "type": "integer",
+                      "example": 403,
+                      "default": 0
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "InvalidApiKeyException"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "422",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"extra\": {\n    \"type\": \"required field\", \n    \"fake_field\": \"unknown field\"\n  }, \n  \"message\": \"Input failed validation\", \n  \"status_code\": 422, \n  \"type\": \"ValidationException\"\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "extra": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "required field"
+                        },
+                        "fake_field": {
+                          "type": "string",
+                          "example": "unknown field"
+                        }
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Input failed validation"
+                    },
+                    "status_code": {
+                      "type": "integer",
+                      "example": 422,
+                      "default": 0
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "ValidationException"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Measurement"
+        ]
+      }
+    },
+    "/events/batch": {
+      "post": {
+        "summary": "/events/batch",
+        "description": "",
+        "operationId": "eventsbatch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "events"
+                ],
+                "properties": {
+                  "events": {
+                    "type": "array",
+                    "description": "A list of event payloads. Max 1000 events per batch",
+                    "items": {
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "description": "A name for this type of event.",
+                          "default": "game_launch"
+                        },
+                        "user_id": {
+                          "type": "string",
+                          "description": "A unique identifier for this user",
+                          "default": "user123"
+                        },
+                        "identifiers": {
+                          "type": "object",
+                          "description": "Device identifiers for the event",
+                          "required": [
+                            "ip"
+                          ],
+                          "properties": {
+                            "ip": {
+                              "type": "string",
+                              "description": "User's public IP address",
+                              "default": "172.123.245.14"
+                            },
+                            "os": {
+                              "type": "string",
+                              "description": "User's operating system version. More details [here](#section-os)",
+                              "default": "Windows 7"
+                            },
+                            "resolution": {
+                              "type": "string",
+                              "description": "User's screen resolution. More details [here](#section-screen-resolution)",
+                              "default": "1920x1080"
+                            },
+                            "language": {
+                              "type": "string",
+                              "description": "User's ISO 639-1 language string optionally including region. More details [here](#section-language).",
+                              "default": "en"
+                            },
+                            "timezone": {
+                              "type": "integer",
+                              "description": "User's timezone as an offset from UTC in minutes. More details [here](#section-timezone).",
+                              "format": "int32"
+                            },
+                            "sku": {
+                              "type": "string",
+                              "description": "A custom identifier used to differentiate different distributions of the game"
+                            },
+                            "platform": {
+                              "type": "string",
+                              "description": "The platform that the game is running on. More details [here](#section-platform)"
+                            },
+                            "platform_device_id": {
+                              "type": "string",
+                              "description": "Device ID for the platform this event was measured on"
+                            },
+                            "gsid": {
+                              "type": "string",
+                              "description": "Gamesight GSID value pulled from the Web SDK"
+                            },
+                            "useragent": {
+                              "type": "string",
+                              "description": "Browser useragent for events that were sourced from a web browser (not expected for desktop/console events)"
+                            },
+                            "country": {
+                              "type": "string",
+                              "description": "Country location for the user (used if you are not providing the IP value)"
+                            }
+                          }
+                        },
+                        "revenue_currency": {
+                          "type": "string",
+                          "description": "Currency revenue is being reported in"
+                        },
+                        "revenue_amount": {
+                          "type": "number",
+                          "description": "Amount of revenue being reported. Can be provided as an Integer, Float or String.",
+                          "format": "float"
+                        },
+                        "external_ids": {
+                          "type": "array",
+                          "description": "List of external account ids",
+                          "items": {
+                            "properties": {
+                              "external_id_type": {
+                                "type": "string",
+                                "description": "Type of external id. Full listing here: https://docs.gamesight.io/reference/measurement-api-events#user-account-ids"
+                              },
+                              "external_id": {
+                                "type": "string",
+                                "description": "The ID from the external platform"
+                              },
+                              "scope_type": {
+                                "type": "string",
+                                "description": "Allowed values: ['game', 'org']. Default value of 'game' restricts this ID to only be used for attribution within this game."
+                              },
+                              "scope_id": {
+                                "type": "string",
+                                "description": "Scope id property (when using \"org\" scope type). If you would like to share IDs between multiple games published by your company, provide your Organization ID here."
+                              },
+                              "sha256": {
+                                "type": "string",
+                                "description": "Allowed values: ['server', 'client', null]. Control to hashing of external ID prior to storage. null: The ID is stored in plain text. server: The ID is hashed on the server-side before being saved. client: The ID is already hashed in this payload."
+                              }
+                            },
+                            "required": [
+                              "external_id_type",
+                              "external_id"
+                            ],
+                            "type": "object"
+                          }
+                        },
+                        "timestamp": {
+                          "type": "string",
+                          "description": "Explicitly set the timestamp for the event (optional - 2020-01-01T00:00:00)",
+                          "format": "date-time"
+                        },
+                        "transaction_id": {
+                          "type": "string",
+                          "description": "Unique transaction ID that is used for deduplicating events, commonly used to ensure idempotency with purchase events. Gamesight enforces that only 1 event will be processed per transaction_id."
+                        },
+                        "gameplay_session_id": {
+                          "type": "string",
+                          "description": "A unique session ID for the user's current game session. Passing this field enables Gamesight to report on session counts, playtime, and actions within a session."
+                        },
+                        "metadata": {
+                          "type": "string",
+                          "description": "Arbitrary metadata to attach to the event. Must be less than 1KB when JSON encoded.",
+                          "format": "json"
+                        },
+                        "attribution": {
+                          "type": "array",
+                          "description": "Attribution override to force this event to be attributed to a particular Tracker. Used when working with referral codes",
+                          "items": {
+                            "properties": {
+                              "referral_code": {
+                                "type": "string",
+                                "description": "Referral code used to look up tracker details for attribution"
+                              },
+                              "touchpoint_type": {
+                                "type": "string",
+                                "description": "Whether to count this touchpoint as a click or impression",
+                                "default": "click",
+                                "enum": [
+                                  "click",
+                                  "impression"
+                                ]
+                              },
+                              "team_id": {
+                                "type": "integer",
+                                "description": "Team hierarchy parameter to associate with this event (required if not providing referral_code)",
+                                "format": "int32"
+                              },
+                              "network": {
+                                "type": "string",
+                                "description": "Network hierarchy parameter to associate with this event (required if not providing referral_code)"
+                              },
+                              "campaign": {
+                                "type": "string",
+                                "description": "Campaign hierarchy parameter to associate with this event"
+                              },
+                              "ad_group": {
+                                "type": "string",
+                                "description": "Ad Group hierarchy parameter to associate with this event"
+                              },
+                              "ad": {
+                                "type": "string",
+                                "description": "Ad hierarchy parameter to associate with this event"
+                              },
+                              "ad_type": {
+                                "type": "string",
+                                "description": "Ad type reporting parameter to associate with this event"
+                              },
+                              "placement": {
+                                "type": "string",
+                                "description": "Placement reporting parameter to associate with this event"
+                              },
+                              "keyword": {
+                                "type": "string",
+                                "description": "Keyword reporting parameter to associate with this event"
+                              },
+                              "creative": {
+                                "type": "string",
+                                "description": "Creative reporting parameter to associate with this event"
+                              },
+                              "site_id": {
+                                "type": "string",
+                                "description": "Site ID reporting parameter to associate with this event"
+                              },
+                              "sub_site_id": {
+                                "type": "string",
+                                "description": "Sub Site ID reporting parameter to associate with this event"
+                              },
+                              "requested_at": {
+                                "type": "string",
+                                "description": "Time to count the touchpoint at (defaults to 1 second before event time)",
+                                "format": "date"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "consent_scopes": {
+                          "type": "object",
+                          "description": "Granular consent settings for these users. Will be merged with consent settings on the Do Not Track endpoint to determine consent settings for this user.",
+                          "properties": {
+                            "processing": {
+                              "type": "boolean",
+                              "description": "Represents that this user has consented to data processing. If this is set to `false` then all event payloads for this user will be rejected to prevent any data collection."
+                            },
+                            "attribution": {
+                              "type": "boolean",
+                              "description": "Represents that this user has consented to attribution. If this is set to `false` then events for this user will still be recorded but they won't be attributed to any touchpoints."
+                            },
+                            "postbacks": {
+                              "type": "boolean",
+                              "description": "Represents that this user has consented to their data being posted back to your partner Ad Networks. If this is set to `false` then events for this user will never be used to trigger postbacks."
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "user_id"
+                      ],
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\"events\": [...Event Ojbects...]}"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Measurement"
+        ]
+      }
+    },
+    "/games/{game_id}/do_not_track": {
+      "put": {
+        "summary": "/games/{game_id}/do_not_track",
+        "description": "",
+        "operationId": "do_not_track",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "This should be an API Key with the GDPR scope",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Api-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0"
+            }
+          },
+          {
+            "name": "game_id",
+            "in": "path",
+            "description": "ID for the Game you want to add the Do Not Track record for",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "user_ids"
+                ],
+                "properties": {
+                  "user_ids": {
+                    "type": "array",
+                    "description": "List of IDs for users to add to the Do Not Track list",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "description": "Determines data hashing process. By default all IDs are hashed on the server side before storage. If you would prefer to SHA256 hash data before sending it to the API pass \"client\"",
+                    "default": "server"
+                  },
+                  "consent_scopes": {
+                    "type": "object",
+                    "description": "Granular consent settings for these users. If left to null then all data processing will be blocked for these users.",
+                    "properties": {
+                      "processing": {
+                        "type": "boolean",
+                        "description": "Represents that this user has consented to data processing. If this is set to `false` then all event payloads for this user will be rejected to prevent any data collection."
+                      },
+                      "attribution": {
+                        "type": "boolean",
+                        "description": "Represents that this user has consented to attribution. If this is set to `false` then events for this user will still be recorded but they won't be attributed to any touchpoints."
+                      },
+                      "postbacks": {
+                        "type": "boolean",
+                        "description": "Represents that this user has consented to their data being posted back to your partner Ad Networks. If this is set to `false` then events for this user will never be used to trigger postbacks."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n  \"success\": true\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true,
+                      "default": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Measurement"
+        ]
+      },
+      "get": {
+        "summary": "/games/{game_id}/do_not_track",
+        "description": "",
+        "operationId": "get_do_not_track",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "This should be an API Key with the GDPR scope",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Api-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0"
+            }
+          },
+          {
+            "name": "game_id",
+            "in": "path",
+            "description": "ID for the Game you want to add the Do Not Track record for",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "List of IDs for users to read from to the Do Not Track list. Pass the `user_id` param multiple times to pull multiple users in a single call.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "sha256",
+            "in": "query",
+            "description": "Determines data hashing process. By default all IDs are hashed on the server side before storage. If you would prefer to SHA256 hash data before sending it to the API pass \"client\"",
+            "schema": {
+              "type": "string",
+              "default": "server"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"optouts\": [\n        {\n           \"user_id\": \"d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35\",\n           \"game_id\": 1,\n           \"consent_scopes\": {\n                \"attribution\": true,\n                \"postbacks\": false,\n                \"processing\": false\n            },\n            \"created_at\": \"2023-01-01T10:12:59\",\n            \"updated_at\": \"2023-01-01T10:12:59\"\n        }\n    ]\n}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "optouts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "user_id": {
+                            "type": "string",
+                            "example": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+                          },
+                          "game_id": {
+                            "type": "integer",
+                            "example": 1,
+                            "default": 0
+                          },
+                          "consent_scopes": {
+                            "type": "object",
+                            "properties": {
+                              "attribution": {
+                                "type": "boolean",
+                                "example": true,
+                                "default": true
+                              },
+                              "postbacks": {
+                                "type": "boolean",
+                                "example": false,
+                                "default": true
+                              },
+                              "processing": {
+                                "type": "boolean",
+                                "example": false,
+                                "default": true
+                              }
+                            }
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "example": "2023-01-01T10:12:59"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "example": "2023-01-01T10:12:59"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "tags": [
+          "Measurement"
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization",
+        "description": "A valid Gamesight API key passed in the Authorization header. Reporting API keys carry Reporting, Aggregate Reporting, or GDPR scope."
+      }
+    }
+  }
+}

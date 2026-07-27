@@ -1,0 +1,37 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.gamesight.io/reference
+authentication:
+  style: api-key
+  location: header
+  parameter: Authorization
+  scopes: [Reporting, Aggregate Reporting, GDPR]
+  ref: authentication/gamesight-authentication.yml
+idempotency:
+  supported: false
+  note: >-
+    No idempotency-key contract is documented. The ingest API is append-oriented
+    (events); deduplication is handled server-side by user_id/event semantics,
+    not a client-supplied idempotency key.
+pagination:
+  style: limit
+  params:
+    - name: limit
+      in: query
+      description: Restrict the number of results (list endpoints such as /trackers); returns all by default.
+  ref: openapi/gamesight-reporting-openapi.json
+versioning:
+  style: header
+  header: X-Api-Version
+  semver: true
+  partial_match: true
+  ref: lifecycle/gamesight-lifecycle.yml
+error_envelope:
+  shape: json
+  fields: [message, status_code, type, extra]
+  ref: errors/gamesight-problem-types.yml
+rate_limit_signaling:
+  headers: [x-ratelimit-limit, x-ratelimit-remaining, x-ratelimit-reset]
+  over_limit_status: 429
+  ref: rate-limits/gamesight-rate-limits.yml
+content_type: application/json

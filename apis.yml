@@ -1,25 +1,134 @@
 aid: gamesight
 name: Gamesight
-description: Gamesight is a company surfaced as a portfolio company of techstars and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Gamesight is a performance marketing platform for PC and console games, giving
+  game publishers the data, technology, and expertise to reach players across a
+  title's lifecycle. Its Marketing Measurement suite delivers attribution for PC,
+  console, and web games, cost aggregation from ad networks, and incrementality
+  testing, while its Creator Marketing products run influencer campaigns, creator
+  programs, and creator-led playtests. Developers integrate via a REST Measurement
+  (ingest) API that streams in-game events with device identifiers, a Reporting
+  API that pulls marketing analytics into a data warehouse, and a web measurement
+  JavaScript SDK. The platform processes over a billion gaming data points daily
+  and is SOC 2, GDPR, and CCPA compliant.
 url: https://raw.githubusercontent.com/api-evangelist/gamesight/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://console.gamesight.io/images/meta/gamesight-facebook.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - techstars
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: active
+x-tier-reason: enriched
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Gaming
+- Marketing
+- Analytics
+- Attribution
+- Measurement
+- Advertising
+- Creators
+- Game Development
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: gamesight:gamesight-measurement-api
+  name: Gamesight Measurement API
+  description: The Measurement API from Gamesight — 3 operation(s) for measurement.
+  humanURL: https://docs.gamesight.io/reference/measurement-api-overview
+  baseURL: https://api.ingest.marketing.gamesight.io
+  tags:
+  - Measurement
+  properties:
+  - type: OpenAPI
+    url: openapi/gamesight-measurement-api-openapi.yml
+- aid: gamesight:gamesight-reporting-api
+  name: Gamesight Reporting API
+  description: The Reporting API from Gamesight — 9 operation(s) for reporting.
+  humanURL: https://docs.gamesight.io/reference/measurement-api-overview
+  baseURL: https://api.ingest.marketing.gamesight.io
+  tags:
+  - Reporting
+  properties:
+  - type: OpenAPI
+    url: openapi/gamesight-reporting-api-openapi.yml
 common:
+- type: DomainSecurity
+  url: security/gamesight-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/gamesight-agentic-access.yml
+- type: Authentication
+  url: authentication/gamesight-authentication.yml
+- type: MCPServer
+  url: mcp/gamesight-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/gamesight-llms.txt
+- type: Conformance
+  url: conformance/gamesight-conformance.yml
+- type: Compliance
+  url: https://gamesight.io/gdpr
+- type: TrustCenter
+  url: security/gamesight-trust-center.yml
+- type: ErrorCatalog
+  url: errors/gamesight-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/gamesight-lifecycle.yml
+- type: StatusPage
+  url: https://status.gamesight.io/
+- type: RateLimits
+  url: rate-limits/gamesight-rate-limits.yml
+- type: Conventions
+  url: conventions/gamesight-conventions.yml
+- type: ChangeLog
+  url: changelog/gamesight-changelog.yml
+- type: Components
+  url: components/gamesight-components.yml
+- type: DataModel
+  url: data-model/gamesight-data-model.yml
+- type: Sandbox
+  url: sandbox/gamesight-sandbox.yml
+- type: DeveloperPortal
+  url: https://docs.gamesight.io/
+- type: Documentation
+  url: https://docs.gamesight.io/docs/getting-started
+- type: APIReference
+  url: https://docs.gamesight.io/reference/measurement-api-overview
+- type: GettingStarted
+  url: https://docs.gamesight.io/docs/rest-api-quick-start
+- type: Support
+  url: mailto:support@gamesight.io
+- type: Blog
+  url: https://blog.gamesight.io
+- type: GitHubOrganization
+  url: https://github.com/gamesight
+- type: SignUp
+  url: https://console.gamesight.io
+- type: PrivacyPolicy
+  url: https://gamesight.io/privacy-policy
 - type: Website
   url: https://gamesight.io/
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

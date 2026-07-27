@@ -1,0 +1,20 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.gamesight.io/reference/versioning, https://status.gamesight.io/, https://docs.gamesight.io/changelog
+versioning:
+  scheme: semver-header
+  mechanism: X-Api-Version request header
+  partial_match: true
+  measurement_current: 1.1.0
+  reporting_current: 2.0.0
+  docs: https://docs.gamesight.io/reference/versioning
+  note: >-
+    Clients are strongly encouraged to pin a version via X-Api-Version. Partial
+    matching is supported (e.g. `1.1` resolves to the latest 1.1.x).
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No formal deprecation/Sunset-header policy is published; versioning is the compatibility mechanism.
+status_page: https://status.gamesight.io/
+changelog: https://docs.gamesight.io/changelog
+deprecated_operations: []

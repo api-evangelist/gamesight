@@ -1,0 +1,20 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.gamesight.io/changelog
+scheme: monthly-rollup
+note: >-
+  Gamesight publishes a dated monthly product-updates changelog. Individual
+  monthly entries link to detail pages; the recent window is captured below by
+  month. Breaking-vs-additive classification is not labeled per entry in the
+  index.
+entries:
+  - date: '2026-04'
+    title: April 2026 product updates
+  - date: '2026-03'
+    title: March 2026 product updates
+  - date: '2026-02'
+    title: February 2026 product updates
+  - date: '2026-01'
+    title: January 2026 product updates
+  - date: '2025-12'
+    title: December 2025 product updates

@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.gamesight.io/reference/errors, https://docs.gamesight.io/reference/measurement-api-errors
+format: custom-json
+note: >-
+  Gamesight does not use RFC 9457 application/problem+json. Errors are returned
+  as a JSON envelope with the corresponding HTTP status code. The `extra` field
+  carries per-field validation detail.
+envelope:
+  fields:
+    - name: message
+      description: Human-readable error message.
+    - name: status_code
+      description: Numeric HTTP status code echoed in the body.
+    - name: type
+      description: Machine-readable exception type (e.g. ValidationException).
+    - name: extra
+      description: Object with additional context; for validation errors, a map of field to reason.
+  example:
+    message: Input failed validation
+    status_code: 422
+    type: ValidationException
+    extra:
+      field: required field
+      fake_field: unknown field
+problems:
+  - status: 422
+    type: ValidationException
+    title: Input failed validation
+    remediation: Correct the request body — supply required fields and remove unknown fields listed in `extra`.
+  - status: 429
+    type: RateLimitExceeded
+    title: Too Many Requests
+    remediation: Honor x-ratelimit-remaining/x-ratelimit-reset headers and retry after the reset window.
+    source_operation: openapi/gamesight-measurement-openapi.json#eventsbatch
+  - status: 401
+    type: Unauthorized
+    title: Missing or invalid API key
+    remediation: Pass a valid API key in the Authorization header with the appropriate scope.

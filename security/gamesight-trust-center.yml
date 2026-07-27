@@ -1,0 +1,15 @@
+generated: '2026-07-19'
+method: searched
+probe: false
+url: https://console.gamesight.io/trust
+certifications:
+  - SOC 2
+  - GDPR
+  - CCPA
+evidence:
+  - source: https://console.gamesight.io/trust
+    note: Gamesight Trust Center (single-page app; certifications surfaced in-app).
+  - source: https://gamesight.io/products/measurement
+    keywords: [soc 2, gdpr, ccpa]
+  - source: https://gamesight.io/gdpr
+    note: GDPR & CCPA compliance detail and data-subject request handling.

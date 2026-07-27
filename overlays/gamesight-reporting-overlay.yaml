@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Gamesight Reporting API
+  version: 1.0.0
+extends: openapi/gamesight-reporting-openapi.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: '2026-07-19'
+      x-apievangelist-source: https://docs.gamesight.io/reference
+      x-api-type: reporting-analytics
+      x-api-key-scopes:
+        - Reporting
+        - Aggregate Reporting
+        - GDPR
+  - target: $.info
+    update:
+      x-agent-ready:
+        auth: apiKey (Authorization header) with scoped keys
+        versioning: X-Api-Version header (semver, partial-match supported)
+        pagination: limit query parameter on list endpoints
+        error_format: JSON envelope (message, status_code, type, extra)

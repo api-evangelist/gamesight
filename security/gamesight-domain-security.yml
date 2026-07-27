@@ -1,0 +1,26 @@
+generated: '2026-07-19'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: gamesight.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov 18 23:59:59 2026 GMT
+  hsts: false
+- host: api.ingest.marketing.gamesight.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 20 11:33:56 2026 GMT
+  hsts: null
+- host: api.marketing.gamesight.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 20 13:00:45 2026 GMT
+  hsts: null
+domains:
+- domain: gamesight.io
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

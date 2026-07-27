@@ -1,0 +1,28 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.gamesight.io/reference/rate-limits
+scope: per-game or per-API-key
+over_limit_status: 429
+response_headers:
+  - name: x-ratelimit-limit
+    description: Maximum requests permitted per time window (IETF RateLimit-Limit draft format).
+  - name: x-ratelimit-remaining
+    description: Remaining requests in the current window.
+  - name: x-ratelimit-reset
+    description: Seconds until the rate limit resets for the endpoint.
+rate_limits:
+  - endpoint: /events
+    api: measurement
+    limit_count: 500
+    window: second
+    unit: requests
+    increasable: true
+  - endpoint: /events/batch
+    api: measurement
+    limit_count: 500
+    window: minute
+    unit: requests
+    increasable: true
+notes: >-
+  Limit increases are available on request via your account manager. Clients
+  should honor x-ratelimit-remaining/x-ratelimit-reset and back off on 429.

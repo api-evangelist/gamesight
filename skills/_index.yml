@@ -1,0 +1,16 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/gamesight-measurement-openapi.json, openapi/gamesight-reporting-openapi.json
+skills:
+  - file: gamesight-measure-events.md
+    name: Send Gamesight measurement events
+    api: openapi/gamesight-measurement-openapi.json
+    operations: [measurement-api-events, eventsbatch]
+  - file: gamesight-pull-marketing-stats.md
+    name: Pull Gamesight marketing analytics
+    api: openapi/gamesight-reporting-openapi.json
+    operations: [games, trackers, goal_types, stats-v3, reportinggoals]
+  - file: gamesight-gdpr-forget-user.md
+    name: Handle a Gamesight GDPR/CCPA request
+    api: openapi/gamesight-reporting-openapi.json
+    operations: [reportingusersremove, do_not_track, get_do_not_track]
