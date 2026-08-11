@@ -71,6 +71,8 @@ apis:
   - type: OpenAPI
     url: openapi/gamesight-reporting-api-openapi.yml
 common:
+- type: Overlay
+  url: overlays/gamesight-measurement-overlay.yaml
 - type: DomainSecurity
   url: security/gamesight-domain-security.yml
 - type: AgenticAccess
