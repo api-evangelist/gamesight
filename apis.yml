@@ -33,7 +33,7 @@ x-tier: active
 x-tier-reason: enriched
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-19'
+modified: '2026-08-13'
 tags:
 - Company
 - Gaming
@@ -63,13 +63,15 @@ apis:
 - aid: gamesight:gamesight-reporting-api
   name: Gamesight Reporting API
   description: The Reporting API from Gamesight — 9 operation(s) for reporting.
-  humanURL: https://docs.gamesight.io/reference/measurement-api-overview
-  baseURL: https://api.ingest.marketing.gamesight.io
+  humanURL: https://docs.gamesight.io/reference/reporting-api-overview
+  baseURL: https://api.marketing.gamesight.io
   tags:
   - Reporting
   properties:
   - type: OpenAPI
     url: openapi/gamesight-reporting-api-openapi.yml
+  - type: ToolCrosswalk
+    url: mcp/gamesight-tool-crosswalk.yml
 common:
 - type: Overlay
   url: overlays/gamesight-measurement-overlay.yaml
@@ -129,8 +131,23 @@ common:
   url: https://gamesight.io/privacy-policy
 - type: Website
   url: https://gamesight.io/
+- type: WellKnown
+  url: well-known/gamesight-well-known.yml
+- type: OAuthScopes
+  url: scopes/gamesight-scopes.yml
+- type: Packages
+  url: packages/gamesight-packages.yml
+- type: SDKs
+  url: packages/gamesight-packages.yml
+- type: Plans
+  url: plans/gamesight-plans-pricing.yml
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 7
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+  note: >-
+    Round 2. Found an undocumented, provider-served remote MCP server at
+    https://console.gamesight.io/mcp behind OAuth 2.0 (scope "mcp"), plus three
+    real /.well-known/ OAuth metadata documents on the API hosts, and corrected
+    the Reporting API base URL from the ingest host to api.marketing.gamesight.io.
