@@ -1,18 +1,81 @@
-generated: '2026-07-19'
-method: derived
-source: openapi/gamesight-measurement-openapi.json, openapi/gamesight-reporting-openapi.json
+generated: '2026-08-13'
+method: searched
+source: >-
+  openapi/gamesight-measurement-api-openapi.yml,
+  openapi/gamesight-reporting-api-openapi.yml,
+  https://api.marketing.gamesight.io/.well-known/oauth-authorization-server
+docs: https://docs.gamesight.io/reference/authorization
+note: >-
+  Upgraded from derived to searched on 2026-08-13. The OpenAPI specs declare
+  only the apiKey scheme; the docs add the four key permission scopes, and a
+  live probe of the API hosts found an undocumented OAuth 2.0 authorization
+  server that gates the hosted MCP server. All three are recorded.
 summary:
   types:
-  - apiKey
+    - apiKey
+    - oauth2
   api_key_in:
-  - header
+    - header
+  oauth2_flows:
+    - authorizationCode
 schemes:
-- name: ApiKeyAuth
-  type: apiKey
-  in: header
-  parameter: Authorization
-  description: A valid Gamesight API key passed in the Authorization header. Reporting API keys
-    carry Reporting, Aggregate Reporting, or GDPR scope.
-  sources:
-  - openapi/gamesight-measurement-openapi.json
-  - openapi/gamesight-reporting-openapi.json
+  - name: ApiKeyAuth
+    type: apiKey
+    in: header
+    parameter: Authorization
+    description: >-
+      An opaque Gamesight API key passed in the Authorization header on every
+      request. The key's permissions are fixed when it is created in the console.
+      Reporting API keys carry the Reporting, Aggregate Reporting, GDPR, or Audit
+      scope; the Measurement (in-game/web ingest) key is a separate credential
+      provisioned under Management > In-Game Integration.
+    scopes:
+      - Reporting
+      - Aggregate Reporting
+      - GDPR
+      - Audit
+      - Event Measurement
+    docs: https://docs.gamesight.io/docs/api-key-management
+    applies_to:
+      - openapi/gamesight-measurement-api-openapi.yml
+      - openapi/gamesight-reporting-api-openapi.yml
+    sources:
+      - openapi/_original/gamesight-measurement-openapi.json
+      - openapi/_original/gamesight-reporting-openapi.json
+  - name: GamesightOAuth2
+    type: oauth2
+    description: >-
+      OAuth 2.0 authorization-code flow with PKCE (S256) and RFC 7591 dynamic
+      client registration, issued by console.gamesight.io. NOT documented in the
+      public developer docs — discovered by probing /.well-known/ on the API
+      hosts. Its single advertised scope, "mcp", gates the hosted MCP server at
+      https://console.gamesight.io/mcp. It does not apply to the two REST APIs,
+      which remain API-key authenticated.
+    issuer: https://console.gamesight.io
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://console.gamesight.io/authorize
+        tokenUrl: https://console.gamesight.io/api/app/oauth/token
+        scopes:
+          mcp: Access to the Gamesight MCP Server
+    pkce: S256
+    token_endpoint_auth_methods:
+      - client_secret_post
+      - client_secret_basic
+    dynamic_client_registration: https://console.gamesight.io/api/app/oauth/register
+    revocation_endpoint: https://console.gamesight.io/api/app/oauth/revoke
+    documented: false
+    applies_to:
+      - mcp/gamesight-mcp.yml
+    sources:
+      - well-known/gamesight-oauth-authorization-server.json
+      - well-known/gamesight-console-oauth-authorization-server.json
+sso:
+  saml: https://docs.gamesight.io/docs/okta-saml-config
+  scim: https://docs.gamesight.io/docs/okta-scim-config
+  providers:
+    - Okta
+    - Google Workspace
+  note: Console (human) access supports SAML SSO and SCIM 2.0 user provisioning; this is dashboard access, not API auth.
+ref:
+  scopes: scopes/gamesight-scopes.yml

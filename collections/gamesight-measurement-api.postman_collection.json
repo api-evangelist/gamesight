@@ -1,0 +1,688 @@
+{
+  "item": [
+    {
+      "id": "e9916c92-5f24-4f07-9ba4-5df63123ff9e",
+      "name": "Measurement",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b838415d-da22-47a2-97e4-8a447ab73b63",
+          "name": "/events",
+          "request": {
+            "name": "/events",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"game_launch\",\n  \"user_id\": \"user123\",\n  \"identifiers\": {\n    \"ip\": \"172.123.245.14\",\n    \"os\": \"Windows 7\",\n    \"resolution\": \"1920x1080\",\n    \"language\": \"en\",\n    \"timezone\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"platform_device_id\": \"<string>\",\n    \"gsid\": \"<string>\",\n    \"useragent\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"revenue_currency\": \"USD\",\n  \"revenue_amount\": 0,\n  \"external_ids\": [\n    {\n      \"external_id_type\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"scope_type\": \"<string>\",\n      \"scope_id\": \"<string>\",\n      \"sha256\": \"<string>\"\n    },\n    {\n      \"external_id_type\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"scope_type\": \"<string>\",\n      \"scope_id\": \"<string>\",\n      \"sha256\": \"<string>\"\n    }\n  ],\n  \"timestamp\": \"<dateTime>\",\n  \"transaction_id\": \"<string>\",\n  \"gameplay_session_id\": \"<string>\",\n  \"metadata\": \"<json>\",\n  \"attribution\": [\n    {\n      \"referral_code\": \"<string>\",\n      \"touchpoint_type\": \"click\",\n      \"team_id\": \"<integer>\",\n      \"network\": \"<string>\",\n      \"campaign\": \"<string>\",\n      \"ad_group\": \"<string>\",\n      \"ad\": \"<string>\",\n      \"ad_type\": \"<string>\",\n      \"placement\": \"<string>\",\n      \"keyword\": \"<string>\",\n      \"creative\": \"<string>\",\n      \"site_id\": \"<string>\",\n      \"sub_site_id\": \"<string>\",\n      \"requested_at\": \"<date>\"\n    },\n    {\n      \"referral_code\": \"<string>\",\n      \"touchpoint_type\": \"click\",\n      \"team_id\": \"<integer>\",\n      \"network\": \"<string>\",\n      \"campaign\": \"<string>\",\n      \"ad_group\": \"<string>\",\n      \"ad\": \"<string>\",\n      \"ad_type\": \"<string>\",\n      \"placement\": \"<string>\",\n      \"keyword\": \"<string>\",\n      \"creative\": \"<string>\",\n      \"site_id\": \"<string>\",\n      \"sub_site_id\": \"<string>\",\n      \"requested_at\": \"<date>\"\n    }\n  ],\n  \"consent_scopes\": {\n    \"processing\": \"<boolean>\",\n    \"attribution\": \"<boolean>\",\n    \"postbacks\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ead8e4b4-2399-49ef-9b91-ac7fba41c9f0",
+              "name": "201",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"game_launch\",\n  \"user_id\": \"user123\",\n  \"identifiers\": {\n    \"ip\": \"172.123.245.14\",\n    \"os\": \"Windows 7\",\n    \"resolution\": \"1920x1080\",\n    \"language\": \"en\",\n    \"timezone\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"platform_device_id\": \"<string>\",\n    \"gsid\": \"<string>\",\n    \"useragent\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"revenue_currency\": \"USD\",\n  \"revenue_amount\": 0,\n  \"external_ids\": [\n    {\n      \"external_id_type\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"scope_type\": \"<string>\",\n      \"scope_id\": \"<string>\",\n      \"sha256\": \"<string>\"\n    },\n    {\n      \"external_id_type\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"scope_type\": \"<string>\",\n      \"scope_id\": \"<string>\",\n      \"sha256\": \"<string>\"\n    }\n  ],\n  \"timestamp\": \"<dateTime>\",\n  \"transaction_id\": \"<string>\",\n  \"gameplay_session_id\": \"<string>\",\n  \"metadata\": \"<json>\",\n  \"attribution\": [\n    {\n      \"referral_code\": \"<string>\",\n      \"touchpoint_type\": \"click\",\n      \"team_id\": \"<integer>\",\n      \"network\": \"<string>\",\n      \"campaign\": \"<string>\",\n      \"ad_group\": \"<string>\",\n      \"ad\": \"<string>\",\n      \"ad_type\": \"<string>\",\n      \"placement\": \"<string>\",\n      \"keyword\": \"<string>\",\n      \"creative\": \"<string>\",\n      \"site_id\": \"<string>\",\n      \"sub_site_id\": \"<string>\",\n      \"requested_at\": \"<date>\"\n    },\n    {\n      \"referral_code\": \"<string>\",\n      \"touchpoint_type\": \"click\",\n      \"team_id\": \"<integer>\",\n      \"network\": \"<string>\",\n      \"campaign\": \"<string>\",\n      \"ad_group\": \"<string>\",\n      \"ad\": \"<string>\",\n      \"ad_type\": \"<string>\",\n      \"placement\": \"<string>\",\n      \"keyword\": \"<string>\",\n      \"creative\": \"<string>\",\n      \"site_id\": \"<string>\",\n      \"sub_site_id\": \"<string>\",\n      \"requested_at\": \"<date>\"\n    }\n  ],\n  \"consent_scopes\": {\n    \"processing\": \"<boolean>\",\n    \"attribution\": \"<boolean>\",\n    \"postbacks\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"event\\\": {\\n    \\\"created_at\\\": \\\"2120-01-02T13:34:56\\\", \\n    \\\"identifiers\\\": \\\"7efa773c803a0..2fbf9a22\\\", \\n    \\\"type\\\": \\\"game_launch\\\", \\n    \\\"user_id\\\": \\\"b91f8k5r\\\"\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7464f131-79d5-4d24-b3d6-a524309a64dc",
+              "name": "403",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"game_launch\",\n  \"user_id\": \"user123\",\n  \"identifiers\": {\n    \"ip\": \"172.123.245.14\",\n    \"os\": \"Windows 7\",\n    \"resolution\": \"1920x1080\",\n    \"language\": \"en\",\n    \"timezone\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"platform_device_id\": \"<string>\",\n    \"gsid\": \"<string>\",\n    \"useragent\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"revenue_currency\": \"USD\",\n  \"revenue_amount\": 0,\n  \"external_ids\": [\n    {\n      \"external_id_type\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"scope_type\": \"<string>\",\n      \"scope_id\": \"<string>\",\n      \"sha256\": \"<string>\"\n    },\n    {\n      \"external_id_type\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"scope_type\": \"<string>\",\n      \"scope_id\": \"<string>\",\n      \"sha256\": \"<string>\"\n    }\n  ],\n  \"timestamp\": \"<dateTime>\",\n  \"transaction_id\": \"<string>\",\n  \"gameplay_session_id\": \"<string>\",\n  \"metadata\": \"<json>\",\n  \"attribution\": [\n    {\n      \"referral_code\": \"<string>\",\n      \"touchpoint_type\": \"click\",\n      \"team_id\": \"<integer>\",\n      \"network\": \"<string>\",\n      \"campaign\": \"<string>\",\n      \"ad_group\": \"<string>\",\n      \"ad\": \"<string>\",\n      \"ad_type\": \"<string>\",\n      \"placement\": \"<string>\",\n      \"keyword\": \"<string>\",\n      \"creative\": \"<string>\",\n      \"site_id\": \"<string>\",\n      \"sub_site_id\": \"<string>\",\n      \"requested_at\": \"<date>\"\n    },\n    {\n      \"referral_code\": \"<string>\",\n      \"touchpoint_type\": \"click\",\n      \"team_id\": \"<integer>\",\n      \"network\": \"<string>\",\n      \"campaign\": \"<string>\",\n      \"ad_group\": \"<string>\",\n      \"ad\": \"<string>\",\n      \"ad_type\": \"<string>\",\n      \"placement\": \"<string>\",\n      \"keyword\": \"<string>\",\n      \"creative\": \"<string>\",\n      \"site_id\": \"<string>\",\n      \"sub_site_id\": \"<string>\",\n      \"requested_at\": \"<date>\"\n    }\n  ],\n  \"consent_scopes\": {\n    \"processing\": \"<boolean>\",\n    \"attribution\": \"<boolean>\",\n    \"postbacks\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"extra\\\": null, \\n  \\\"message\\\": \\\"The provided API Key is invalid\\\", \\n  \\\"status_code\\\": 403, \\n  \\\"type\\\": \\\"InvalidApiKeyException\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0da77bcd-0c5a-4b72-be0d-69d0a0ed4b87",
+              "name": "422",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"game_launch\",\n  \"user_id\": \"user123\",\n  \"identifiers\": {\n    \"ip\": \"172.123.245.14\",\n    \"os\": \"Windows 7\",\n    \"resolution\": \"1920x1080\",\n    \"language\": \"en\",\n    \"timezone\": \"<integer>\",\n    \"sku\": \"<string>\",\n    \"platform\": \"<string>\",\n    \"platform_device_id\": \"<string>\",\n    \"gsid\": \"<string>\",\n    \"useragent\": \"<string>\",\n    \"country\": \"<string>\"\n  },\n  \"revenue_currency\": \"USD\",\n  \"revenue_amount\": 0,\n  \"external_ids\": [\n    {\n      \"external_id_type\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"scope_type\": \"<string>\",\n      \"scope_id\": \"<string>\",\n      \"sha256\": \"<string>\"\n    },\n    {\n      \"external_id_type\": \"<string>\",\n      \"external_id\": \"<string>\",\n      \"scope_type\": \"<string>\",\n      \"scope_id\": \"<string>\",\n      \"sha256\": \"<string>\"\n    }\n  ],\n  \"timestamp\": \"<dateTime>\",\n  \"transaction_id\": \"<string>\",\n  \"gameplay_session_id\": \"<string>\",\n  \"metadata\": \"<json>\",\n  \"attribution\": [\n    {\n      \"referral_code\": \"<string>\",\n      \"touchpoint_type\": \"click\",\n      \"team_id\": \"<integer>\",\n      \"network\": \"<string>\",\n      \"campaign\": \"<string>\",\n      \"ad_group\": \"<string>\",\n      \"ad\": \"<string>\",\n      \"ad_type\": \"<string>\",\n      \"placement\": \"<string>\",\n      \"keyword\": \"<string>\",\n      \"creative\": \"<string>\",\n      \"site_id\": \"<string>\",\n      \"sub_site_id\": \"<string>\",\n      \"requested_at\": \"<date>\"\n    },\n    {\n      \"referral_code\": \"<string>\",\n      \"touchpoint_type\": \"click\",\n      \"team_id\": \"<integer>\",\n      \"network\": \"<string>\",\n      \"campaign\": \"<string>\",\n      \"ad_group\": \"<string>\",\n      \"ad\": \"<string>\",\n      \"ad_type\": \"<string>\",\n      \"placement\": \"<string>\",\n      \"keyword\": \"<string>\",\n      \"creative\": \"<string>\",\n      \"site_id\": \"<string>\",\n      \"sub_site_id\": \"<string>\",\n      \"requested_at\": \"<date>\"\n    }\n  ],\n  \"consent_scopes\": {\n    \"processing\": \"<boolean>\",\n    \"attribution\": \"<boolean>\",\n    \"postbacks\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"extra\\\": {\\n    \\\"type\\\": \\\"required field\\\", \\n    \\\"fake_field\\\": \\\"unknown field\\\"\\n  }, \\n  \\\"message\\\": \\\"Input failed validation\\\", \\n  \\\"status_code\\\": 422, \\n  \\\"type\\\": \\\"ValidationException\\\"\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07fa39bb-c74c-42c8-a462-7664bbc23070",
+          "name": "/events/batch",
+          "request": {
+            "name": "/events/batch",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"events\": [\n    {\n      \"type\": \"game_launch\",\n      \"user_id\": \"user123\",\n      \"identifiers\": {\n        \"ip\": \"172.123.245.14\",\n        \"os\": \"Windows 7\",\n        \"resolution\": \"1920x1080\",\n        \"language\": \"en\",\n        \"timezone\": \"<integer>\",\n        \"sku\": \"<string>\",\n        \"platform\": \"<string>\",\n        \"platform_device_id\": \"<string>\",\n        \"gsid\": \"<string>\",\n        \"useragent\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"revenue_currency\": \"<string>\",\n      \"revenue_amount\": \"<float>\",\n      \"external_ids\": [\n        {\n          \"external_id_type\": \"<string>\",\n          \"external_id\": \"<string>\",\n          \"scope_type\": \"<string>\",\n          \"scope_id\": \"<string>\",\n          \"sha256\": \"<string>\"\n        },\n        {\n          \"external_id_type\": \"<string>\",\n          \"external_id\": \"<string>\",\n          \"scope_type\": \"<string>\",\n          \"scope_id\": \"<string>\",\n          \"sha256\": \"<string>\"\n        }\n      ],\n      \"timestamp\": \"<dateTime>\",\n      \"transaction_id\": \"<string>\",\n      \"gameplay_session_id\": \"<string>\",\n      \"metadata\": \"<json>\",\n      \"attribution\": [\n        {\n          \"referral_code\": \"<string>\",\n          \"touchpoint_type\": \"click\",\n          \"team_id\": \"<integer>\",\n          \"network\": \"<string>\",\n          \"campaign\": \"<string>\",\n          \"ad_group\": \"<string>\",\n          \"ad\": \"<string>\",\n          \"ad_type\": \"<string>\",\n          \"placement\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"creative\": \"<string>\",\n          \"site_id\": \"<string>\",\n          \"sub_site_id\": \"<string>\",\n          \"requested_at\": \"<date>\"\n        },\n        {\n          \"referral_code\": \"<string>\",\n          \"touchpoint_type\": \"click\",\n          \"team_id\": \"<integer>\",\n          \"network\": \"<string>\",\n          \"campaign\": \"<string>\",\n          \"ad_group\": \"<string>\",\n          \"ad\": \"<string>\",\n          \"ad_type\": \"<string>\",\n          \"placement\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"creative\": \"<string>\",\n          \"site_id\": \"<string>\",\n          \"sub_site_id\": \"<string>\",\n          \"requested_at\": \"<date>\"\n        }\n      ],\n      \"consent_scopes\": {\n        \"processing\": \"<boolean>\",\n        \"attribution\": \"<boolean>\",\n        \"postbacks\": \"<boolean>\"\n      }\n    },\n    {\n      \"type\": \"game_launch\",\n      \"user_id\": \"user123\",\n      \"identifiers\": {\n        \"ip\": \"172.123.245.14\",\n        \"os\": \"Windows 7\",\n        \"resolution\": \"1920x1080\",\n        \"language\": \"en\",\n        \"timezone\": \"<integer>\",\n        \"sku\": \"<string>\",\n        \"platform\": \"<string>\",\n        \"platform_device_id\": \"<string>\",\n        \"gsid\": \"<string>\",\n        \"useragent\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"revenue_currency\": \"<string>\",\n      \"revenue_amount\": \"<float>\",\n      \"external_ids\": [\n        {\n          \"external_id_type\": \"<string>\",\n          \"external_id\": \"<string>\",\n          \"scope_type\": \"<string>\",\n          \"scope_id\": \"<string>\",\n          \"sha256\": \"<string>\"\n        },\n        {\n          \"external_id_type\": \"<string>\",\n          \"external_id\": \"<string>\",\n          \"scope_type\": \"<string>\",\n          \"scope_id\": \"<string>\",\n          \"sha256\": \"<string>\"\n        }\n      ],\n      \"timestamp\": \"<dateTime>\",\n      \"transaction_id\": \"<string>\",\n      \"gameplay_session_id\": \"<string>\",\n      \"metadata\": \"<json>\",\n      \"attribution\": [\n        {\n          \"referral_code\": \"<string>\",\n          \"touchpoint_type\": \"click\",\n          \"team_id\": \"<integer>\",\n          \"network\": \"<string>\",\n          \"campaign\": \"<string>\",\n          \"ad_group\": \"<string>\",\n          \"ad\": \"<string>\",\n          \"ad_type\": \"<string>\",\n          \"placement\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"creative\": \"<string>\",\n          \"site_id\": \"<string>\",\n          \"sub_site_id\": \"<string>\",\n          \"requested_at\": \"<date>\"\n        },\n        {\n          \"referral_code\": \"<string>\",\n          \"touchpoint_type\": \"click\",\n          \"team_id\": \"<integer>\",\n          \"network\": \"<string>\",\n          \"campaign\": \"<string>\",\n          \"ad_group\": \"<string>\",\n          \"ad\": \"<string>\",\n          \"ad_type\": \"<string>\",\n          \"placement\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"creative\": \"<string>\",\n          \"site_id\": \"<string>\",\n          \"sub_site_id\": \"<string>\",\n          \"requested_at\": \"<date>\"\n        }\n      ],\n      \"consent_scopes\": {\n        \"processing\": \"<boolean>\",\n        \"attribution\": \"<boolean>\",\n        \"postbacks\": \"<boolean>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff2484fb-3ba9-4631-a3a3-de25bd7b567f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"type\": \"game_launch\",\n      \"user_id\": \"user123\",\n      \"identifiers\": {\n        \"ip\": \"172.123.245.14\",\n        \"os\": \"Windows 7\",\n        \"resolution\": \"1920x1080\",\n        \"language\": \"en\",\n        \"timezone\": \"<integer>\",\n        \"sku\": \"<string>\",\n        \"platform\": \"<string>\",\n        \"platform_device_id\": \"<string>\",\n        \"gsid\": \"<string>\",\n        \"useragent\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"revenue_currency\": \"<string>\",\n      \"revenue_amount\": \"<float>\",\n      \"external_ids\": [\n        {\n          \"external_id_type\": \"<string>\",\n          \"external_id\": \"<string>\",\n          \"scope_type\": \"<string>\",\n          \"scope_id\": \"<string>\",\n          \"sha256\": \"<string>\"\n        },\n        {\n          \"external_id_type\": \"<string>\",\n          \"external_id\": \"<string>\",\n          \"scope_type\": \"<string>\",\n          \"scope_id\": \"<string>\",\n          \"sha256\": \"<string>\"\n        }\n      ],\n      \"timestamp\": \"<dateTime>\",\n      \"transaction_id\": \"<string>\",\n      \"gameplay_session_id\": \"<string>\",\n      \"metadata\": \"<json>\",\n      \"attribution\": [\n        {\n          \"referral_code\": \"<string>\",\n          \"touchpoint_type\": \"click\",\n          \"team_id\": \"<integer>\",\n          \"network\": \"<string>\",\n          \"campaign\": \"<string>\",\n          \"ad_group\": \"<string>\",\n          \"ad\": \"<string>\",\n          \"ad_type\": \"<string>\",\n          \"placement\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"creative\": \"<string>\",\n          \"site_id\": \"<string>\",\n          \"sub_site_id\": \"<string>\",\n          \"requested_at\": \"<date>\"\n        },\n        {\n          \"referral_code\": \"<string>\",\n          \"touchpoint_type\": \"click\",\n          \"team_id\": \"<integer>\",\n          \"network\": \"<string>\",\n          \"campaign\": \"<string>\",\n          \"ad_group\": \"<string>\",\n          \"ad\": \"<string>\",\n          \"ad_type\": \"<string>\",\n          \"placement\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"creative\": \"<string>\",\n          \"site_id\": \"<string>\",\n          \"sub_site_id\": \"<string>\",\n          \"requested_at\": \"<date>\"\n        }\n      ],\n      \"consent_scopes\": {\n        \"processing\": \"<boolean>\",\n        \"attribution\": \"<boolean>\",\n        \"postbacks\": \"<boolean>\"\n      }\n    },\n    {\n      \"type\": \"game_launch\",\n      \"user_id\": \"user123\",\n      \"identifiers\": {\n        \"ip\": \"172.123.245.14\",\n        \"os\": \"Windows 7\",\n        \"resolution\": \"1920x1080\",\n        \"language\": \"en\",\n        \"timezone\": \"<integer>\",\n        \"sku\": \"<string>\",\n        \"platform\": \"<string>\",\n        \"platform_device_id\": \"<string>\",\n        \"gsid\": \"<string>\",\n        \"useragent\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"revenue_currency\": \"<string>\",\n      \"revenue_amount\": \"<float>\",\n      \"external_ids\": [\n        {\n          \"external_id_type\": \"<string>\",\n          \"external_id\": \"<string>\",\n          \"scope_type\": \"<string>\",\n          \"scope_id\": \"<string>\",\n          \"sha256\": \"<string>\"\n        },\n        {\n          \"external_id_type\": \"<string>\",\n          \"external_id\": \"<string>\",\n          \"scope_type\": \"<string>\",\n          \"scope_id\": \"<string>\",\n          \"sha256\": \"<string>\"\n        }\n      ],\n      \"timestamp\": \"<dateTime>\",\n      \"transaction_id\": \"<string>\",\n      \"gameplay_session_id\": \"<string>\",\n      \"metadata\": \"<json>\",\n      \"attribution\": [\n        {\n          \"referral_code\": \"<string>\",\n          \"touchpoint_type\": \"click\",\n          \"team_id\": \"<integer>\",\n          \"network\": \"<string>\",\n          \"campaign\": \"<string>\",\n          \"ad_group\": \"<string>\",\n          \"ad\": \"<string>\",\n          \"ad_type\": \"<string>\",\n          \"placement\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"creative\": \"<string>\",\n          \"site_id\": \"<string>\",\n          \"sub_site_id\": \"<string>\",\n          \"requested_at\": \"<date>\"\n        },\n        {\n          \"referral_code\": \"<string>\",\n          \"touchpoint_type\": \"click\",\n          \"team_id\": \"<integer>\",\n          \"network\": \"<string>\",\n          \"campaign\": \"<string>\",\n          \"ad_group\": \"<string>\",\n          \"ad\": \"<string>\",\n          \"ad_type\": \"<string>\",\n          \"placement\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"creative\": \"<string>\",\n          \"site_id\": \"<string>\",\n          \"sub_site_id\": \"<string>\",\n          \"requested_at\": \"<date>\"\n        }\n      ],\n      \"consent_scopes\": {\n        \"processing\": \"<boolean>\",\n        \"attribution\": \"<boolean>\",\n        \"postbacks\": \"<boolean>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\\"events\\\": [...Event Ojbects...]}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b9bfc1f-f174-4b77-b910-93ecd3a5e696",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"type\": \"game_launch\",\n      \"user_id\": \"user123\",\n      \"identifiers\": {\n        \"ip\": \"172.123.245.14\",\n        \"os\": \"Windows 7\",\n        \"resolution\": \"1920x1080\",\n        \"language\": \"en\",\n        \"timezone\": \"<integer>\",\n        \"sku\": \"<string>\",\n        \"platform\": \"<string>\",\n        \"platform_device_id\": \"<string>\",\n        \"gsid\": \"<string>\",\n        \"useragent\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"revenue_currency\": \"<string>\",\n      \"revenue_amount\": \"<float>\",\n      \"external_ids\": [\n        {\n          \"external_id_type\": \"<string>\",\n          \"external_id\": \"<string>\",\n          \"scope_type\": \"<string>\",\n          \"scope_id\": \"<string>\",\n          \"sha256\": \"<string>\"\n        },\n        {\n          \"external_id_type\": \"<string>\",\n          \"external_id\": \"<string>\",\n          \"scope_type\": \"<string>\",\n          \"scope_id\": \"<string>\",\n          \"sha256\": \"<string>\"\n        }\n      ],\n      \"timestamp\": \"<dateTime>\",\n      \"transaction_id\": \"<string>\",\n      \"gameplay_session_id\": \"<string>\",\n      \"metadata\": \"<json>\",\n      \"attribution\": [\n        {\n          \"referral_code\": \"<string>\",\n          \"touchpoint_type\": \"click\",\n          \"team_id\": \"<integer>\",\n          \"network\": \"<string>\",\n          \"campaign\": \"<string>\",\n          \"ad_group\": \"<string>\",\n          \"ad\": \"<string>\",\n          \"ad_type\": \"<string>\",\n          \"placement\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"creative\": \"<string>\",\n          \"site_id\": \"<string>\",\n          \"sub_site_id\": \"<string>\",\n          \"requested_at\": \"<date>\"\n        },\n        {\n          \"referral_code\": \"<string>\",\n          \"touchpoint_type\": \"click\",\n          \"team_id\": \"<integer>\",\n          \"network\": \"<string>\",\n          \"campaign\": \"<string>\",\n          \"ad_group\": \"<string>\",\n          \"ad\": \"<string>\",\n          \"ad_type\": \"<string>\",\n          \"placement\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"creative\": \"<string>\",\n          \"site_id\": \"<string>\",\n          \"sub_site_id\": \"<string>\",\n          \"requested_at\": \"<date>\"\n        }\n      ],\n      \"consent_scopes\": {\n        \"processing\": \"<boolean>\",\n        \"attribution\": \"<boolean>\",\n        \"postbacks\": \"<boolean>\"\n      }\n    },\n    {\n      \"type\": \"game_launch\",\n      \"user_id\": \"user123\",\n      \"identifiers\": {\n        \"ip\": \"172.123.245.14\",\n        \"os\": \"Windows 7\",\n        \"resolution\": \"1920x1080\",\n        \"language\": \"en\",\n        \"timezone\": \"<integer>\",\n        \"sku\": \"<string>\",\n        \"platform\": \"<string>\",\n        \"platform_device_id\": \"<string>\",\n        \"gsid\": \"<string>\",\n        \"useragent\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"revenue_currency\": \"<string>\",\n      \"revenue_amount\": \"<float>\",\n      \"external_ids\": [\n        {\n          \"external_id_type\": \"<string>\",\n          \"external_id\": \"<string>\",\n          \"scope_type\": \"<string>\",\n          \"scope_id\": \"<string>\",\n          \"sha256\": \"<string>\"\n        },\n        {\n          \"external_id_type\": \"<string>\",\n          \"external_id\": \"<string>\",\n          \"scope_type\": \"<string>\",\n          \"scope_id\": \"<string>\",\n          \"sha256\": \"<string>\"\n        }\n      ],\n      \"timestamp\": \"<dateTime>\",\n      \"transaction_id\": \"<string>\",\n      \"gameplay_session_id\": \"<string>\",\n      \"metadata\": \"<json>\",\n      \"attribution\": [\n        {\n          \"referral_code\": \"<string>\",\n          \"touchpoint_type\": \"click\",\n          \"team_id\": \"<integer>\",\n          \"network\": \"<string>\",\n          \"campaign\": \"<string>\",\n          \"ad_group\": \"<string>\",\n          \"ad\": \"<string>\",\n          \"ad_type\": \"<string>\",\n          \"placement\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"creative\": \"<string>\",\n          \"site_id\": \"<string>\",\n          \"sub_site_id\": \"<string>\",\n          \"requested_at\": \"<date>\"\n        },\n        {\n          \"referral_code\": \"<string>\",\n          \"touchpoint_type\": \"click\",\n          \"team_id\": \"<integer>\",\n          \"network\": \"<string>\",\n          \"campaign\": \"<string>\",\n          \"ad_group\": \"<string>\",\n          \"ad\": \"<string>\",\n          \"ad_type\": \"<string>\",\n          \"placement\": \"<string>\",\n          \"keyword\": \"<string>\",\n          \"creative\": \"<string>\",\n          \"site_id\": \"<string>\",\n          \"sub_site_id\": \"<string>\",\n          \"requested_at\": \"<date>\"\n        }\n      ],\n      \"consent_scopes\": {\n        \"processing\": \"<boolean>\",\n        \"attribution\": \"<boolean>\",\n        \"postbacks\": \"<boolean>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c04fb09d-7011-4e65-a076-338fea67749e",
+          "name": "/games/{game_id}/do_not_track",
+          "request": {
+            "name": "/games/{game_id}/do_not_track",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "games",
+                ":game_id",
+                "do_not_track"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "game_id",
+                  "description": "(Required) ID for the Game you want to add the Do Not Track record for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Api-Version",
+                "value": "2.0.0",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sha256\": \"server\",\n  \"consent_scopes\": {\n    \"processing\": \"<boolean>\",\n    \"attribution\": \"<boolean>\",\n    \"postbacks\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "34e6eb1f-a2c9-4d86-b92d-12b44f47749f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "games",
+                    ":game_id",
+                    "do_not_track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "game_id",
+                      "description": "(Required) ID for the Game you want to add the Do Not Track record for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This should be an API Key with the GDPR scope",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Api-Version",
+                    "value": "2.0.0",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sha256\": \"server\",\n  \"consent_scopes\": {\n    \"processing\": \"<boolean>\",\n    \"attribution\": \"<boolean>\",\n    \"postbacks\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"success\\\": true\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7d6a1e3-1cad-4ad0-917e-432b07f5fd9b",
+          "name": "/games/{game_id}/do_not_track",
+          "request": {
+            "name": "/games/{game_id}/do_not_track",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "games",
+                ":game_id",
+                "do_not_track"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "List of IDs for users to read from to the Do Not Track list. Pass the `user_id` param multiple times to pull multiple users in a single call."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "List of IDs for users to read from to the Do Not Track list. Pass the `user_id` param multiple times to pull multiple users in a single call."
+                },
+                {
+                  "disabled": false,
+                  "key": "sha256",
+                  "value": "server",
+                  "description": "Determines data hashing process. By default all IDs are hashed on the server side before storage. If you would prefer to SHA256 hash data before sending it to the API pass \"client\""
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "game_id",
+                  "description": "(Required) ID for the Game you want to add the Do Not Track record for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Api-Version",
+                "value": "2.0.0",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c28704b-a72d-4658-847a-0271172c51a9",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "games",
+                    ":game_id",
+                    "do_not_track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha256",
+                      "value": "server"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "game_id",
+                      "description": "(Required) ID for the Game you want to add the Do Not Track record for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This should be an API Key with the GDPR scope",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Api-Version",
+                    "value": "2.0.0",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"optouts\\\": [\\n        {\\n           \\\"user_id\\\": \\\"d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35\\\",\\n           \\\"game_id\\\": 1,\\n           \\\"consent_scopes\\\": {\\n                \\\"attribution\\\": true,\\n                \\\"postbacks\\\": false,\\n                \\\"processing\\\": false\\n            },\\n            \\\"created_at\\\": \\\"2023-01-01T10:12:59\\\",\\n            \\\"updated_at\\\": \\\"2023-01-01T10:12:59\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ingest.marketing.gamesight.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "db78ae89-8998-4aa9-98ce-e6e741d2e441",
+    "name": "Gamesight Measurement API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gamesight Measurement API ingests a stream of in-game event data with device-level identifiers to power marketing attribution and measurement for PC, console, and web games. Send single events to /events or batches to /events/batch, and manage per-game do-not-track (GDPR/CCPA opt-out) state.\n\nContact Support:\n Name: Gamesight Support\n Email: support@gamesight.io",
+      "type": "text/plain"
+    }
+  }
+}

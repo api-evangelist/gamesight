@@ -95,13 +95,13 @@
 - [Creator Programs](https://docs.gamesight.io/docs/creator-programs.md): Gamesight's fully managed Creator Programs.
 - [Creator Program Dashboard](https://docs.gamesight.io/docs/creator-program-dashboard.md)
 - [Creator Applications](https://docs.gamesight.io/docs/creator-applications.md)
-- [Creator Quests](https://docs.gamesight.io/docs/creator-quests.md): Reward creators for hitting content creation and engagement goals with automated quest tracking.
 - [Creator Discord Integration](https://docs.gamesight.io/docs/creator-discord-integration.md)
 - [Creator Program Checklist](https://docs.gamesight.io/docs/creator-program-checklist.md)
 - [Creator-Led Playtests](https://docs.gamesight.io/docs/playtesting.md): Gamesight's Creator-Led Playtesting councils.
 - [Brand Safety](https://docs.gamesight.io/docs/brand-safety.md): Gamesight's Brand Safety tooling allows you to comfortably align your campaigns with your brand's values.
 - [Custom Creator Tags](https://docs.gamesight.io/docs/custom-creator-tags.md)
 - [Content Association](https://docs.gamesight.io/docs/content-association.md)
+- [Creator Quests](https://docs.gamesight.io/docs/creator-quests.md): Reward creators for hitting content creation and engagement goals with automated quest tracking.
 - [Key Distribution](https://docs.gamesight.io/docs/key-distribution.md)
 - [Creator Bingo](https://docs.gamesight.io/docs/creator-bingo.md): Creator Bingo is an interactive tool for running engaging bingo challenges with creators during campaigns and programs.
 - [Payments](https://docs.gamesight.io/docs/payments.md): Gamesight's global payment infrastructure handles creator payments, tax compliance, and payouts at scale - so you can focus on your campaigns.
@@ -167,3 +167,8 @@
 - [February 2026](https://docs.gamesight.io/changelog/february-2026.md)
 - [January 2026](https://docs.gamesight.io/changelog/january-2026.md)
 - [December 2026](https://docs.gamesight.io/changelog/december-2026.md)
+- [November 2025](https://docs.gamesight.io/changelog/november-2025.md)
+- [October 2025](https://docs.gamesight.io/changelog/october-2025.md)
+- [September 2025](https://docs.gamesight.io/changelog/september-2025.md)
+- [August 2025](https://docs.gamesight.io/changelog/august-2025.md)
+- [July 2025](https://docs.gamesight.io/changelog/july-2025.md)

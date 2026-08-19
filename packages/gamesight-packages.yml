@@ -1,0 +1,62 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  npm registry search (registry.npmjs.org/-/v1/search?text=gamesight), PyPI
+  (pypi.org/pypi/gamesight/json, gamesight-api), jsDelivr
+  (data.jsdelivr.com/v1/packages/npm/@gamesight/sdk),
+  https://docs.gamesight.io/docs/web-sdk-quick-start,
+  https://docs.gamesight.io/reference/web-sdk-overview
+note: >-
+  Gamesight publishes NO client library on any public package registry. npm
+  search for "gamesight" returned zero results; PyPI 404s for `gamesight` and
+  `gamesight-api`; jsDelivr has no @gamesight/sdk. The only first-party
+  distributed client is the Web Measurement SDK, which is CDN-distributed as a
+  single script from cdn.gsght.com and has no registry entry and no metadata
+  endpoint to query. Server-side integration with both REST APIs is documented
+  as raw HTTP (curl examples), with no official SDK in any language. The
+  third-party dltHub "gamesight-measurement-api" source is a community
+  connector, not a Gamesight-published package, and is not listed here.
+packages:
+  - language: javascript
+    registry: cdn
+    name: Gamesight Web Measurement SDK
+    url: https://cdn.gsght.com/sdk.js
+    install: '<script src="https://cdn.gsght.com/sdk.js" async></script>'
+    global: gsght
+    official: true
+    version: null
+    published: null
+    version_note: >-
+      Unpinned distribution. The documented script URL carries no version
+      segment and floats to whatever cdn.gsght.com currently serves, so a
+      consumer cannot tell which build they are loading — and neither can we.
+      There is no registry metadata endpoint for a bare CDN script and no
+      jsDelivr/unpkg entry. The only currency signal available is the HTTP
+      Last-Modified on the asset itself.
+    last_modified: '2025-09-03'
+    size_bytes: 12929
+    docs: https://docs.gamesight.io/reference/web-sdk-reference
+    checked: '2026-08-13'
+registries_checked:
+  - registry: npm
+    query: gamesight
+    result: 0 matches
+  - registry: pypi
+    query: gamesight, gamesight-api
+    result: 404
+  - registry: jsdelivr
+    query: '@gamesight/sdk'
+    result: 404
+  - registry: rubygems
+    result: not published
+  - registry: packagist
+    result: not published
+  - registry: crates.io
+    result: not published
+  - registry: nuget
+    result: not published
+  - registry: maven-central
+    result: not published
+  - registry: pkg.go.dev
+    result: not published
+official_sdk_count: 1

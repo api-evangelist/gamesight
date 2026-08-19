@@ -1,28 +1,102 @@
-generated: '2026-07-19'
-method: searched
+generated: '2026-08-13'
+method: probed
+source: live GET of /.well-known/* on every apis.yml baseURL host, the OpenAPI servers[] hosts, the console host, and the docs host
 note: >-
-  Probed /.well-known/ and common discovery paths on the marketing site, console,
-  and docs hosts. No genuine well-known document was served. console.gamesight.io
-  returns HTTP 200 for /.well-known/security.txt but the body is the SPA HTML
-  shell (soft-404), not an RFC 9116 document, so it is not captured.
+  Round 2 upgrade. The 2026-07-19 pass probed only the marketing/console/docs
+  hosts and recorded a total absence. Probing the API hosts named in the
+  provider's own OpenAPI servers[] found REAL documents: api.marketing.gamesight.io
+  and console.gamesight.io both serve an RFC 8414 OAuth 2.0 Authorization Server
+  Metadata document, and console.gamesight.io serves an RFC 9728 OAuth 2.0
+  Protected Resource Metadata document at the MCP-scoped sub-path. Those three
+  200s are genuine JSON documents (not SPA shells) and are captured verbatim below.
+  console.gamesight.io answers HTTP 200 with the same SPA HTML shell for EVERY
+  unknown path (verified: /bogus-xyz-123 -> 200 HTML), so any 200 from that host
+  that returns HTML is recorded as a soft-404 miss, never as a hit.
 hosts:
-  - host: https://gamesight.io
+  - host: https://api.marketing.gamesight.io
+    role: Reporting API host (OpenAPI servers[] of the Reporting API)
     documents:
-      - path: /.well-known/security.txt
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        captured: true
+        file: gamesight-oauth-authorization-server.json
+        spec: RFC 8414
+        note: Advertises issuer console.gamesight.io, authorization_code + refresh_token grants, PKCE S256, dynamic client registration, and a single supported scope "mcp".
+      - path: /.well-known/oauth-protected-resource
         status: 404
       - path: /.well-known/openid-configuration
         status: 404
-      - path: /llms.txt
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
         status: 404
   - host: https://console.gamesight.io
+    role: Console / OAuth issuer / MCP server host
     documents:
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        captured: true
+        file: gamesight-console-oauth-authorization-server.json
+        spec: RFC 8414
+      - path: /.well-known/oauth-protected-resource/mcp
+        status: 200
+        captured: true
+        file: gamesight-oauth-protected-resource-mcp.json
+        spec: RFC 9728
+        note: >-
+          Discovered from the WWW-Authenticate resource_metadata parameter returned
+          by the 401 on https://console.gamesight.io/mcp. Names the protected
+          resource "Gamesight MCP Server".
+      - path: /.well-known/openid-configuration
+        status: 200
+        captured: false
+        reason: SPA HTML shell, not an OIDC discovery document (soft-404)
       - path: /.well-known/security.txt
         status: 200
         captured: false
-        reason: SPA HTML shell, not a security.txt document
+        reason: SPA HTML shell, not an RFC 9116 document (soft-404)
+  - host: https://api.ingest.marketing.gamesight.io
+    role: Measurement (ingest) API host
+    documents:
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /openapi.json
+        status: 404
+      - path: /swagger.json
+        status: 404
+  - host: https://gamesight.io
+    role: Marketing site
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
   - host: https://docs.gamesight.io
+    role: Documentation host
     documents:
       - path: /llms.txt
         status: 200
         captured: true
         file: ../llms/gamesight-llms.txt
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /openapi.json
+        status: 404
+        reason: returns the ReadMe docs HTML shell, not a spec
+x-evidence:
+  fetched: '2026-08-13'
+  real_documents: 3
+  soft_404_hosts:
+    - console.gamesight.io

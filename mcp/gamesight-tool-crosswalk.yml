@@ -1,0 +1,105 @@
+generated: '2026-08-13'
+method: derived
+source: mcp/gamesight-mcp.yml, openapi/gamesight-measurement-api-openapi.yml, openapi/gamesight-reporting-api-openapi.yml
+note: >-
+  Gamesight has BOTH a hosted MCP server (https://console.gamesight.io/mcp,
+  verified by probe) and published OpenAPI, so a crosswalk is required. But the
+  MCP tool list is OAuth-gated: tools/list returns 401 invalid_token, and
+  Gamesight publishes no tool list in its docs or llms.txt. There is therefore
+  NO published tool inventory to bind operations to, and none is invented here.
+  crosswalk[] is deliberately empty. What CAN be recorded honestly is the REST
+  side of the divergence: every public OpenAPI operation, none of which is
+  currently known to have a corresponding MCP tool. When an authenticated
+  tools/list becomes available, bind these rows and move them out of rest_only[].
+surfaces:
+  openapi:
+    - file: openapi/gamesight-measurement-api-openapi.yml
+      host: https://api.ingest.marketing.gamesight.io
+      gated: false
+      auth: API key in Authorization header
+    - file: openapi/gamesight-reporting-api-openapi.yml
+      host: https://api.marketing.gamesight.io
+      gated: false
+      auth: API key in Authorization header (Reporting / Aggregate Reporting / GDPR / Audit scope)
+  graphql: null
+  mcp:
+    url: https://console.gamesight.io/mcp
+    gated: true
+    gate: OAuth 2.0 bearer token, scope "mcp"
+    tools_list_status: 401
+crosswalk: []
+mcp_only: []
+rest_only:
+  - capability: Event ingestion
+    api: measurement
+    operations:
+      - operationId: measurement-api-events
+        method: POST
+        path: /events
+      - operationId: eventsbatch
+        method: POST
+        path: /events/batch
+  - capability: Privacy / do-not-track control
+    api: measurement
+    operations:
+      - operationId: do_not_track
+        method: PUT
+        path: /games/{game_id}/do_not_track
+      - operationId: get_do_not_track
+        method: GET
+        path: /games/{game_id}/do_not_track
+  - capability: Marketing analytics reporting
+    api: reporting
+    operations:
+      - operationId: stats-v3
+        method: POST
+        path: /stats
+      - operationId: reportinggoals
+        method: POST
+        path: /reporting/goals
+  - capability: Catalog / configuration reads
+    api: reporting
+    operations:
+      - operationId: games
+        method: GET
+        path: /games
+      - operationId: goal_types
+        method: GET
+        path: /goal_types
+      - operationId: trackers
+        method: GET
+        path: /trackers
+  - capability: Tracker management
+    api: reporting
+    operations:
+      - operationId: trackers-1
+        method: POST
+        path: /trackers
+  - capability: User-level attribution
+    api: reporting
+    operations:
+      - operationId: reportingusersevents
+        method: GET
+        path: /reporting/users/events
+      - operationId: reportinguserstouchpoints
+        method: GET
+        path: /reporting/users/touchpoints
+  - capability: GDPR / CCPA data subject requests
+    api: reporting
+    operations:
+      - operationId: reportingusersremove
+        method: DELETE
+        path: /reporting/users/remove
+  - capability: Audit
+    api: reporting
+    operations:
+      - operationId: audit_logs
+        method: GET
+        path: /audit_logs
+coverage:
+  tools_named: 0
+  tools_bound: 0
+  mcp_only: 0
+  rest_operations_total: 14
+  rest_operations_with_tool: 0
+  blocked_by: mcp-tools-list-oauth-gated

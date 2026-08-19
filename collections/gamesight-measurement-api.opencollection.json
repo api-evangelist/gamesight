@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gamesight Measurement API",
+    "version": "1.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Measurement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "/events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ingest.marketing.gamesight.io/events",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "/events"
+        },
+        {
+          "info": {
+            "name": "/events/batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ingest.marketing.gamesight.io/events/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "/events/batch"
+        },
+        {
+          "info": {
+            "name": "/games/{game_id}/do_not_track",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ingest.marketing.gamesight.io/games/:game_id/do_not_track",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "X-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "game_id",
+                "value": "",
+                "type": "path",
+                "description": "ID for the Game you want to add the Do Not Track record for"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "List of IDs for users to read from to the Do Not Track list. Pass the `user_id` param multiple times to pull multiple users in a single call."
+              },
+              {
+                "name": "sha256",
+                "value": "",
+                "type": "query",
+                "description": "Determines data hashing process. By default all IDs are hashed on the server side before storage. If you would prefer to SHA256 hash data before sending it to the API pass \"client\""
+              }
+            ]
+          },
+          "docs": "/games/{game_id}/do_not_track"
+        },
+        {
+          "info": {
+            "name": "/games/{game_id}/do_not_track",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.ingest.marketing.gamesight.io/games/:game_id/do_not_track",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "X-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "game_id",
+                "value": "",
+                "type": "path",
+                "description": "ID for the Game you want to add the Do Not Track record for"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "/games/{game_id}/do_not_track"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

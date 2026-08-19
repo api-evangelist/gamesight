@@ -1,20 +1,69 @@
-generated: '2026-07-19'
+generated: '2026-08-13'
 method: searched
-source: https://docs.gamesight.io/changelog
+source: https://docs.gamesight.io/changelog, https://docs.gamesight.io/llms.txt
 scheme: monthly-rollup
+current_api_versions:
+  measurement: 1.1.0
+  reporting: 2.0.0
 note: >-
-  Gamesight publishes a dated monthly product-updates changelog. Individual
-  monthly entries link to detail pages; the recent window is captured below by
-  month. Breaking-vs-additive classification is not labeled per entry in the
-  index.
+  Gamesight publishes a dated monthly product-updates changelog. Entries are
+  product-level rollups, not API release notes: they are not labeled breaking vs
+  additive and they do not carry API version numbers, so breaking-change
+  classification below is left null rather than guessed. Each month's items are
+  prefixed in the source with emoji severity markers — new feature, improvement,
+  under-the-hood, and fix. Round 2 pulled the two most recent months in full and
+  extended the index back through July 2025 from the docs llms.txt.
+  Note the provider's own index lists a "December 2026" entry positioned between
+  January 2026 and November 2025, which is a labeling error on their side; it is
+  recorded verbatim as published rather than silently corrected.
 entries:
   - date: '2026-04'
     title: April 2026 product updates
+    url: https://docs.gamesight.io/changelog/april-2026
+    breaking: null
+    highlights:
+      - Creator Dashboard Announcements — post announcements with optional CTA buttons to a Creator Program's public dashboard.
+      - Creator Dashboard Resource Links — manage a sidebar of creator assets, ToS, brand guidelines and overlays on Creator Program sites.
+      - Grand Prize Draw Quests — a quest type where each completion earns another entry in a grand prize drawing.
+      - Attribution Performance — 2x+ throughput improvement via dynamic batch sizing and auto-tuning optimizations.
+      - Search Synonyms — activation column searches now match synonyms ("D1" matches "Deliverable 1").
+      - Postback Log Updates — improved postback logging visibility for several ad networks.
+      - Daily Profile Refresh — every creator in a campaign or program refreshed at least daily across TikTok, Instagram, Twitter/X and YouTube.
   - date: '2026-03'
     title: March 2026 product updates
+    url: https://docs.gamesight.io/changelog/march-2026
+    breaking: null
+    highlights:
+      - Community Quests — collaborative quest format where a whole program contributes toward a shared goal.
+      - Mass Mail Composer — drag-and-drop block editor for branded creator email with templates, variables and live preview.
+      - Application Form Filters — filter the applications table by custom form field values.
+      - Influencer Profile Merging — merge duplicate influencer profiles from the console with merge-direction control.
+      - Content Tab Sorting & Filtering — cross-page sorting and filtering on the Content tab.
+      - Collection Pipeline Reliability — resolved data-collection scheduling edge cases with automated gap monitoring.
   - date: '2026-02'
     title: February 2026 product updates
+    url: https://docs.gamesight.io/changelog/february-2026
   - date: '2026-01'
     title: January 2026 product updates
-  - date: '2025-12'
-    title: December 2025 product updates
+    url: https://docs.gamesight.io/changelog/january-2026
+  - date: '2026-12'
+    title: December 2026 product updates
+    url: https://docs.gamesight.io/changelog/december-2026
+    note: Mislabeled in the provider's own index; appears in sequence where December 2025 belongs.
+  - date: '2025-11'
+    title: November 2025 product updates
+    url: https://docs.gamesight.io/changelog/november-2025
+  - date: '2025-10'
+    title: October 2025 product updates
+    url: https://docs.gamesight.io/changelog/october-2025
+  - date: '2025-09'
+    title: September 2025 product updates
+    url: https://docs.gamesight.io/changelog/september-2025
+  - date: '2025-08'
+    title: August 2025 product updates
+    url: https://docs.gamesight.io/changelog/august-2025
+  - date: '2025-07'
+    title: July 2025 product updates
+    url: https://docs.gamesight.io/changelog/july-2025
+entry_count: 10
+checked: '2026-08-13'

@@ -1,0 +1,338 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Gamesight Measurement Reporting API",
+    "version": "1.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reporting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "/stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ingest.marketing.gamesight.io/stats",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "X-Api-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "/stats"
+        },
+        {
+          "info": {
+            "name": "/reporting/goals",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ingest.marketing.gamesight.io/reporting/goals",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "X-Api-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "/reporting/goals"
+        },
+        {
+          "info": {
+            "name": "/games",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ingest.marketing.gamesight.io/games",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "X-Api-Version",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "/games"
+        },
+        {
+          "info": {
+            "name": "/trackers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ingest.marketing.gamesight.io/trackers",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "X-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "with_names",
+                "value": "",
+                "type": "query",
+                "description": "Pass `true` to include Tracker names in the response, defaults to `false`"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Pass a limit to restrict the number of results in the API response. Returns all trackers by default"
+              },
+              {
+                "name": "after_shortcode",
+                "value": "",
+                "type": "query",
+                "description": "Pass a tracker shortcode to page through Trackers, results are ordered by shortcode. Use in combination with limit for pagination."
+              },
+              {
+                "name": "updated_after",
+                "value": "",
+                "type": "query",
+                "description": "Pass to filter results to only include Trackers that were updated after the specified timestamp"
+              }
+            ]
+          },
+          "docs": "/trackers"
+        },
+        {
+          "info": {
+            "name": "/trackers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ingest.marketing.gamesight.io/trackers",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "X-Api-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "/trackers"
+        },
+        {
+          "info": {
+            "name": "/goal_types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ingest.marketing.gamesight.io/goal_types",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "X-Api-Version",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "/goal_types"
+        },
+        {
+          "info": {
+            "name": "/audit_logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ingest.marketing.gamesight.io/audit_logs",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "query",
+                "description": "Org ID for the Organization to pull audit logs from"
+              },
+              {
+                "name": "start_datetime",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range to pull logs from, inclusive. ISO 8601 format, UTC."
+              },
+              {
+                "name": "end_datetime",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range to pull audit logs from, inclusive. ISO 8601 format, UTC."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page. Min: 1, Max: 500"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              }
+            ]
+          },
+          "docs": "/audit_logs"
+        },
+        {
+          "info": {
+            "name": "/reporting/users/events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ingest.marketing.gamesight.io/reporting/users/events",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "X-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "game_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "/reporting/users/events"
+        },
+        {
+          "info": {
+            "name": "/reporting/users/touchpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ingest.marketing.gamesight.io/reporting/users/touchpoints",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "X-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "game_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "/reporting/users/touchpoints"
+        },
+        {
+          "info": {
+            "name": "/reporting/users/remove",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.ingest.marketing.gamesight.io/reporting/users/remove",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "X-Api-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "game_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "/reporting/users/remove"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

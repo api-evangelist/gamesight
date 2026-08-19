@@ -1,0 +1,30 @@
+generated: '2026-08-13'
+method: searched
+source: https://gamesight.io/, https://gamesight.io/products/measurement, https://gamesight.io/about
+note: >-
+  Gamesight publishes no pricing page and no plan tiers. gamesight.io/pricing
+  returns HTTP 404, and the site footer link set (about, careers, gdpr,
+  newsletter, privacy-policy, products/measurement,
+  products/creator-marketing, products/creator-programs,
+  products/creator-led-playtests) contains no pricing or plans destination.
+  There is no machine-readable pricing or catalog endpoint. Commercial terms are
+  sales-negotiated: the product pages route to a "Get a Demo" / contact flow,
+  and the API rate-limit documentation states that limit increases are arranged
+  "via your account manager", which confirms an account-managed commercial
+  model rather than published self-serve tiers. This is an honest zero, not an
+  omission.
+plan_count: 0
+model: contact-sales
+free_tier: false
+public_pricing: false
+evidence:
+  - url: https://gamesight.io/pricing
+    status: 404
+  - url: https://gamesight.io/
+    status: 200
+    note: footer link inventory contains no pricing page
+  - url: https://docs.gamesight.io/reference/rate-limits
+    status: 200
+    note: rate-limit increases handled by an account manager
+plans: []
+checked: '2026-08-13'

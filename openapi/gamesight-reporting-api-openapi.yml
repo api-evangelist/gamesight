@@ -9,7 +9,16 @@ info:
     url: https://docs.gamesight.io/
   x-apisjson-source: https://docs.gamesight.io/reference (ReadMe embedded OpenAPI blocks)
 servers:
-- url: https://api.ingest.marketing.gamesight.io
+- url: https://api.marketing.gamesight.io
+  description: >-
+    Reporting API host. Corrected 2026-08-13: this refined spec carried the
+    ingest host, which does not serve the Reporting routes. Gamesight's own
+    harvested source spec (openapi/_original/gamesight-reporting-openapi.json)
+    names api.marketing.gamesight.io, and a live unauthenticated probe confirms
+    it: GET https://api.marketing.gamesight.io/games and /trackers return 403
+    PermissionsException (route exists, auth required) while the same paths on
+    api.ingest.marketing.gamesight.io return 404, and GET /events returns 405
+    on the ingest host and 404 here.
 security:
 - ApiKeyAuth: []
 tags:

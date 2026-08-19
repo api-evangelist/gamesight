@@ -1,55 +1,76 @@
-generated: '2026-07-19'
-method: derived
-status: candidate
-source: openapi/gamesight-measurement-openapi.json, openapi/gamesight-reporting-openapi.json
+generated: '2026-08-13'
+method: probed
+status: published
+source: https://console.gamesight.io/.well-known/oauth-protected-resource/mcp
 note: >-
-  No official hosted/remote Gamesight MCP server was found on the docs, npm
-  (@modelcontextprotocol), or public MCP registries as of 2026-07-19. This is a
-  candidate tool list derived one-per-operation from the two harvested OpenAPI
-  specs, provided as a starting point for an agent-native surface.
+  UPGRADE (2026-08-13). The 2026-07-19 pass concluded no Gamesight MCP server
+  existed and wrote a derived candidate tool list with `deployment.mode: none`.
+  That was wrong. Gamesight runs a real, hosted, remote MCP server at
+  https://console.gamesight.io/mcp. It was found by probing the API hosts named
+  in the provider's own OpenAPI servers[]: api.marketing.gamesight.io serves an
+  RFC 8414 OAuth Authorization Server Metadata document whose only supported
+  scope is "mcp". POSTing a JSON-RPC tools/list to https://console.gamesight.io/mcp
+  returns HTTP 401 {"error":"invalid_token"} with a WWW-Authenticate header whose
+  resource_metadata parameter points at
+  https://console.gamesight.io/.well-known/oauth-protected-resource/mcp — an
+  RFC 9728 document that names the resource "Gamesight MCP Server".
+  Gamesight does not document this server anywhere in its public docs: it is
+  absent from docs.gamesight.io/llms.txt, and /docs/mcp, /docs/mcp-server and
+  /docs/ai-agents all 404. The endpoint is real and provider-served; the tool
+  surface is OAuth-gated and therefore not enumerable anonymously.
+deployment:
+  mode: remote
+  endpoint: https://console.gamesight.io/mcp
+  auth: oauth
+  verified: probed
+  checked: '2026-08-13'
 server:
-  name: gamesight
+  name: Gamesight MCP Server
   transport: http
+  url: https://console.gamesight.io/mcp
+  resource_metadata: https://console.gamesight.io/.well-known/oauth-protected-resource/mcp
+  documented_publicly: false
+authorization:
+  issuer: https://console.gamesight.io
+  authorization_endpoint: https://console.gamesight.io/authorize
+  token_endpoint: https://console.gamesight.io/api/app/oauth/token
+  registration_endpoint: https://console.gamesight.io/api/app/oauth/register
+  revocation_endpoint: https://console.gamesight.io/api/app/oauth/revoke
+  grant_types: [authorization_code, refresh_token]
+  response_types: [code]
+  code_challenge_methods: [S256]
+  token_endpoint_auth_methods: [client_secret_post, client_secret_basic]
+  scopes_supported: [mcp]
+  bearer_methods_supported: [header]
+  dynamic_client_registration: true
+  metadata_documents:
+    - well-known/gamesight-oauth-authorization-server.json
+    - well-known/gamesight-console-oauth-authorization-server.json
+    - well-known/gamesight-oauth-protected-resource-mcp.json
 tools:
-  - name: send_event
-    description: Send a single in-game measurement event with device identifiers.
-    source_operation: openapi/gamesight-measurement-openapi.json#measurement-api-events
-  - name: send_events_batch
-    description: Send a batch of measurement events (up to rate limit) in one request.
-    source_operation: openapi/gamesight-measurement-openapi.json#eventsbatch
-  - name: set_game_do_not_track
-    description: Set do-not-track (GDPR/CCPA opt-out) state for a game.
-    source_operation: openapi/gamesight-measurement-openapi.json#do_not_track
-  - name: get_game_do_not_track
-    description: Read do-not-track state for a game.
-    source_operation: openapi/gamesight-measurement-openapi.json#get_do_not_track
-  - name: list_games
-    description: List the games the API key can access.
-    source_operation: openapi/gamesight-reporting-openapi.json#games
-  - name: list_goal_types
-    description: List the goal types available to the API key.
-    source_operation: openapi/gamesight-reporting-openapi.json#goal_types
-  - name: list_trackers
-    description: List marketing trackers the API key can access.
-    source_operation: openapi/gamesight-reporting-openapi.json#trackers
-  - name: create_tracker
-    description: Create a new marketing tracker.
-    source_operation: openapi/gamesight-reporting-openapi.json#trackers-1
-  - name: get_stats
-    description: Query marketing analytics stats (campaign/goal metrics).
-    source_operation: openapi/gamesight-reporting-openapi.json#stats-v3
-  - name: report_goals
-    description: Pull goal-level reporting data.
-    source_operation: openapi/gamesight-reporting-openapi.json#reportinggoals
-  - name: list_audit_logs
-    description: Retrieve account audit logs.
-    source_operation: openapi/gamesight-reporting-openapi.json#audit_logs
-  - name: get_user_events
-    description: Pull user-level attribution events (Reporting scope).
-    source_operation: openapi/gamesight-reporting-openapi.json#reportingusersevents
-  - name: get_user_touchpoints
-    description: Pull user-level marketing touchpoints (Reporting scope).
-    source_operation: openapi/gamesight-reporting-openapi.json#reportinguserstouchpoints
-  - name: remove_user_data
-    description: GDPR right-to-forget — remove a user's data.
-    source_operation: openapi/gamesight-reporting-openapi.json#reportingusersremove
+  status: gated
+  count: null
+  note: >-
+    tools/list requires an OAuth bearer token with the "mcp" scope. No tool list
+    is published in the docs or llms.txt, so the real tool names and inputSchemas
+    cannot be established without an authenticated introspection. NOTHING IS
+    INVENTED HERE. The derived one-tool-per-operation candidate list written in
+    round 1 has been moved to mcp/gamesight-tool-crosswalk.yml as REST-side
+    surface only; it is explicitly NOT a claim about what this server exposes.
+x-evidence:
+  - fetched: '2026-08-13'
+    url: https://console.gamesight.io/mcp
+    method: POST
+    body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+    http_status: 401
+    response: '{"error": "invalid_token", "error_description": "Authentication required"}'
+    www_authenticate: 'Bearer error="invalid_token", error_description="Authentication required", resource_metadata="https://console.gamesight.io/.well-known/oauth-protected-resource/mcp"'
+  - fetched: '2026-08-13'
+    url: https://console.gamesight.io/.well-known/oauth-protected-resource/mcp
+    http_status: 200
+    content_type: application/json
+    resource_name: Gamesight MCP Server
+  - fetched: '2026-08-13'
+    url: https://api.marketing.gamesight.io/.well-known/oauth-authorization-server
+    http_status: 200
+    content_type: application/json

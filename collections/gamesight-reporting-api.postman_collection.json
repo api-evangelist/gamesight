@@ -1,0 +1,1234 @@
+{
+  "item": [
+    {
+      "id": "d565c3eb-d37e-43e9-b43b-b1880746c419",
+      "name": "Reporting",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6bc8f3d9-a247-4f0d-b015-fae82eb0aa4d",
+          "name": "/stats",
+          "request": {
+            "name": "/stats",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Note that you must pass a version 3 header to get this API",
+                "key": "X-Api-Version",
+                "value": "3.0.0"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"game_id\": \"<integer>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"groups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filters\": {\n    \"start_triggered_at_date\": \"<date>\",\n    \"end_triggered_at_date\": \"<date>\",\n    \"team_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"networks\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"campaigns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ad_groups\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ads\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sub1\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sub2\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sub3\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sub4\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sub5\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"countries\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"user_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"platforms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"touchpoint_types\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"goal_type_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"include_unattributed\": false\n  },\n  \"timezone\": \"UTC\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "81071152-9d67-49f9-b4bb-d11d1a43aad3",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This should be an API Key with the Advertiser scope",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Note that you must pass a version 3 header to get this API",
+                    "key": "X-Api-Version",
+                    "value": "3.0.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"game_id\": \"<integer>\",\n  \"fields\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"groups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"filters\": {\n    \"start_triggered_at_date\": \"<date>\",\n    \"end_triggered_at_date\": \"<date>\",\n    \"team_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"networks\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"campaigns\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ad_groups\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"ads\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sub1\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sub2\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sub3\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sub4\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"sub5\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"countries\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"user_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"platforms\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"touchpoint_types\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"goal_type_ids\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"include_unattributed\": false\n  },\n  \"timezone\": \"UTC\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n    \\\"results\\\": [\\n        {\\n            \\\"campaign\\\": \\\"google-ads-game-launch-campaign\\\",\\n            \\\"campaign_name\\\": \\\"Google Ads Game Launch Campaign\\\",\\n            \\\"click_through_rate\\\": 41.93876939668085,\\n            \\\"clicks\\\": 7000,\\n            \\\"clicks_unique\\\": 5678,\\n            \\\"cost_amount\\\": 238.14,\\n            \\\"cost_currency\\\": \\\"USD\\\",\\n            \\\"display_click_through_rate\\\": 41.93876939668085,\\n            \\\"display_clicks\\\": 7000,\\n            \\\"display_cost_amount\\\": 238.14,\\n            \\\"display_cost_currency\\\": \\\"USD\\\",\\n            \\\"display_impressions\\\": 16691,\\n            \\\"game_id\\\": 1,\\n            \\\"goal_revenue_amount\\\": 2900.22,\\n            \\\"goal_revenue_currency\\\": \\\"USD\\\",\\n            \\\"goals\\\": {\\n                \\\"1\\\": {\\n                    \\\"assist\\\": {\\n                        \\\"count\\\": 825,\\n                        \\\"goal_rate\\\": 11.785714285714285,\\n                        \\\"goal_revenue_amount\\\": 0.0,\\n                        \\\"goal_revenue_currency\\\": \\\"USD\\\",\\n                        \\\"name\\\": \\\"Purchase Assist\\\",\\n                        \\\"per_user\\\": 2.759197324414716,\\n                        \\\"unique_users\\\": 299\\n                    },\\n                    \\\"standard\\\": {\\n                        \\\"count\\\": 110,\\n                        \\\"goal_rate\\\": 1.5714285714285716,\\n                        \\\"goal_revenue_amount\\\": 220.0,\\n                        \\\"goal_revenue_currency\\\": \\\"USD\\\",\\n                        \\\"name\\\": \\\"Purchase\\\",\\n                        \\\"per_user\\\": 1.0,\\n                        \\\"unique_users\\\": 110\\n                    }\\n                },\\n                \\\"2\\\": {\\n                    \\\"assist\\\": {\\n                        \\\"count\\\": 126,\\n                        \\\"goal_rate\\\": 1.7999999999999998,\\n                        \\\"goal_revenue_amount\\\": 0.0,\\n                        \\\"goal_revenue_currency\\\": \\\"USD\\\",\\n                        \\\"name\\\": \\\"Reactivation Assist\\\",\\n                        \\\"per_user\\\": 2.3333333333333335,\\n                        \\\"unique_users\\\": 54\\n                    },\\n                    \\\"standard\\\": {\\n                        \\\"count\\\": 31,\\n                        \\\"goal_rate\\\": 0.44285714285714284,\\n                        \\\"goal_revenue_amount\\\": 62.0,\\n                        \\\"goal_revenue_currency\\\": \\\"USD\\\",\\n                        \\\"name\\\": \\\"Reactivation\\\",\\n                        \\\"per_user\\\": 1.0,\\n                        \\\"unique_users\\\": 31\\n                    }\\n                },\\n                \\\"3\\\": {\\n                    \\\"assist\\\": {\\n                        \\\"count\\\": 1575,\\n                        \\\"goal_rate\\\": 22.5,\\n                        \\\"goal_revenue_amount\\\": 0.0,\\n                        \\\"goal_revenue_currency\\\": \\\"USD\\\",\\n                        \\\"name\\\": \\\"DLC Purchase Assist\\\",\\n                        \\\"per_user\\\": 4.578488372093023,\\n                        \\\"unique_users\\\": 344\\n                    },\\n                    \\\"standard\\\": {\\n                        \\\"count\\\": 178,\\n                        \\\"goal_rate\\\": 2.5428571428571427,\\n                        \\\"goal_revenue_amount\\\": 1778.22,\\n                        \\\"goal_revenue_currency\\\": \\\"USD\\\",\\n                        \\\"name\\\": \\\"DLC Purchase\\\",\\n                        \\\"per_user\\\": 1.3088235294117647,\\n                        \\\"unique_users\\\": 136\\n                    }\\n                },\\n                \\\"4\\\": {\\n                    \\\"assist\\\": {\\n                        \\\"count\\\": 1788,\\n                        \\\"goal_rate\\\": 25.542857142857144,\\n                        \\\"goal_revenue_amount\\\": 0.0,\\n                        \\\"goal_revenue_currency\\\": \\\"USD\\\",\\n                        \\\"name\\\": \\\"3D Retention Assist\\\",\\n                        \\\"per_user\\\": 2.4594222833562585,\\n                        \\\"unique_users\\\": 727\\n                    },\\n                    \\\"contribution\\\": {\\n                        \\\"count\\\": 729,\\n                        \\\"goal_rate\\\": 10.414285714285715,\\n                        \\\"goal_revenue_amount\\\": 0.0,\\n                        \\\"goal_revenue_currency\\\": \\\"USD\\\",\\n                        \\\"name\\\": \\\"3D Retention Contribution\\\",\\n                        \\\"per_user\\\": 2.5759717314487633,\\n                        \\\"unique_users\\\": 283\\n                    },\\n                    \\\"standard\\\": {\\n                        \\\"count\\\": 451,\\n                        \\\"goal_rate\\\": 6.442857142857143,\\n                        \\\"goal_revenue_amount\\\": 840.0,\\n                        \\\"goal_revenue_currency\\\": \\\"USD\\\",\\n                        \\\"name\\\": \\\"3D Retention\\\",\\n                        \\\"per_user\\\": 1.0134831460674156,\\n                        \\\"unique_users\\\": 445\\n                    }\\n                }\\n            },\\n            \\\"impressions\\\": 16691,\\n            \\\"impressions_unique\\\": 8740,\\n            \\\"network\\\": \\\"adwords\\\",\\n            \\\"network_click_through_rate\\\": null,\\n            \\\"network_clicks\\\": null,\\n            \\\"network_cost_amount\\\": null,\\n            \\\"network_cost_currency\\\": null,\\n            \\\"network_impressions\\\": null,\\n            \\\"network_name\\\": \\\"Google Ads\\\",\\n            \\\"team_id\\\": 1,\\n            \\\"team_name\\\": \\\"Team Defaults\\\"\\n        }\\n    ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "584c3020-8499-4603-a998-6bb2c7d3ca50",
+          "name": "/reporting/goals",
+          "request": {
+            "name": "/reporting/goals",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reporting",
+                "goals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Api-Version",
+                "value": "2.0.0",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"game_id\": \"<integer>\",\n  \"start_datetime\": \"<date>\",\n  \"end_datetime\": \"<date>\",\n  \"goal_type_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"trigger_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"unattributed\": \"<boolean>\",\n  \"limit\": 100000,\n  \"after\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "61922d17-39f4-43bb-b604-94f6bf5e3aab",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "goals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This should be an API Key with the Advertiser scope",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Api-Version",
+                    "value": "2.0.0",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"game_id\": \"<integer>\",\n  \"start_datetime\": \"<date>\",\n  \"end_datetime\": \"<date>\",\n  \"goal_type_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"trigger_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"unattributed\": \"<boolean>\",\n  \"limit\": 100000,\n  \"after\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"goals\\\": [\\n    {\\n      \\\"event_city\\\": 0,\\n      \\\"event_country\\\": \\\"US\\\",\\n      \\\"event_device_type\\\": null,\\n      \\\"event_id\\\": \\\"1ec20fd8-28ba-664e-8ecf-9801a795bcd3\\\",\\n      \\\"event_os\\\": \\\"Windows 7 Service Pack 1\\\",\\n      \\\"event_platform\\\": \\\"xbox\\\",\\n      \\\"event_region\\\": \\\"ZZZ\\\",\\n      \\\"event_sku\\\": \\\"\\\",\\n      \\\"event_type\\\": \\\"game_launch\\\",\\n      \\\"game_id\\\": 1,\\n      \\\"goal_type_id\\\": 1,\\n      \\\"id\\\": \\\"1ec20fd8-28ba-6450-8ecf-9801a795bcd3\\\",\\n      \\\"record_updated_at\\\": \\\"2021-09-29T08:16:14\\\",\\n      \\\"revenue_amount\\\": 0.0,\\n      \\\"revenue_currency\\\": \\\"USD\\\",\\n      \\\"revenue_type\\\": \\\"cumulative\\\",\\n      \\\"touchpoint_ad\\\": \\\"\\\",\\n      \\\"touchpoint_ad_group\\\": \\\"myadgroup\\\",\\n      \\\"touchpoint_ad_type\\\": \\\"\\\",\\n      \\\"touchpoint_browser_family\\\": \\\"Chrome\\\",\\n      \\\"touchpoint_campaign\\\": \\\"1\\\",\\n      \\\"touchpoint_city\\\": 0,\\n      \\\"touchpoint_cost_amount\\\": 1.0,\\n      \\\"touchpoint_cost_currency\\\": \\\"USD\\\",\\n      \\\"touchpoint_cost_model\\\": \\\"cpc\\\",\\n      \\\"touchpoint_country\\\": \\\"US\\\",\\n      \\\"touchpoint_creative\\\": \\\"\\\",\\n      \\\"touchpoint_destination_url\\\": \\\"https://store.steampowered.com\\\",\\n      \\\"touchpoint_device_brand\\\": \\\"Apple\\\",\\n      \\\"touchpoint_device_family\\\": \\\"Mac\\\",\\n      \\\"touchpoint_device_model\\\": \\\"Mac\\\",\\n      \\\"touchpoint_id\\\": \\\"1ec20fd8-288c-6078-8ecf-9801a795bcd3\\\",\\n      \\\"touchpoint_influencer\\\": \\\"\\\",\\n      \\\"touchpoint_keyword\\\": \\\"\\\",\\n      \\\"touchpoint_network\\\": \\\"\\\",\\n      \\\"touchpoint_os_family\\\": \\\"Mac OS X\\\",\\n      \\\"touchpoint_os_major\\\": \\\"10\\\",\\n      \\\"touchpoint_placement\\\": \\\"\\\",\\n      \\\"touchpoint_region\\\": \\\"ZZZ\\\",\\n      \\\"touchpoint_request_url\\\": \\\"http://gsght.com/c/xxxxx?ad_group=myadgroup\\\",\\n      \\\"touchpoint_requested_at\\\": \\\"2021-09-26T08:16:12\\\",\\n      \\\"touchpoint_session_id\\\": \\\"1ec20fd8-288c-61cc-8ecf-9801a795bcd3\\\",\\n      \\\"touchpoint_site_id\\\": \\\"\\\",\\n      \\\"touchpoint_sub1\\\": \\\"\\\",\\n      \\\"touchpoint_sub10\\\": \\\"\\\",\\n      \\\"touchpoint_sub2\\\": \\\"\\\",\\n      \\\"touchpoint_sub3\\\": \\\"\\\",\\n      \\\"touchpoint_sub4\\\": \\\"\\\",\\n      \\\"touchpoint_sub5\\\": \\\"\\\",\\n      \\\"touchpoint_sub6\\\": \\\"\\\",\\n      \\\"touchpoint_sub7\\\": \\\"\\\",\\n      \\\"touchpoint_sub8\\\": \\\"\\\",\\n      \\\"touchpoint_sub9\\\": \\\"\\\",\\n      \\\"touchpoint_sub_site_id\\\": \\\"\\\",\\n      \\\"touchpoint_team_id\\\": 4,\\n      \\\"touchpoint_type\\\": \\\"click\\\",\\n      \\\"touchpoint_unique\\\": 1,\\n      \\\"touchpoint_useragent\\\": \\\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36\\\",\\n      \\\"touchpoint_utm_campaign\\\": \\\"\\\",\\n      \\\"touchpoint_utm_content\\\": \\\"\\\",\\n      \\\"touchpoint_utm_medium\\\": \\\"\\\",\\n      \\\"touchpoint_utm_source\\\": \\\"\\\",\\n      \\\"touchpoint_utm_term\\\": \\\"\\\",\\n      \\\"trigger_id\\\": \\\"5.standard\\\",\\n      \\\"trigger_type\\\": \\\"standard\\\",\\n      \\\"triggered_at\\\": \\\"2021-09-29T08:16:12\\\",\\n      \\\"unattributed\\\": 0,\\n      \\\"user_id\\\": \\\"12345-abcdef-6789\\\",\\n      \\\"value\\\": 100\\n    }\\n  ],\\n  \\\"paging\\\": {\\n    \\\"after\\\": \\\"xxxxxxxxxxx\\\" \\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b479ab1-d764-44d2-9c2a-7773c50f55b9",
+          "name": "/games",
+          "request": {
+            "name": "/games",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "games"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Api-Version",
+                "value": "2.0.0",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "628abe34-3e69-400a-b070-3529813d4ab2",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "games"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This should be an API Key with the Advertiser scope",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Api-Version",
+                    "value": "2.0.0",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"games\\\": [\\n    {\\n      \\\"id\\\": 1,\\n      \\\"name\\\": \\\"My Game\\\",\\n      \\\"teams\\\": [Team Objects],\\n      \\\"attribution_model\\\": \\\"last_touch\\\",\\n      \\\"created_at\\\": \\\"2018-01-01 00:00:00\\\"\\n    },{\\n      \\\"id\\\": 10,\\n      \\\"name\\\": \\\"My Second Game\\\",\\n      \\\"teams\\\": [Team Objects],\\n      \\\"attribution_model\\\": \\\"last_touch\\\",\\n      \\\"created_at\\\": \\\"2018-01-01 00:00:00\\\"\\n    }\\n  ]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "864bdbc2-06db-43c3-8278-f7516b006819",
+          "name": "/trackers",
+          "request": {
+            "name": "/trackers",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trackers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with_names",
+                  "value": "<boolean>",
+                  "description": "Pass `true` to include Tracker names in the response, defaults to `false`"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Pass a limit to restrict the number of results in the API response. Returns all trackers by default"
+                },
+                {
+                  "disabled": false,
+                  "key": "after_shortcode",
+                  "value": "<string>",
+                  "description": "Pass a tracker shortcode to page through Trackers, results are ordered by shortcode. Use in combination with limit for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_after",
+                  "value": "<date>",
+                  "description": "Pass to filter results to only include Trackers that were updated after the specified timestamp"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Api-Version",
+                "value": "2.0.0",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "523ff169-0fee-414b-952b-75ab99fd60c7",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trackers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with_names",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "after_shortcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updated_after",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This should be an API Key with the Advertiser scope",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Api-Version",
+                    "value": "2.0.0",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"trackers\\\":[{\\n    \\\"shortcode\\\":\\\"xxxxxx\\\",\\n    \\\"game_id\\\":1,\\n    \\\"team_id\\\":1\\n    \\\"network\\\":\\\"\\\",\\n    \\\"campaign\\\":\\\"\\\",\\n    \\\"influencer\\\":\\\"\\\",\\n    \\\"ad_group\\\":\\\"\\\",\\n    \\\"ad\\\":\\\"\\\",\\n    \\\"name\\\":\\\"My Tracker\\\",\\n    \\\"destination_url\\\":\\\"https://gamesight.io\\\",\\n    \\\"click_url\\\":\\\"https://gsght.com/c/xxxxxx\\\",\\n    \\\"impression_img_url\\\":\\\"https://gsght.com/imgp/xxxxxx\\\",\\n    \\\"impression_url\\\":\\\"https://gsght.com/i/xxxxxx\\\",\\n    \\\"attribution_window\\\":1209600,\\n    \\\"impression_attribution_window\\\":86400,\\n    \\\"cost_amount\\\":null,\\n    \\\"cost_currency\\\":null,\\n    \\\"cost_model\\\":null,\\n    \\\"created_at\\\":\\\"2018-10-01T20:21:47\\\",\\n    \\\"archived_at\\\":null\\n  }]\\n}\\n\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db0d165a-be8f-4871-aa83-00e6803bd6da",
+          "name": "/trackers",
+          "request": {
+            "name": "/trackers",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "trackers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Api-Version",
+                "value": "2.0.0",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"game_id\": \"<integer>\",\n  \"team_id\": \"<integer>\",\n  \"network\": \"<string>\",\n  \"campaign\": \"<string>\",\n  \"influencer\": \"<string>\",\n  \"ad_group\": \"<string>\",\n  \"ad\": \"<string>\",\n  \"name\": \"<string>\",\n  \"cost_model\": \"<string>\",\n  \"cost_currency\": \"usd\",\n  \"cost_amount\": \"<string>\",\n  \"attribution_window\": \"<integer>\",\n  \"impression_attribution_window\": \"<integer>\",\n  \"destination_url\": \"<string>\",\n  \"referral_code\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "81b16b91-370f-4fe4-8fde-426d391d9141",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "trackers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This should be an API Key with the Advertiser scope",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Api-Version",
+                    "value": "2.0.0",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"game_id\": \"<integer>\",\n  \"team_id\": \"<integer>\",\n  \"network\": \"<string>\",\n  \"campaign\": \"<string>\",\n  \"influencer\": \"<string>\",\n  \"ad_group\": \"<string>\",\n  \"ad\": \"<string>\",\n  \"name\": \"<string>\",\n  \"cost_model\": \"<string>\",\n  \"cost_currency\": \"usd\",\n  \"cost_amount\": \"<string>\",\n  \"attribution_window\": \"<integer>\",\n  \"impression_attribution_window\": \"<integer>\",\n  \"destination_url\": \"<string>\",\n  \"referral_code\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"tracker\\\":{\\n    \\\"shortcode\\\":\\\"xxxxxx\\\",\\n    \\\"game_id\\\":1,\\n    \\\"team_id\\\":1\\n    \\\"network\\\":\\\"\\\",\\n    \\\"campaign\\\":\\\"\\\",\\n    \\\"influencer\\\":\\\"\\\",\\n    \\\"ad_group\\\":\\\"\\\",\\n    \\\"ad\\\":\\\"\\\",\\n    \\\"name\\\":\\\"My Tracker\\\",\\n    \\\"destination_url\\\":\\\"https://gamesight.io\\\",\\n    \\\"click_url\\\":\\\"https://gsght.com/c/xxxxxx\\\",\\n    \\\"impression_img_url\\\":\\\"https://gsght.com/imgp/xxxxxx\\\",\\n    \\\"impression_url\\\":\\\"https://gsght.com/i/xxxxxx\\\",\\n    \\\"attribution_window\\\":1209600,\\n    \\\"impression_attribution_window\\\":86400,\\n    \\\"cost_amount\\\":null,\\n    \\\"cost_currency\\\":null,\\n    \\\"cost_model\\\":null,\\n    \\\"created_at\\\":\\\"2018-10-01T20:21:47\\\",\\n    \\\"archived_at\\\":null\\n  }\\n}\\n\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a888dac-8f10-424e-9db3-debe30265908",
+          "name": "/goal_types",
+          "request": {
+            "name": "/goal_types",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "goal_types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Api-Version",
+                "value": "2.0.0",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d083270a-16a3-4dbf-a04a-d97bc1d5295c",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "goal_types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This should be an API Key with the Advertiser scope",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Api-Version",
+                    "value": "2.0.0",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"goal_types\\\": [\\n    {\\n      \\\"archived_at\\\": null,\\n      \\\"created_at\\\": \\\"2021-09-25T17:08:32\\\",\\n      \\\"description\\\": null,\\n      \\\"game_id\\\": 123456789,\\n      \\\"id\\\": 123456789,\\n      \\\"name\\\": \\\"Install\\\",\\n      \\\"once_per_user\\\": true,\\n      \\\"revenue_regions\\\": {\\n        \\\"CA::steam\\\": {\\n          \\\"amount\\\": \\\"60.00\\\",\\n          \\\"code\\\": \\\"CA\\\",\\n          \\\"currency\\\": \\\"usd\\\",\\n          \\\"platform\\\": \\\"steam\\\"\\n        }\\n      },\\n      \\\"triggers\\\": [\\n        {\\n          \\\"archived_at\\\": null,\\n          \\\"created_at\\\": \\\"2021-09-25T17:08:32\\\",\\n          \\\"event_match_type\\\": \\\"strict\\\",\\n          \\\"event_type\\\": \\\"game_launch\\\",\\n          \\\"first_event_only\\\": true,\\n          \\\"goal_type_id\\\": 123456789,\\n          \\\"id\\\": 987654321,\\n          \\\"min_retention_trigger\\\": 0,\\n          \\\"min_retrigger_time\\\": 0\\n        }\\n      ],\\n      \\\"updated_at\\\": \\\"2021-09-25T17:08:32\\\"\\n    },\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d9c5f5a-59aa-4a19-8e13-5182b9dbc9ed",
+          "name": "/audit_logs",
+          "request": {
+            "name": "/audit_logs",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "audit_logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "org_id",
+                  "value": "<integer>",
+                  "description": "(Required) Org ID for the Organization to pull audit logs from"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_datetime",
+                  "value": "<string>",
+                  "description": "(Required) Start of the time range to pull logs from, inclusive. ISO 8601 format, UTC."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_datetime",
+                  "value": "<string>",
+                  "description": "(Required) End of the time range to pull audit logs from, inclusive. ISO 8601 format, UTC."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Number of results per page. Min: 1, Max: 500"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "Pagination cursor"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "951d4b7c-0136-4577-ab8d-5197495180fb",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audit_logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "org_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start_datetime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_datetime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API Key with the `org_audit` scope to be used for pulling logs",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"audit_logs\\\": [\\n    {\\n      \\\"id\\\": 12345,\\n      \\\"actor_type\\\": \\\"user\\\",\\n      \\\"actor_id\\\": 1,\\n      \\\"actor_name\\\": \\\"Jane Doe\\\",\\n      \\\"actor_email\\\": \\\"user@company.com\\\",\\n      \\\"actor_ip\\\": null,\\n      \\\"verb\\\": \\\"create\\\",\\n      \\\"target_type\\\": \\\"advertiser_api_key\\\",\\n      \\\"target_id\\\": \\\"123\\\",\\n      \\\"target_meta\\\": null,\\n      \\\"attribute\\\": null,\\n      \\\"new_value\\\": null,\\n      \\\"old_value\\\": null,\\n      \\\"context_id\\\": 1,\\n      \\\"context_type\\\": \\\"org\\\",\\n      \\\"created_at\\\": \\\"2023-01-01T12:00:00\\\"\\n    },\\n    {\\n      \\\"id\\\": 12346,\\n      \\\"actor_type\\\": \\\"user\\\",\\n      \\\"actor_id\\\": 1,\\n      \\\"actor_name\\\": \\\"Jane Doe\\\",\\n      \\\"actor_email\\\": \\\"user@company.com\\\",\\n      \\\"actor_ip\\\": null,\\n      \\\"verb\\\": \\\"create\\\",\\n      \\\"target_type\\\": \\\"actor_role\\\",\\n      \\\"target_id\\\": \\\"1788\\\",\\n      \\\"target_meta\\\": {\\n        \\\"actor_email\\\": null,\\n        \\\"actor_id\\\": 123,\\n        \\\"actor_name\\\": \\\"Audit Key\\\",\\n        \\\"actor_type\\\": \\\"advertiser_api_key\\\",\\n        \\\"context_id\\\": 1,\\n        \\\"context_type\\\": \\\"org\\\",\\n        \\\"role_name\\\": \\\"org_audit\\\"\\n      },\\n      \\\"attribute\\\": null,\\n      \\\"new_value\\\": null,\\n      \\\"old_value\\\": null,\\n      \\\"context_id\\\": 1,\\n      \\\"context_type\\\": \\\"org\\\",\\n      \\\"created_at\\\": \\\"2023-01-01T12:00:00\\\",\\n    }\\n  ],\\n  \\\"cursors\\\": {\\n    \\\"next\\\": \\\"eyJpZCI6IDM2MjE3fQ==\\\"\\n  }\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8cb06f36-3ef7-4a9f-a84e-5cc816f05c53",
+          "name": "/reporting/users/events",
+          "request": {
+            "name": "/reporting/users/events",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reporting",
+                "users",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "game_id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Api-Version",
+                "value": "2.0.0",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a5e0f94-7939-41b5-b715-2ef8f8353097",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "users",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "game_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This should be an API Key with the GDPR scope",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Api-Version",
+                    "value": "2.0.0",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"events\\\": [{\\n    \\\"created_at\\\": \\\"2020-09-02T21:01:41\\\",\\n    \\\"game_id\\\": 1,\\n    \\\"id\\\": \\\"1eaed5f7-fcfb-6896-97ce-822f63a10bc4\\\",\\n    \\\"identifiers\\\": \\\"ec7c36b363ca428ddcdf1f7e8fa8f2dd9f5049edd5e4aa46975c389258f7d9b88c1f027caaec6829ffb59d78ee92cc0b2aa18353a41fc420010a34ae4fe69451\\\",\\n    \\\"ip\\\": \\\"fe8412b9eedc4807a96c044d2c3768a6115bf8ad89ca3e1617792a007772fb90\\\",\\n    \\\"revenue_amount\\\": 1.5,\\n    \\\"revenue_currency\\\": \\\"USD\\\",\\n    \\\"type\\\": \\\"dlc_purchase\\\",\\n    \\\"user_id\\\": \\\"1eaed5f7-fcf0-6626-a973-f69bd3ef1021\\\",\\n    \\\"version\\\": \\\"1.1.0\\\"\\n  }]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6539604a-e843-4dc4-b73d-0ee7987a2c9f",
+          "name": "/reporting/users/touchpoints",
+          "request": {
+            "name": "/reporting/users/touchpoints",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reporting",
+                "users",
+                "touchpoints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "game_id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Api-Version",
+                "value": "2.0.0",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a367062-642c-4582-9a47-fb69ba645848",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "users",
+                    "touchpoints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "game_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This should be an API Key with the GDPR scope",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Api-Version",
+                    "value": "2.0.0",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"{\\n  \\\"clicks\\\": [{\\n    \\\"id\\\": \\\"1eaee192381a6aeea093784f4352ffcc\\\",\\n    \\\"game_id\\\": 1,\\n    \\\"team_id\\\": 1,\\n    \\\"network\\\": \\\"network\\\",\\n    \\\"campaign\\\": \\\"campaign\\\",\\n    \\\"influencer\\\": \\\"\\\",\\n    \\\"ad_group\\\": \\\"\\\",\\n    \\\"ad\\\": \\\"\\\",\\n    \\\"cost_model\\\": null,\\n    \\\"cost_currency\\\": null,\\n    \\\"cost_amount\\\": null,\\n    \\\"attribution_window\\\": 604800,\\n    \\\"click_url\\\": \\\"http://localhost/c/campai\\\",\\n    \\\"destination_url\\\": \\\"http://campaign.com\\\",\\n    \\\"network_click_id\\\": null,\\n    \\\"ip\\\": \\\"46b4ef5d35dfb9729bbb89663741488b436225e7e8c058304d6b469dccae6ff1\\\",\\n    \\\"session_id\\\": \\\"1eaee192381d6136b6c7784f4352ffcc\\\",\\n    \\\"unique\\\": true,\\n    \\\"useragent\\\": \\\"werkzeug/0.15.6\\\",\\n    \\\"clicked_at\\\": \\\"2020-09-03T19:10:32\\\",\\n    \\\"country\\\": \\\"ZZ\\\",\\n    \\\"region\\\": \\\"ZZZ\\\",\\n    \\\"city\\\": 0,\\n    \\\"created_at\\\": \\\"2020-09-03T19:10:32\\\"\\n  }],\\n  \\\"impressions\\\": [{\\n    \\\"id\\\": \\\"1eaee1972e946c189865784f4352ffcc\\\",\\n    \\\"game_id\\\": 1,\\n    \\\"team_id\\\": 1,\\n    \\\"network\\\": \\\"network\\\",\\n    \\\"campaign\\\": \\\"campaign\\\",\\n    \\\"influencer\\\": \\\"\\\",\\n    \\\"ad_group\\\": \\\"\\\",\\n    \\\"ad\\\": \\\"\\\",\\n    \\\"cost_model\\\": null,\\n    \\\"cost_currency\\\": null,\\n    \\\"cost_amount\\\": null,\\n    \\\"attribution_window\\\": 86400,\\n    \\\"impression_url\\\": \\\"http://localhost/i/campai\\\",\\n    \\\"network_impression_id\\\": null,\\n    \\\"ip\\\": \\\"46b4ef5d35dfb9729bbb89663741488b436225e7e8c058304d6b469dccae6ff1\\\",\\n    \\\"session_id\\\": \\\"1eaee196dc476f8c884c784f4352ffcc\\\",\\n    \\\"unique\\\": true,\\n    \\\"useragent\\\": \\\"werkzeug/0.15.6\\\",\\n    \\\"requested_at\\\": \\\"2020-09-03T19:12:45\\\",\\n    \\\"country\\\": \\\"ZZ\\\",\\n    \\\"region\\\": \\\"ZZZ\\\",\\n    \\\"city\\\": 0,\\n    \\\"created_at\\\": \\\"2020-09-03T19:12:46\\\"\\n  }]\\n}\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b31ad5f-56a2-4138-9449-04e262c28277",
+          "name": "/reporting/users/remove",
+          "request": {
+            "name": "/reporting/users/remove",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reporting",
+                "users",
+                "remove"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "game_id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-Api-Version",
+                "value": "2.0.0",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b48aba98-db2d-4629-9e5b-24f39003b08a",
+              "name": "204",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reporting",
+                    "users",
+                    "remove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "game_id",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) This should be an API Key with the GDPR scope",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Api-Version",
+                    "value": "2.0.0",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ingest.marketing.gamesight.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "089e0140-5006-4741-a7b3-9986ed7ef074",
+    "name": "Gamesight Measurement Reporting API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Gamesight Measurement API ingests a stream of in-game event data with device-level identifiers to power marketing attribution and measurement for PC, console, and web games. Send single events to /events or batches to /events/batch, and manage per-game do-not-track (GDPR/CCPA opt-out) state.\n\nContact Support:\n Name: Gamesight Support\n Email: support@gamesight.io",
+      "type": "text/plain"
+    }
+  }
+}

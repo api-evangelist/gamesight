@@ -1,7 +1,53 @@
-generated: '2026-07-19'
+generated: '2026-08-13'
 method: searched
-source: https://gamesight.io/products/measurement, https://console.gamesight.io/trust, https://gamesight.io/gdpr
+source: >-
+  https://gamesight.io/products/measurement, https://console.gamesight.io/trust,
+  https://gamesight.io/gdpr, https://docs.gamesight.io/docs/okta-saml-config,
+  https://docs.gamesight.io/docs/okta-scim-config,
+  https://api.marketing.gamesight.io/.well-known/oauth-authorization-server,
+  https://console.gamesight.io/.well-known/oauth-protected-resource/mcp
+note: >-
+  Round 2 revised the OAuth verdict. The 2026-07-19 pass recorded oauth2 as
+  conforms:false on the grounds that auth is API-key only. That is true of the
+  two REST APIs but false of the provider: Gamesight runs a standards-conformant
+  OAuth 2.0 authorization server (RFC 8414 metadata, RFC 7591 dynamic client
+  registration, RFC 7636 PKCE S256, RFC 7009 revocation, RFC 9728 protected
+  resource metadata) to gate its MCP server. SAML/SCIM entries added from the
+  SSO documentation.
 standards:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      RFC 6749 authorization-code flow advertised at
+      https://console.gamesight.io/authorize with token endpoint
+      /api/app/oauth/token; gates the MCP server. Not used by the REST APIs.
+  - id: rfc8414-oauth-authorization-server-metadata
+    conforms: true
+    evidence: 200 JSON document served at /.well-known/oauth-authorization-server on api.marketing.gamesight.io and console.gamesight.io.
+  - id: rfc9728-oauth-protected-resource-metadata
+    conforms: true
+    evidence: 200 JSON document at /.well-known/oauth-protected-resource/mcp naming resource "Gamesight MCP Server"; advertised via the WWW-Authenticate resource_metadata parameter on the 401.
+  - id: rfc7636-pkce
+    conforms: true
+    evidence: code_challenge_methods_supported [S256].
+  - id: rfc7591-dynamic-client-registration
+    conforms: true
+    evidence: registration_endpoint https://console.gamesight.io/api/app/oauth/register.
+  - id: rfc7009-token-revocation
+    conforms: true
+    evidence: revocation_endpoint https://console.gamesight.io/api/app/oauth/revoke.
+  - id: mcp
+    conforms: true
+    evidence: Hosted MCP server at https://console.gamesight.io/mcp responding to JSON-RPC over HTTP with an OAuth bearer challenge.
+  - id: oidc
+    conforms: false
+    evidence: /.well-known/openid-configuration 404s on the API hosts; the console 200 is an SPA HTML shell, not a discovery document.
+  - id: saml2
+    conforms: true
+    evidence: SAML 2.0 SSO for console access documented for Okta and Google Workspace.
+  - id: scim2
+    conforms: true
+    evidence: SCIM user provisioning documented at https://docs.gamesight.io/docs/okta-scim-config.
   - id: soc2
     conforms: true
     evidence: SOC 2 stated on gamesight.io product/measurement page and trust center.
@@ -11,18 +57,21 @@ standards:
   - id: ccpa
     conforms: true
     evidence: CCPA compliance documented at gamesight.io/gdpr.
-  - id: oauth2
-    conforms: false
-    evidence: Auth is API-key (Authorization header), not OAuth2.
   - id: rfc9457-problem-details
     conforms: false
-    evidence: Errors use a custom JSON envelope, not application/problem+json.
+    evidence: Errors use a custom JSON envelope (type/message/status_code/extra), not application/problem+json.
   - id: semver-versioning
     conforms: true
     evidence: API versioning follows semver via the X-Api-Version header.
   - id: ietf-ratelimit-headers
     conforms: true
     evidence: x-ratelimit-limit/remaining/reset headers follow the IETF RateLimit-Headers draft.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset/Deprecation header support or deprecation policy is published.
+  - id: asyncapi
+    conforms: false
+    evidence: No event/webhook surface is published; the docs index (llms.txt) contains no webhooks page. Batch data movement is via S3 import/export, not events.
 compliance_programs:
   - name: SOC 2
   - name: GDPR

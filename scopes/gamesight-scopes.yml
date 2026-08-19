@@ -1,0 +1,78 @@
+generated: '2026-08-13'
+method: probed
+source: >-
+  https://api.marketing.gamesight.io/.well-known/oauth-authorization-server,
+  https://console.gamesight.io/.well-known/oauth-protected-resource/mcp
+docs: https://docs.gamesight.io/reference/authorization
+note: >-
+  Gamesight has TWO distinct authorization models and this artifact records
+  both, because neither alone describes the provider.
+  (1) OAuth 2.0 — discovered by probe, not by documentation. The RFC 8414
+  Authorization Server Metadata served on both api.marketing.gamesight.io and
+  console.gamesight.io declares exactly one supported scope, "mcp", which gates
+  the hosted MCP server at https://console.gamesight.io/mcp. This OAuth surface
+  is undocumented in the public developer docs.
+  (2) API key scopes — the documented model for both REST APIs. These are NOT
+  OAuth scopes; they are permission roles selected at key-creation time in the
+  console, and they are carried by the opaque key in the Authorization header.
+  They are recorded here because they are the real authorization vocabulary a
+  consumer must reason about.
+oauth:
+  discovered_by: probe
+  documented: false
+  schemes:
+    - name: GamesightOAuth2
+      type: oauth2
+      issuer: https://console.gamesight.io
+      flows:
+        - flow: authorizationCode
+          authorizationUrl: https://console.gamesight.io/authorize
+          tokenUrl: https://console.gamesight.io/api/app/oauth/token
+          refreshUrl: https://console.gamesight.io/api/app/oauth/token
+          pkce: S256
+      registration_endpoint: https://console.gamesight.io/api/app/oauth/register
+      revocation_endpoint: https://console.gamesight.io/api/app/oauth/revoke
+  scopes:
+    - scope: mcp
+      description: >-
+        Grants a bearer token access to the Gamesight MCP Server
+        (https://console.gamesight.io/mcp). The only scope the authorization
+        server advertises. The set of tools this scope unlocks is not published.
+      flows: [authorizationCode]
+      resource: https://console.gamesight.io/mcp
+      sources:
+        - well-known/gamesight-oauth-authorization-server.json
+        - well-known/gamesight-oauth-protected-resource-mcp.json
+api_key_scopes:
+  documented: true
+  mechanism: Opaque API key in the Authorization request header; scope is fixed at key creation.
+  docs: https://docs.gamesight.io/docs/api-key-management
+  scopes:
+    - scope: Reporting
+      description: >-
+        Fully permissioned reporting key — marketing analytics reporting, game
+        analytics, user-level reporting, and unattributed goals. Intended for
+        internal use by the game developer/publisher.
+    - scope: Aggregate Reporting
+      description: >-
+        Restricted reporting key scoped to a specific set of teams. No access to
+        game analytics, user-level reporting, or unattributed goals. Intended for
+        external parties such as agencies who need campaign performance only.
+    - scope: GDPR
+      description: >-
+        Permits Data Access, Right-to-Forget, and Opt-Out requests for user data.
+    - scope: Audit
+      description: Permits calls to the Audit Log API (/audit_logs).
+    - scope: Event Measurement
+      description: >-
+        Separate in-game/website ingest key, provisioned under Management >
+        In-Game Integration rather than the API Keys settings page. Used only by
+        the Measurement API and the Web SDK.
+x-evidence:
+  - url: https://api.marketing.gamesight.io/.well-known/oauth-authorization-server
+    status: 200
+  - url: https://console.gamesight.io/.well-known/oauth-protected-resource/mcp
+    status: 200
+  - url: https://docs.gamesight.io/reference/authorization
+    status: 200
+checked: '2026-08-13'
