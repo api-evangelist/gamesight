@@ -40,6 +40,16 @@ tags:
 - Marketing
 - Analytics
 - Attribution
+- Measurements
+- Advertising
+- Creators
+- Game Development
+tags_raw:
+- Company
+- Gaming
+- Marketing
+- Analytics
+- Attribution
 - Measurement
 - Advertising
 - Creators
@@ -56,6 +66,8 @@ apis:
   humanURL: https://docs.gamesight.io/reference/measurement-api-overview
   baseURL: https://api.ingest.marketing.gamesight.io
   tags:
+  - Measurements
+  tags_raw:
   - Measurement
   properties:
   - type: OpenAPI
