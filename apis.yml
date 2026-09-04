@@ -26,15 +26,20 @@ deliveryModel:
   method: derived
 accessModel:
   pricing: unknown
-  onboarding: self-serve
+  onboarding: approval
   trial: false
   try_now: false
   public: false
-  label: Self-serve signup
+  label: Requires approval
   confidence: medium
   source:
+  - plans
   - authentication
-  generated: '2026-07-22'
+  - scopes
+  - rate-limits
+  - security
+  - sandbox
+  generated: '2026-09-03'
   method: derived
 image: https://console.gamesight.io/images/meta/gamesight-facebook.png
 x-type: company
