@@ -1,8 +1,8 @@
 {
   "provider": "gamesight",
   "sources": [
-    "gamesight-measurement-api-openapi.yml",
-    "gamesight-reporting-api-openapi.yml"
+    "_original/gamesight-measurement-openapi.json",
+    "_original/gamesight-reporting-openapi.json"
   ],
   "outputs": [
     "gamesight-measurement-api-openapi.yml",
@@ -11,6 +11,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "gamesight-measurement-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "gamesight-measurement-openapi.json: declared missing tag: Measurement",
+    "gamesight-reporting-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "gamesight-reporting-openapi.json: declared missing tag: Reporting",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "gamesight-measurement-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gamesight-reporting-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

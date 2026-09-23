@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Gamesight Measurement Reporting API
-  version: 1.1.0
-  description: The Gamesight Measurement API ingests a stream of in-game event data with device-level identifiers to power marketing attribution and measurement for PC, console, and web games. Send single events to /events or batches to /events/batch, and manage per-game do-not-track (GDPR/CCPA opt-out) state.
+  title: Gamesight Reporting API
+  version: 2.0.0
+  description: The Gamesight Reporting API lets you programmatically pull Marketing Analytics data — campaign stats, goals, games, trackers, user-level events and touchpoints, and audit logs — into your data warehouse or BI systems. Authorize with a Reporting, Aggregate Reporting, or GDPR scoped API key via the Authorization header.
   contact:
     name: Gamesight Support
     email: support@gamesight.io
@@ -10,15 +10,6 @@ info:
   x-apisjson-source: https://docs.gamesight.io/reference (ReadMe embedded OpenAPI blocks)
 servers:
 - url: https://api.marketing.gamesight.io
-  description: >-
-    Reporting API host. Corrected 2026-08-13: this refined spec carried the
-    ingest host, which does not serve the Reporting routes. Gamesight's own
-    harvested source spec (openapi/_original/gamesight-reporting-openapi.json)
-    names api.marketing.gamesight.io, and a live unauthenticated probe confirms
-    it: GET https://api.marketing.gamesight.io/games and /trackers return 403
-    PermissionsException (route exists, auth required) while the same paths on
-    api.ingest.marketing.gamesight.io return 404, and GET /events returns 405
-    on the ingest host and 404 here.
 security:
 - ApiKeyAuth: []
 tags:
